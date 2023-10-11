@@ -1,0 +1,19 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme="minimo"
+
+[menu]
+
+  # Menú principal
+  [[menu.main]]
+    identifier = "home"
+    name = "Inicio"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "acerca-de"
+    name = "Acerca de"
+    url = "/acerca-de/"
+    weight = 2
