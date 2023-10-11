@@ -14,7 +14,7 @@
 
   {{- if .Site.Params.favicon -}}
   <link rel="apple-touch-icon" href="{{ .Site.Params.favicon }}" />
-  <link rel="icon" href="{{ .Site.Params.favicon }}" />
+  <link rel="icon" href="" />
   <link rel="shortcut" href="{{ .Site.Params.favicon }}" />
   {{- end -}}
   <link rel="alternate" type="application/atom+xml" href="{{.Site.BaseURL}}index.xml" title="{{ .Site.Title }}">
@@ -59,7 +59,7 @@
   <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
   <!-- quicklink require -->
   <!-- <script>
-    /* Disable minification (remove `.min` from URL path) for more info 
+    /* Disable minification (remove `.min` from URL path) for more info
     https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver
     */
     (function (undefined) { }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
