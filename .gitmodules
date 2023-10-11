@@ -1,9 +1,0 @@
-[submodule "tarea2_hugo/hugo-universal-theme"]
-	path = tarea2_hugo/hugo-universal-theme
-	url = https://github.com/devcows/hugo-universal-theme.git
-[submodule "tarea2_hugo/blowfish"]
-	path = tarea2_hugo/blowfish
-	url = https://github.com/nunocoracao/blowfish.git
-[submodule "tarea2_hugo/hugo-theme-yinyang"]
-	path = tarea2_hugo/hugo-theme-yinyang
-	url = https://github.com/joway/hugo-theme-yinyang.git
