@@ -7,19 +7,24 @@ theme="minimo"
 
   # Menú principal
   [[menu.main]]
+    identifier = "Inicio"
+    name = "inicio"
+    url = "/"
+    weight = 1
+  [[menu.main]]
     identifier = "diabolo"
     name = "diabolo"
     url = "/diabolo"
-    weight = 1
+    weight = 2
 
   [[menu.main]]
     identifier = "pelotas"
     name = "pelotas"
-    url = "/pelotas/"
-    weight = 2
+    url = "/pelotas"
+    weight = 3
 
   [[menu.main]]
     identifier = "yoyo"
     name = "yoyo"
-    url = "/yoyo/"
-    weight = 3
+    url = "/yoyo"
+    weight = 4
