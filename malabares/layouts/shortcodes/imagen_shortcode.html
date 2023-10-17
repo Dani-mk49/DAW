@@ -1,5 +1,4 @@
-<div style="position: relative; height: 200px;">
-  <img src="/images/{{ .Get "nombre" }}"
-       alt={{ .Get "alt" }}
-       height="100%"/>
+<div style="position: relative; height: 200px; margin-left: 25%;">
+  <img style="height: 100%;" src="{{.Site.BaseURL}}/images/{{ .Get "nombre" }}"
+       alt={{ .Get "alt" }}/>
 </div>
