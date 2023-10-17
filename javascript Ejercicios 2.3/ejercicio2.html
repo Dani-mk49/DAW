@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="hora"></div>
+
+  <script>
+
+    var ahora = new Date();
+    switch (ahora.getDay()) {
+      case 0:
+        var diaSemana = "domingo";
+        break;
+      case 1:
+        var diaSemana = "lunes";
+        break;
+      case 2:
+        var diaSemana = "martes";
+        break;
+      case 3:
+        var diaSemana = "miercoles";
+        break;
+      case 4:
+        var diaSemana = "jueves";
+        break;
+      case 5:
+        var diaSemana = "viernes";
+        break;
+      case 6:
+        var diaSemana = "sabado";
+        break;
+    }
+
+    switch (ahora.getMonth()) {
+      case 0:
+        var mes = "enero";
+        break;
+      case 1:
+        var mes = "febrero";
+        break;
+      case 2:
+        var mes = "marzo";
+        break;
+      case 3:
+        var mes = "abril";
+        break;
+      case 4:
+        var mes = "mayo";
+        break;
+      case 5:
+        var mes = "junio";
+        break;
+      case 6:
+        var mes = "julio";
+        break;
+      case 7:
+        var mes = "agosto";
+        break;
+      case 8:
+        var mes = "septiembre";
+        break;
+      case 9:
+        var mes = "octubre";
+        break;
+      case 10:
+        var mes = "noviembre";
+        break;
+      case 11:
+        var mes = "diciembre";
+        break;
+    }
+    var meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+    var dia = ahora.getDate();
+    var anio = ahora.getFullYear();
+    var hora = ahora.getHours();
+    var minutos = ahora.getMinutes();
+
+    var mensaje = `Hoy es ${diaSemana}, ${dia} de ${mes} de ${anio} y son las ${hora}:${minutos < 10 ? "0" : ""}${minutos} horas`;
+
+    document.getElementById("hora").textContent = mensaje;
+
+  </script>
+</body>
+</html>
