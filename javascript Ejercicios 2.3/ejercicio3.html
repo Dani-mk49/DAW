@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="verificarDNI()">Verificar DNI</button>
+
+  <script>
+    function verificarDNI() {
+      const dni = prompt("Introduce el número de DNI (sin la letra):");
+
+      if (dni === null) {
+        return;
+      }
+
+      const letras = 'TRWAGMYFPDXBNJZSQVHLCKET';
+      const numeroDNI = parseInt(dni, 10);
+
+      if (isNaN(numeroDNI)) {
+        alert("Por favor, introduce un número válido de DNI.");
+      } else {
+        const resto = numeroDNI % 23;
+        const letraCalculada = letras.charAt(resto);
+
+        const dniCompleto = dni + letraCalculada;
+        alert(`El DNI completo es: ${dniCompleto}`);
+      }
+    }
+  </script>
+</body>
+</html>
