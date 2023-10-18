@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Varios objetos predefinidos de JS</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Fondo gris */
+            color: #ffffff; /* Texto blanco */
+        }
+    </style>
+</head>
+<body>
+    <h1>Valor en píxeles de la diagonal de la pantalla:</h1>
+    <p id="diagonal"></p>
+
+    <script>
+        // Función para calcular la diagonal de la pantalla
+        function calcularDiagonalPantalla() {
+            var width = window.screen.width;
+            var height = window.screen.height;
+            var diagonal = Math.sqrt(width * width + height * height);
+            return diagonal.toFixed(1); // Redondear a 1 decimal
+        }
+
+        // Mostrar el valor de la diagonal en el elemento con id "diagonal"
+        document.getElementById("diagonal").textContent = calcularDiagonalPantalla();
+    </script>
+</body>
+</html>

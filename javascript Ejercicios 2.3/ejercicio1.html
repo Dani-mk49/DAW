@@ -6,7 +6,8 @@
   <title>Document</title>
 
   <script>
-    document.write('<p id="1"></p>');
+    //asi no le gusta
+    /*document.write('<p id="1"></p>');
     var numParf = 1;
     for (var i = 1; i <= 100; i++) {
       var contenido = document.getElementById(numParf).innerHTML;
@@ -16,6 +17,19 @@
         document.writeln('<p id="' + numParf + '"></p>');
       } else {
         document.getElementById(numParf).innerHTML = contenido + i + ", ";
+      }
+    }*/
+    //así si
+    //hace un bucle hasta 100 incluyendo este
+    for (var i = 1; i <= 100; i++) {
+      //si el resto de 10 es 7 significa que acaba en 7 y si el resto de 7 es 0 es que es multiplo de 7
+      if (i % 10 === 7 || i % 7 === 0) {
+        document.writeln("PUM");
+        document.writeln("<br>");
+        //escribe pum y salta de linea
+      } else {
+        document.writeln(i + ", ");
+        //pone el numero, una coma, y un espacio para el siguiente caracter
       }
     }
   </script>
