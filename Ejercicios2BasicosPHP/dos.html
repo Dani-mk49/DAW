@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: grey;
+    }
+
+    .arriba {
+      display: flex;
+      background-color: black;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      align: center;
+      height: 100px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    form {
+      background-color: white;
+      width: 650px;
+      padding: 5px;
+      padding-left: 100px;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="arriba">
+    <h1>CUESTIONARIO</h1>
+  </div>
+  <form action="dos.php" method="post">
+    <p>Introduce una cantidad de euros a cambair <input type="number" name="cantidad" step="0.01"></p>
+    <p>Selecciona moneda destino <select name="moneda" id="mon">
+      <option value="dolares">Dolares americanos</option>
+      <option value="libra">Libras esterlinas</option>
+      </select></p>
+    <input type="submit" name="enviar" id="" value="Enviar">
+  </form>
+</body>
+</html>
