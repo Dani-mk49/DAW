@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script>
-      const dni = prompt("Introduce el número de DNI (sin la letra):");
-
-      if (dni === null) {
-        return;
-      }
-
-      const letras = 'TRWAGMYFPDXBNJZSQVHLCKET';
-      const numeroDNI = parseInt(dni, 10);
-
-      if (isNaN(numeroDNI)) {
-        alert("Por favor, introduce un número válido de DNI.");
-      } else {
-        const resto = numeroDNI % 23;
-        const letraCalculada = letras.charAt(resto);
-
-        const dniCompleto = dni + letraCalculada;
-        alert(`El DNI completo es: ${dniCompleto}`);
-      }
+    //saca una alerta para introducir el dni
+    var dni = prompt("Introduce el DNI:");
+    //variable con un string con la posicion de las letras del dni segun el resto de 23
+    var letras = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    //con este if compruebo que los primeros 8 caracteres sean numeros y que el noveno corresponda a una letra que sea la que corresponda con el array anterior haciendo el resto de 23
+    if (isNaN(dni.slice(0, 8)) || dni.charAt(8).toUpperCase() != (letras.charAt(dni.slice(0, 8) % 23))) {
+      //si no es valido lo muestra
+      alert("Por favor, introduce un DNI válido");
+    } else {
+      //si es valido lo muestra
+      alert(`El DNI es correcto`);
+    }
   </script>
 </head>
 
 <body>
 </body>
+
 </html>
