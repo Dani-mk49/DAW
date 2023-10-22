@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
 
 <body>
-  <div id="hora"></div>
 
   <script>
-
+    //creamos un switch para asignar el dia de la semana a una variable
     var ahora = new Date();
     switch (ahora.getDay()) {
       case 0:
@@ -35,7 +34,7 @@
         var diaSemana = "sabado";
         break;
     }
-
+    //hacemos lo mismo que en el switch anterior pero esta vez para los meses
     switch (ahora.getMonth()) {
       case 0:
         var mes = "enero";
@@ -78,11 +77,13 @@
     var anio = ahora.getFullYear();
     var hora = ahora.getHours();
     var minutos = ahora.getMinutes();
-//añadir cosas dentro de los minutos
+    //añadir cosas dentro de los minutos
+    var mensaje = "Hoy es " + $diaSemana + "," + $dia + "de" + $mes + "de" + $anio + "y son las" + $hora + ":" + $minutos + "horas";
     var mensaje = `Hoy es ${diaSemana}, ${dia} de ${mes} de ${anio} y son las ${hora}:${minutos < 10 ? "0" : ""}${minutos} horas`;
 
-    document.getElementById("hora").textContent = mensaje;
+    document.write(mensaje);
 
   </script>
 </body>
+
 </html>
