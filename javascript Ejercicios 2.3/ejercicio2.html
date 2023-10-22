@@ -73,15 +73,17 @@
         var mes = "diciembre";
         break;
     }
+    //asigna el valor correspondiente a cada variable
     var dia = ahora.getDate();
     var anio = ahora.getFullYear();
     var hora = ahora.getHours();
     var minutos = ahora.getMinutes();
+    //pone un 0 delante del numero cuando este es de una unica cifra
+    if(minutos<10){
+      minutos = "0" + minutos;
+    }
     //añadir cosas dentro de los minutos
-    var mensaje = "Hoy es " + $diaSemana + "," + $dia + "de" + $mes + "de" + $anio + "y son las" + $hora + ":" + $minutos + "horas";
-    var mensaje = `Hoy es ${diaSemana}, ${dia} de ${mes} de ${anio} y son las ${hora}:${minutos < 10 ? "0" : ""}${minutos} horas`;
-
-    document.write(mensaje);
+    document.writeln('Hoy es ' + diaSemana + ', ' + dia + ' de ' + mes + ' de ' + anio + ' y son las ' + hora + ':' + minutos + ' horas');
 
   </script>
 </body>
