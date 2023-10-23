@@ -37,6 +37,7 @@
   </style>
 </head>
 <?php
+
 $moneda = $_POST["moneda"];
 $cambio;
 $tipo_moneda;
