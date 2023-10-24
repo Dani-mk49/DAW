@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Document</title>
+  <style>
+    .central {
+      border: 1px solid black;
+      padding: 5px;
+      display: flex;
+      justify-self: center;
+      width: 1000px;
+    }
+
+    .a,
+    .b {
+      height: 400px;
+      width: 400px;
+      margin: 20px;
+    }
+
+    .c {
+      height: 400px;
+      width: 400px;
+    }
+
+    .naranja {
+      background-color: orange;
+    }
+
+    .amarillo {
+      background-color: yellow;
+    }
+
+    .azul {
+      background-color: blue;
+    }
+
+    .rojo {
+      background-color: red;
+    }
+
+  </style>
+</head>
+
+<body>
+  <table class="central">
+    <tr>
+      <td>
+        <p>a)</p>
+        <table border="1" class="a">
+          <tr>
+            <td class="naranja" colspan="4"></td>
+          </tr>
+          <tr>
+            <td class="amarillo"></td>
+            <td class="azul" colspan="3"></td>
+          </tr>
+          <tr>
+            <td class="amarillo" colspan="2"></td>
+            <td class="rojo"></td>
+            <td class="azul"></td>
+          </tr>
+          <tr>
+            <td class="amarillo"></td>
+            <td class="rojo"></td>
+            <td class="rojo"></td>
+            <td class="rojo"></td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <p>b)</p>
+        <table border="1" class="b">
+          <tr>
+            <td class="naranja" colspan="4"></td>
+          </tr>
+          <tr>
+            <td class="amarillo"></td>
+            <td class="azul" colspan="3"></td>
+          </tr>
+          <tr>
+            <td class="amarillo" colspan="2"></td>
+            <td class="rojo"></td>
+            <td class="azul"></td>
+          </tr>
+          <tr>
+            <td class="amarillo"></td>
+            <td class="rojo"></td>
+            <td class="rojo"></td>
+            <td class="rojo"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p>c)</p>
+        <table class="c" border="1">
+          <tr>
+            <th>Horas</th>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miercoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td rowspan="2"></td>
+            <td></td>
+            <td></td>
+            <td rowspan="3"></td>
+            <td rowspan="2"></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td rowspan="3"></td>
+            <td rowspan="3"></td>
+            <td></td>
+            <td></td>
+            <td rowspan="3"></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+          </tr>
+          <tr>
+            <td>6</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
