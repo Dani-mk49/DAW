@@ -72,7 +72,7 @@
             print '<td>'. $v .'</td>';
             print '</tr>';
         }
-        print '<t/able>';
+        print '</table>';
     }
     ?>
   </div>
