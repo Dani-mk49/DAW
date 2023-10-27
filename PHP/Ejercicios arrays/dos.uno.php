@@ -44,24 +44,39 @@
     <h1>CUESTIONARIO</h1>
   </div>
   <div class="centro">
-    <?php
-if($_REQUEST) {
-    $cont = $_POST['contenido'];
-
-    print '<p style="font-weight: bold;">Resultado</p>';
-    print '<p>El número introducido ha sido el '. $cont . ' <br>
-  y el resto de su division por 12 es '. $cont%12 .'</p>';
-}
-    ?>
     <form action="uno.php" method="post">
-      <p style="font-weight: bold;">Formulario</p>
-      <p>Escribe un numero entero positivo</p>
-      <input type="number" name="contenido" min="0" required>
-      <br>
-      <br>
-      <input type="submit" value="Enviar">
-      <input type="reset" value="Borrar">
     </form>
   </div>
 </body>
+<?php
+$cont = [];
+function generarArrayAleatorio($rango, $numMin, $numMax)
+{
+    print "Arrary aleatorio: ";
+    for($i = 0; $i < $rango; $i++) {
+        $cont[$i] = rand($numMin, $numMax);
+    }
+    print_r($cont);
+}
+function eliminarRepetidos($arrayALimpiar)
+{
+    return array_unique($arrayALimpiar);
+}
+function calcularMedia()
+{
+    $contador = 0;
+    for($i = 0; $i < count($cont); $i++) {
+        $contador = $contador + $cont[$i];
+    }
+    print $contador / count($cont);
+}
+function generarArrayAleatorio2()
+{
+    $aleatorioFull = [];
+    print "Arrary aleatorio: ";
+    for($i = 0; $i < 50; $i++) {
+        $cont[$i] = rand(1, 100);
+    }
+}
+?>
 </html>
