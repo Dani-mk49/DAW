@@ -44,6 +44,18 @@ img { border: none; }
 #pie .copyright { float: right; }
 
 /* === IMPORTANTE ===================================================
-   A partir de aquí, se pueden añadir todos los estilos propios que 
+   A partir de aquí, se pueden añadir todos los estilos propios que
    sean necesarios.
    ================================================================== */
+   #cabecera{padding: 1em;}
+   #menu{
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+   }
+   #noticias #publicidad #principal #secundario{
+    padding: 0.5em;
+   }
+   #pie{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+   }
