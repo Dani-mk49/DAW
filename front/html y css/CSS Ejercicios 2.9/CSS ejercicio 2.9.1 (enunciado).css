@@ -52,7 +52,7 @@ img { border: none; }
     padding: 0.5em;
     margin-bottom: 0.5em;
    }
-   #noticias #publicidad #principal #secundario{
+   #noticias, #publicidad, #principal, #secundario{
     padding: 0.5em;
    }
    #pie{
