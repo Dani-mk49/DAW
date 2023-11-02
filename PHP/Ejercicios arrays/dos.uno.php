@@ -44,8 +44,6 @@
     <h1>CUESTIONARIO</h1>
   </div>
   <div class="centro">
-    <form action="uno.php" method="post">
-    </form>
   </div>
 </body>
 <?php

@@ -52,12 +52,16 @@
   </div>
   <div class="centro">
     <?php
-    $localidades = ["Palencia" => 80000, "Valladolid" => 350000, "Oviedo" => 120000, "Madrid" => 3320000, "Barcelona" => 1620000, "Zaragoza" => 666880, "Soria" => 39112, "Huesca" => 52463, "Teruel" => 35691];
+    $localidades = array("Palencia" => 80000, "Valladolid" => 350000, "Oviedo" => 120000, "Madrid" => 3320000, "Barcelona" => 1620000, "Zaragoza" => 666880, "Soria" => 39112, "Huesca" => 52463, "Teruel" => 35691);
 
     hacerTabla("DATOS DEL ARRAY RECIBIDO", $localidades);
     print '<br>';
-    asort($localidades);
+    arsort($localidades);
     hacerTabla("DATOS DEL ARRAY ORDENADOS POR VALOR", $localidades);
+    print '<br>';
+    ksort($localidades);
+    hacerTabla('DATOS DEL ARRAY RECIBIDO ORDENADOS POR CLAVE', $localidades);
+
     function hacerTabla($titulo, $array)
     {
         print '<p align="center">' . $titulo . '</p>';
