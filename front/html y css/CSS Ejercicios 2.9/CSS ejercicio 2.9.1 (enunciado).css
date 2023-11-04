@@ -132,3 +132,13 @@ img {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
+/*
+.articulo p, .articulo h2{
+  padding: 1em;
+}*/
+.articulo img{
+  margin: 0.5em;
+}
+#pubicidad, #pie{
+  margin-top: 1em;
+}
