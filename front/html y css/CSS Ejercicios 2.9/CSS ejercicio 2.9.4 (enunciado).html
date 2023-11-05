@@ -4,11 +4,24 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Ejercicio 2.9.4</title>
 		<style>
+			/*al contenedor le he dicho que la disposicion flex para que esten ambos div en la misma linea y luego le he aplicado un color de fondo y un padding ya que en la foto tienen padding y con el justify content space between hago que tengan el mayor espacio posible dentro del div contenedor por lo que ambos se quedan en los extremos*/
+			#contenedor{
+				display: flex;
+				background-color: #E0E0E0;
+				padding: 0.75em;
+				justify-content: space-between;
+			}
 		</style>
 	</head>
 	<body>
-		<div>
-			&laquo; Anterior &nbsp; Siguiente &raquo;
-		</div>
+		<!--he metido los dos valores con las flechas dentro de div y le he puesto un id a todos los div-->
+			<div id="contenedor">
+				<div id="anterior">
+&laquo; Anterior
+				</div>
+				<div id="siguiente">
+					Siguiente &raquo;
+				</div>
+			</div>
 	</body>
 </html>

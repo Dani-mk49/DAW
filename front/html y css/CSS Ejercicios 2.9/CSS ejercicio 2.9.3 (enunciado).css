@@ -33,6 +33,7 @@ img {
   width: 90%;
   max-width: 900px;
   width: expression(document.body.clientWidth > 901? "900px": "auto");
+  /* Es una expresión JavaScript que asigna un valor a un atributo CSS. */
   margin: 0 auto;
 }
 
@@ -113,11 +114,11 @@ img {
    sean necesarios.
    ================================================================== */
 #cabecera {
-  padding: 1em;/*cabecera con un relleno de 1em en todos los lados a)*/
+  padding: 1em;
 }
 
 #menu {
-  padding: 0.5em;/*menú con relleno en todos los lados de 0.5em y separacion inferior de 0.5em b)*/
+  padding: 0.5em;
   margin-bottom: 0.5em;
 }
 
@@ -125,26 +126,99 @@ img {
 #publicidad,
 #principal,
 #secundario {
-  padding: 0.5em;/*elementos seleccionados con 0.5em de relleno c)*/
+  padding: 0.5em;
 }
 
 #pie {
-  padding-top: 0.5em;/*pie con un relleno solamente en la parte inferior y superior de 0.5em c)*/
+  padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
 
 .articulo {
-  margin-bottom: 1em;/*elementos del articulo separados entre ellos por 1em d)*/
-}
-.articulo img{
-  margin: 0.5em;/*imagenes dentro del articulo separadas en todos los lados 0.5em e)*/
+  margin-bottom: 1em;
 }
 
-#pubicidad, #pie{
-  margin-top: 1em;/*publicidad y pie separados 1em de la parte superior f) y g)*/
+.articulo img {
+  margin: 0.5em;
 }
-/*lo siguiente son unos pequeños ajustes de formato que hacer para que se vea según marca la foto final*/
+
+#pubicidad,
+#pie {
+  margin-top: 1em;
+}
 
 #contenido #principal {
   width: 73%;
+}
+
+#cabecera,
+#menu,
+#lateral,
+#contenido,
+#contenido #principal,
+#contenido #secundario,
+#pie {
+  border: none;
+}
+
+#menu {
+  border-bottom: 1px solid #004C99;
+}
+
+#noticias {
+  border: 1px solid #C5C5C5;
+  margin-bottom: 1em;
+}
+
+#publicidad {
+  border: 1px dashed #CC6600;
+}
+
+#secundario {
+  border: 1px solid #CC6600 !important;
+}
+
+#pie {
+  border-top: 1px solid #C5C5C5;
+  border-bottom: 1px solid #C5C5C5;
+}
+
+/*hasta esta linea es exactamente igual que el ejercicio anterior 2.9.2*/
+
+#noticias, #pie{
+  background-color: #f8f8f8;/*dichos elementos con un color de fonodo gris claro a)*/
+}
+
+#publicidad{
+  background-color: #FFF6CD ;/*publicidad con un color de fondo amarillo claro b)*/
+}
+#secundario h2{
+  background-color: #DB905C;
+  padding: 0.2em;/*los elementos h2 que están dentro de secundario con color de fondo naranja y un padding de 0.2 em c)*/
+}
+#menu{
+  background-image: url(imagenes/fondo_menu.gif);/*poner de fondo a menú la foto correspondiente d)*/
+}
+#cabecera h1{
+  background-image: url(imagenes/logo.gif);
+}
+/*a partir de aqui son todo arreglos para que la pagina quede igual que la imagen de referencia*/
+#publicidad{
+  border: none;/*le quito el borde puesto anteriormente a publicidad*/
+}
+#cabecera h1{
+  padding-top: 0.35em; /*alineo el texto con el fondo tal y como está en la imagen*/
+}
+a{
+  color: #1171D1;/*cambio el color de los enlaces*/
+}
+span{
+  font-weight: bold;/*me parece ver diferente a las fechas asi que las pongo en negrita, que creo que es lo mas similar*/
+}
+ul{
+  margin: 1em;
+  padding-left: 2em;/*le pongo los margenes correspondientes a la lista para alinearla, de paso tambien se centra al igual que la imagen la lista que hay dentro del menú*/
+}
+li{
+  list-style-type: disc !important;/*le pongo el estilo a la lista*/
 }

@@ -1,0 +1,106 @@
+/* === IMPORTANTE ===================================================
+   No modificar estos estilos, ya que son imprescindibles para
+   que la página se vea correctamente.
+   ================================================================== */
+
+/*-- Básico ----------------------------------------------------------*/
+ul, ul li { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p, form { margin: 0; padding: 0; }
+.clear { clear: both; }
+img { border: none; }
+
+/*-- Layout ----------------------------------------------------------*/
+#contenedor {
+  width: 90%;
+  max-width: 900px;
+  width: expression(document.body.clientWidth > 901? "900px": "auto"); /* Es una expresión JavaScript que asigna un valor a un atributo CSS. */
+  margin: 0 auto;
+}
+
+#cabecera, #menu, #lateral, #contenido, #contenido #principal, #contenido #secundario, #pie {
+  border: 2px solid #777;
+}
+
+#cabecera { clear: both; }
+#menu { clear: both; }
+#lateral { float: left; width: 20%; }
+#contenido { float: right; width: 78%; }
+#contenido #principal { float: left; width: 78%; }
+#contenido #secundario { float: right; width: 20%; }
+#pie { clear: both; }
+
+/*-- Cabecera --------------------------------------------------------*/
+#cabecera #logo { float: left; }
+#cabecera #buscador { float: right; }
+
+/*-- Menu ------------------------------------------------------------*/
+#menu ul#menu_principal li { display: inline; float: left; }
+
+/*-- Sección Principal -----------------------------------------------*/
+#contenido #principal .articulo img { width: 100px; float: left; }
+
+/*-- Pie de página ---------------------------------------------------*/
+#pie .enlaces   { float: left; }
+#pie .copyright { float: right; }
+
+/* === IMPORTANTE ===================================================
+   A partir de aquí, se pueden añadir todos los estilos propios que
+   sean necesarios.
+   ================================================================== */
+   #cabecera {
+    padding: 1em;
+  }
+
+  #menu {
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  #noticias,
+  #publicidad,
+  #principal,
+  #secundario {
+    padding: 0.5em;
+  }
+
+  #pie {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  .articulo{
+    margin-bottom: 1em;
+  }
+  .articulo img{
+    margin: 0.5em;
+  }
+
+  #pubicidad, #pie{
+    margin-top: 1em;
+  }
+
+  #contenido #principal {
+    width: 73%;
+  }
+  /*hasta esta linea es exactamente igual que el ejercicio anterior 2.9.1*/
+
+   #cabecera, #menu, #lateral, #contenido, #contenido #principal, #contenido #secundario, #pie {
+    border: none; /*eliminamos todos los bordes a)*/
+  }
+  #menu{
+    border-bottom: 1px solid #004C99; /*borde inferior de 1px b)*/
+  }
+  #noticias{
+    border: 1px solid #C5C5C5; /*borde 1px gris claro c)*/
+    margin-bottom: 1em; /*pequeño arreglo para que cuadre con la imagen de como tiene que quedar la pagina web final*/
+  }
+  #publicidad{
+    border: 1px dashed #CC6600;/*borde discontinuo 1px naranja d)*/
+  }
+  #secundario{
+    border: 1px solid #CC6600 !important;/*borde de 1px naranja el !important es porque sino se queda con el atributo none y no se muestra e)*/
+  }
+  #pie{
+    border-top:1px solid #C5C5C5 ;/*borde superior e inferior de 1px gris claro f)*/
+    border-bottom: 1px solid #C5C5C5 ;
+  }
