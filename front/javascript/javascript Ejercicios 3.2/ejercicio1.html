@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+  function soloMayusculas(supuestoString) {
+    supuestoString = toString(supuestoString);
+    if (supuestoString === supuestoString.toUpperCase()) {
+      return true;
+    }
+    return false;
+  }
+
+  function soloMinusculas(supuestoString) {
+    supuestoString= toString(supuestoString);
+    if (supuestoString === supuestoString.toLowerCase()) {
+      return true;
+    }
+    return false;
+  }
+
+  function mix(supuestoString){
+    if(!soloMayusculas(supuestoString)&& !soloMinusculas(supuestoString)){
+      return true;
+    }
+    return false;
+  }
+</script>
