@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Manipular Array</h1>
+  <br>
+  <b>Introduce algunas palabras</b>
+  <br><br>
+  <form action="">
+    <textarea name="area" id="contenido" cols="30" rows="5"></textarea>
+    <br>
+    <input type="button" value="Aceptar" onclick="inicio()">
+  </form>
+  <div id="resultado">
+
+  </div>
+</body>
+<script>
+  function inicio() {
+
+    var alertCont;
+    var cont = document.getElementById("contenido").value;
+    var arr = cont.split(" ");
+    if (arr.length !== 0 && arr[0].length !== 0) {
+      var contenidoFinal ='<br><br><b>Primera palabra: </b>' + arr[0] + '<br><b>Última palabra: </b>'
+        + arr.reverse()[0] + '<br><b>Numero de palabras: </b>' + (arr.length) + '<br><b>Ordenadas alfanumericamente: </b><br>' +
+        arr.sort().join(" - ");
+      const divmio = document.getElementById("resultado");
+      divmio.innerHTML = contenidoFinal;
+    }
+  }
+</script>
+</html>
