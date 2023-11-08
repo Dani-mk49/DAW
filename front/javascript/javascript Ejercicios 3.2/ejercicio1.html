@@ -7,8 +7,25 @@
 </body>
 </html>
 <script>
+  var primero = soloMayusculas(prompt("Introduce un texto en mayusculas"));
+  if(primero){
+    document.writeln("Eran todo mayusculas <br>");
+  }else{
+    document.writeln("No eran todo mayusculas <br>");
+  }
+  var segundo =soloMinusculas(prompt("Introduce un texto en minusculas"));
+  if(segundo){
+    document.writeln("Eran todo minusculas <br>");
+  }else{
+    document.writeln("No eran todo minusculas<br>");
+  }
+  var tercero = mix(prompt("Introduce un texto normal"));
+  if(tercero){
+    document.writeln("Es un texto mixto");
+  }else{
+    document.writeln("No es un texto mixto");
+  }
   function soloMayusculas(supuestoString) {
-    supuestoString = toString(supuestoString);
     if (supuestoString === supuestoString.toUpperCase()) {
       return true;
     }
@@ -16,7 +33,6 @@
   }
 
   function soloMinusculas(supuestoString) {
-    supuestoString= toString(supuestoString);
     if (supuestoString === supuestoString.toLowerCase()) {
       return true;
     }
@@ -24,7 +40,7 @@
   }
 
   function mix(supuestoString){
-    if(!soloMayusculas(supuestoString)&& !soloMinusculas(supuestoString)){
+    if(!soloMayusculas(supuestoString) && !soloMinusculas(supuestoString)){
       return true;
     }
     return false;
