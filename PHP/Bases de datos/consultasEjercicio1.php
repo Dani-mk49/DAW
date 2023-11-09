@@ -1,5 +1,4 @@
 <?php
-include 'consultasBasicas.php';
 function consulta1($nombreTabla)
 {
     try {
