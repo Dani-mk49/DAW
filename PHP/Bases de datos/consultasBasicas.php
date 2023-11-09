@@ -1,19 +1,27 @@
 <?php
-
-global $hostname;
-global $database;
-global $username;
-global $password;
-global $conexion;
+/*
+$GLOBALS["hostname"];
+$GLOBALS["database"];
+$GLOBALS["username"];
+$GLOBALS["password"];
+$GLOBALS["conexion"];*/
 
 function datosConexion($host, $db, $user, $pass)
 {
+    /*
+    $GLOBALS["hostname"] = $host;
+    $GLOBALS["database"] = $db;
+    $GLOBALS["username"] = $user;
+    $GLOBALS["password"] = $pass;
+    $GLOBALS["conexion"];*/
+    global $hostname, $database, $username, $password;
     $hostname = $host;
     $database = $db;
     $username = $user;
     $password = $pass;
 }
-function limpiarDatosConexion(){
+function limpiarDatosConexion()
+{
     $hostname = null;
     $database = null;
     $username = null;
@@ -21,7 +29,7 @@ function limpiarDatosConexion(){
 }
 function conectar()
 {
-    if(isset($hostname) && isset($database) && isset($username) && isset($password)) {
+    if(isset($hostname, $database, $username, $password)) {
         $conexion = new mysqli($hostname, $username, $password, $database);
     }
     if($conexion->connect_error) {
@@ -38,7 +46,7 @@ function desconectar()
 function verTable($nombreTabla)
 {
     try {
-        if(!isset($conectar)){
+        if(!isset($conectar)) {
             conectar();
         }
         $sentencia = $conexion->prepare("SELECT * FROM ?");
