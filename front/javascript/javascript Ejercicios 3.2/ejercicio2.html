@@ -8,4 +8,12 @@
 </body>
 </html>
 <script>
+  const arrayBase = [1, -6, 3, 5, -7];
+  var nuevoArrayNegativo = new Array();
+  for (var i = 0; i < arrayBase.length; i++) {
+    if (arrayBase[i] < 0) {
+      nuevoArrayNegativo.push(arrayBase[i]);
+    }
+  }
+  document.writeln(nuevoArrayNegativo);
 </script>
