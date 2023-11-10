@@ -18,19 +18,22 @@ function datosConexion($host, $db, $user, $pass)
 }
 function limpiarDatosConexion()
 {
-    $hostname = null;
-    $database = null;
-    $username = null;
-    $password = null;
+    $GLOBALS['hostname'] = null;
+    $GLOBALS['database'] = null;
+    $GLOBALS['username'] = null;
+    $GLOBALS['password'] = null;
 }
 function conectar()
 {
+    //print'pasa conexion<br>';
     /*print $GLOBALS['hostname'] . $GLOBALS['database'] . $GLOBALS['username'] . $GLOBALS['password'];*/
     if(isset($GLOBALS['hostname'], $GLOBALS['database'], $GLOBALS['username'], $GLOBALS['password'])) {
-        $GLOBALS['conexion'] = new mysqli($GLOBALS['hostname'], $GLOBALS['database'], $GLOBALS['username'], $GLOBALS['password']);
+        $GLOBALS['conexion'] = new mysqli($GLOBALS['hostname'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['database']);
+        //print'pasa bien conexion<br>';
     }
     if($GLOBALS['conexion']->connect_error) {
         exit("La conexion no se pudo realizar el fallo es: " . $GLOBALS['conexion']->connect_error);
+      //  print'pasa mal conexion<br>';
     }
 
 }
@@ -38,8 +41,9 @@ function conectar()
 function desconectar()
 {
     $GLOBALS['conexion']->close();
+    //print'despues de cerrar la conexion<br>';
 }
-
+//esto no funciona no pilla bien el ?
 function verTable($nombreTabla)
 {
     try {

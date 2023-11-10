@@ -27,10 +27,7 @@
       background-color: white;
       width: 650px;
       padding: 5px;
-      padding-left: 100px;
-      padding-top: 200px;
       margin: 0 auto;
-      height: 85vh;
       justify-content: center;
     }
 
@@ -42,11 +39,10 @@
     <h1>CUESTIONARIO</h1>
   </div>
   <div class="centro">
-  </div>
   <?php
 include 'consultasBasicas.php';
 include 'consultasEjercicio1.php';
-datosConexion("127.0.0.1", "jardineria", "root", " ");
+datosConexion("127.0.0.1", "jardineria", "root", "");
 $resultadoConsulta = consulta1("clientes");
 $nfilas    = mysqli_num_rows($resultadoConsulta);
 print '<table border="1"';
@@ -55,7 +51,7 @@ print '<th>codigo cliente</th>';
 print '<th>nombre cliente</th>';
 print '<th>nombre contacto</th>';
 print '</tr>';
-for($i = 0; i < $nfilas; $i++) {
+for($i = 0; $i < $nfilas; $i++) {
     $resultado = mysqli_fetch_array($resultadoConsulta);
     print '<tr>';
     print '<td>'. $resultado['CodigoCliente'] .'</td>';
@@ -65,5 +61,6 @@ for($i = 0; i < $nfilas; $i++) {
 }
 print '</table>';
 ?>
+  </div>
 </body>
 </html>
