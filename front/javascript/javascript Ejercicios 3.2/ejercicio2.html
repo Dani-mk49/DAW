@@ -16,5 +16,13 @@
     }
   }
   document.writeln(nuevoArrayNegativo);
-
+  var arrayTriple = new Array();
+  for (var i = 0; i < arrayBase.length; i++) {
+    arrayTriple.push(3*arrayBase[i]);
+  }
+  document.write(arrayTriple);
+  var resultadoDeMultiplicacion;
+  for(var i = 0; i < arrayTriple.length; i++){
+    var resultadoDeMultiplicacion = resultadoDeMultiplicacion * arrayTriple[i];
+  }
 </script>

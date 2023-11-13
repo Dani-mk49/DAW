@@ -7,39 +7,51 @@
 </body>
 </html>
 <script>
+  /*pido un texto por prompt y directamente se lo paso a la funcion para comprobar las mayusculas y meto dentro de la variable el resultado*/
   var primero = soloMayusculas(prompt("Introduce un texto en mayusculas"));
   if(primero){
     document.writeln("Eran todo mayusculas <br>");
   }else{
     document.writeln("No eran todo mayusculas <br>");
   }
+
+  /*pido un texto por prompt y directamente se lo paso a la funcion para comprobar las minusculas y meto dentro de la variable el resultado*/
   var segundo =soloMinusculas(prompt("Introduce un texto en minusculas"));
   if(segundo){
     document.writeln("Eran todo minusculas <br>");
   }else{
     document.writeln("No eran todo minusculas<br>");
   }
+
+  /*pido un texto por prompt y directamente se lo paso a la funcion para comprobar si es un texto mixto y meto dentro de la variable el resultado*/
   var tercero = mix(prompt("Introduce un texto normal"));
   if(tercero){
     document.writeln("Es un texto mixto");
   }else{
     document.writeln("No es un texto mixto");
   }
+
+  //funcion para comprobar si la frase es en mayusculas
   function soloMayusculas(supuestoString) {
+    /*comprueba si el la variable que se le pasa es igual que esa misma variable pero en mayusculas, si es igual, es porque la frase está en mayusculas*/
     if (supuestoString === supuestoString.toUpperCase()) {
       return true;
     }
     return false;
   }
 
+//funcion para comprobar si la frase está en minusculas
   function soloMinusculas(supuestoString) {
+    /*comprueba si el la variable que se le pasa es igual que esa misma variable pero en minusculas, si es igual, es porque la frase está en minusculas*/
     if (supuestoString === supuestoString.toLowerCase()) {
       return true;
     }
     return false;
   }
 
+  //funcion para comprobar si la frase es mixta
   function mix(supuestoString){
+    /*lo que hace es enviar ese mismo string si tanto a la funcion que comprueba si son todo mayusculas como la que son todo minusculas, y si las dos salen falso es que tiene la variable tanto mayusculas como minusculas*/
     if(!soloMayusculas(supuestoString) && !soloMinusculas(supuestoString)){
       return true;
     }

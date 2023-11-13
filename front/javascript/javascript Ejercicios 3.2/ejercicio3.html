@@ -3,7 +3,30 @@
 <head>
   <title>Document</title>
 </head>
+
 <body>
 
 </body>
 </html>
+<script>
+  do {
+    var numeroBase = prompt("Inserta un numero");
+    var numeroBase = parseInt(numeroBase);
+    var comprobante;
+    if (isNaN(numeroBase) || !Number.isInteger(numeroBase)) {
+      comprobante = false;
+    } else {
+      comprobante = true;
+      var resultado = null;
+      if (numeroBase === 0 || numeroBase === 1) {
+        resultado = 1;
+      } else {
+        resultado = numeroBase
+        for (var i = 1; i < numeroBase; i++) {
+          resultado = resultado * i;
+        }
+      }
+      alert(resultado);
+    }
+  } while (!comprobante);
+</script>
