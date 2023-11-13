@@ -9,15 +9,18 @@
 </body>
 </html>
 <script>
+  //genero un bucle para que si se introduce un valor erroneo o directamente se pulsa cancelar que vuelva a lanzar la ventana emergente para pedir el dato
   do {
-    var numeroBase = prompt("Inserta un numero");
-    var numeroBase = parseInt(numeroBase);
-    var comprobante;
+    var numeroBase = prompt("Inserta un numero");//pide un numero y lo guarda dentro de una variable
+    var numeroBase = parseInt(numeroBase);//convierte esa variable en numerica
+    var comprobante;//con esta variable es la que validamos el bucle
+    //comprobamos si el campo numerobase está vacio y si la variable contiene un numero, si tiene un valor valido el bucle hace que se repita, sino hace el factorial del numero introducido
     if (isNaN(numeroBase) || !Number.isInteger(numeroBase)) {
       comprobante = false;
     } else {
       comprobante = true;
       var resultado = null;
+      //si es 0 o 1 el factorial siempre es 1, asi que hago esos casos primero y luego si no es ni 0 ni 1 ya calculo el factorial del numero que sea;
       if (numeroBase === 0 || numeroBase === 1) {
         resultado = 1;
       } else {
@@ -26,6 +29,7 @@
           resultado = resultado * i;
         }
       }
+      //muestra el factorial del numero introducido
       alert(resultado);
     }
   } while (!comprobante);
