@@ -8,21 +8,29 @@
 </body>
 </html>
 <script>
-  const arrayBase = [1, -6, 3, 5, -7];
-  var nuevoArrayNegativo = new Array();
+  const arrayBase = [1, -6, 3, 5, -7]; //genero el array base de 5 numeros
+  var nuevoArrayNegativo = new Array(); //genero un array vacio para el ejercicio1
+  //dentro de este bucle lo que hago es llenar el array vacio para el ejercicio 1 y llenarlo solamente con los numero del array original negativo
   for (var i = 0; i < arrayBase.length; i++) {
     if (arrayBase[i] < 0) {
       nuevoArrayNegativo.push(arrayBase[i]);
     }
   }
-  document.writeln(nuevoArrayNegativo);
+  //muestro el array del ejercicio 1
+  document.writeln(nuevoArrayNegativo + "<br>");
+  //vuelvo a hacer un array vacio para el apartado 2
   var arrayTriple = new Array();
+  //recorro el array base y relleno el nuevo array para el ejercicio 2 con el valor del array base multiplicado por 3
   for (var i = 0; i < arrayBase.length; i++) {
-    arrayTriple.push(3*arrayBase[i]);
+    arrayTriple.push(3 * arrayBase[i]);
   }
-  document.write(arrayTriple);
-  var resultadoDeMultiplicacion;
-  for(var i = 0; i < arrayTriple.length; i++){
-    var resultadoDeMultiplicacion = resultadoDeMultiplicacion * arrayTriple[i];
+  //muestro el array del ejercicio2
+  document.writeln(arrayTriple + "<br>");
+  //declaro una variable nueva y lo inicializo aun para que se pueda multiplicar y salga un valor coherente ya que si no lo inicializara se quedaria a 0 la variable o en NaN
+  var resultadoDeMultiplicacion = 1;
+  //bucle para obtener el resultado de la multiplicacion entre si de los valores que conteiene el array del ejercicio 2.
+  for (var i = 0; i < arrayTriple.length; i++) {
+    resultadoDeMultiplicacion = resultadoDeMultiplicacion * arrayTriple[i];
   }
+  document.writeln(resultadoDeMultiplicacion);
 </script>
