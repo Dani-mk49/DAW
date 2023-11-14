@@ -8,10 +8,6 @@
       padding: 8px 1em;
     }
 
-    div {
-      background-color: blue;
-    }
-
     #divImg {
       background-color: red;
       text-align: center;
@@ -24,15 +20,26 @@
       height: auto;
     }
 
-    #divTitulo{
-      display: block;
+    #divTitulo {
+      display: flex;
       background-color: #412700;
       margin-top: 4px;
       height: 100px;
+      justify-content: flex-start;
+      align-items: center;
     }
-    #divMenu{
 
+    #divTitulo h1 {
+      margin: 0;
     }
+
+    #divTitulo img {}
+
+    #divMenu {
+      background-color: blue;
+      height: 5px;
+    }
+
   </style>
 </head>
 
