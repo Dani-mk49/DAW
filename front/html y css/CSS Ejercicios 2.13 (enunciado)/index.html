@@ -36,8 +36,46 @@
     #divTitulo img {}
 
     #divMenu {
-      background-color: blue;
-      height: 5px;
+      background-color: black;
+      height: 45px;
+    }
+
+    #divMenu nav {
+      background-color: #00966A;
+      height: 45px;
+      width: 100px;
+    }
+
+    #divContenido {
+      background-color: #CEC5C6;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+    }
+
+    #divContenido .postres {
+      background-color: white;
+      justify-content: center;
+      width: 600px;
+      margin-bottom: 50px;
+      padding: 5px;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+
+    .miniaturas {
+      float: right;
+      border: 1px solid black;
+    }
+
+    #foot {
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      padding: 0 10px;
     }
 
   </style>
@@ -52,18 +90,24 @@
     <h1>Postres Naturales</h1>
   </div>
   <div id="divMenu">
+    <nav>
 
+    </nav>
   </div>
-  <div id="contenido">
-    <div>
-      <input type="checkbox" value="2 columnas">
-      <input type="checkbox" value="ingles">
-      <img src="" alt="">
+  <div id="divContenido">
+    <div id="divTiramisu" class="postres">
+      <input type="checkbox" value="2 columnas"> 2 columnas
+      <input type="checkbox" value="ingles"> English
+      <div class="miniaturas">
+        <img src="recetas/miniaturas/tiramisu.jpg" alt="tiramusu">
+      </div>
       <h3></h3>
 
     </div>
   </div>
-  <footer>
+  <footer id="foot">
+    <span>Diseño de Interfaces Web - 2023</span>
+    <span>Daniel Álvaro Del Río</span>
   </footer>
 </body>
 </html>
