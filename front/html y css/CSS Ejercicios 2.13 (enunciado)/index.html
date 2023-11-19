@@ -22,6 +22,7 @@
 
     #divTitulo {
       position: relative;
+      /*pongo una posicion relativa porque en el h1 voy a poner una posicion*/
       background-color: #412700;
       margin-top: 4px;
       height: 100px;
@@ -29,14 +30,20 @@
 
     #divTitulo h1 {
       position: absolute;
+      /*esto va a hacer que se posicione absolutamente dentro de el div en el que está gracias a llevar este posicion relativa*/
       top: 50%;
+      /*esto lo positiona al 50% del contenedor de manera vertical*/
       left: 50%;
+      /*esto lo posiciona al 50% del contenedor de manera horizontal*/
       margin: 0;
+      /*he puesto margen 0 porque el que tiene por defecto es demasiado amplio*/
       color: white;
       transform: translate(-50%, -50%);
+      /*con esto hacemos que el centro del contenedor h1 sea el centro que coge la posicion para que de esta manera se pueda centrar correctamente con el top: 50% y el left:50%*/
     }
 
     #divTitulo img {
+      /*hago que la imagen flote a la izaquierda del divTitulo con un margen izquierdo de 10px*/
       float: left;
       margin-left: 10px;
     }
@@ -48,9 +55,54 @@
     }
 
     #divMenu nav {
+      /*position: relative;*/
       background-color: #00966A;
       height: 45px;
       width: 100px;
+    }
+
+    header{
+      margin: auto;
+    }
+    #divMenu nav,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .nav li a {
+      text-decoration: none;
+      display: block;
+      padding: 10px 15px;
+      background-color: white;
+    }
+    /*
+    .nav >li {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }*/
+
+    .nav >li a:hover {
+      background-color: red;
+    }
+
+    .nav>li {
+      float: left;
+    }
+
+    .nav li ul{
+      display: none;
+      position: absolute;
+    }
+    .nav li:hover ul{
+      display: block;
     }
 
     #divContenido {
@@ -186,6 +238,7 @@
     #divTartaDeManzana .cbxIngles:checked~.postresContenido .ingles {
       display: inline;
     }
+
   </style>
 </head>
 
@@ -197,11 +250,23 @@
     <img src="recetas/logotipo.png" alt="logo">
     <h1>Postres Naturales</h1>
   </div>
-  <div id="divMenu">
+  <header id="divMenu">
     <nav>
-
+      <ul class="nav">
+        <li>
+          RECETAS
+          <ul>
+            <li><a href="">Tiramisu</a></li>
+            <li><a href="">Arroz Con Leche</a></li>
+            <li><a href="">Dulce de Leche</a></li>
+            <li><a href="">Crema Catalana</a></li>
+            <li><a href="">Tarta de Chocolate</a></li>
+            <li><a href="">Manzana de Chocolate</a></li>
+          </ul>
+        </li>
+      </ul>
     </nav>
-  </div>
+  </header>
   <div id="divContenido">
 
     <div id="divTiramisu" class="postres">
