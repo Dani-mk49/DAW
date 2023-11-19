@@ -3,13 +3,14 @@
 <head>
   <title>Document</title>
   <style>
-    html{
+    html {
       scroll-behavior: smooth;
     }
+
     body {
       margin: 0 auto;
       padding: 8px 0;
-      width: 990px;
+      max-width: 990px;
     }
 
     #divImg img {
@@ -83,12 +84,12 @@
       color: black;
     }
 
-    ul li a{
+    ul li a {
       /*ajustes para que la lista de enlaces se muestre en el lugar adecuado*/
       margin-left: 77px;
     }
 
-    #menuLista{
+    #menuLista {
       /*ajustes para que la lista de enlaces se muestre en el lugar adecuado*/
       margin-top: 272px;
     }
@@ -100,6 +101,7 @@
       align-items: center;
       height: 45px;
       width: 100px;
+      cursor: pointer;
     }
 
     /*
@@ -127,6 +129,10 @@
       display: block;
     }
 
+    .bordeDoble:target {
+      outline: 2px solid orange !important;
+    }
+
     #divContenido {
       background-color: #CEC5C6;
       display: inline-block;
@@ -142,6 +148,7 @@
       padding: 10px;
       border: 1px solid black;
       border-radius: 5px;
+      outline: none;
     }
 
     .postresContenido {
@@ -182,82 +189,16 @@
       padding: 0 10px;
     }
 
-    /*funciones de los botones*/
-
-    #divTiramisu .cbxDosColumnas:checked~.postresContenido {
+    /*funcion de los botones*/
+    .cbxDosColumnas:checked~.postresContenido {
       column-count: 2;
     }
 
-    #divTiramisu .cbxIngles:checked~.postresContenido .espanol {
+    .cbxIngles:checked~.postresContenido .espanol {
       display: none;
     }
 
-    #divTiramisu .cbxIngles:checked~.postresContenido .ingles {
-      display: inline;
-    }
-
-
-    #divArrozConLeche .cbxDosColumnas:checked~.postresContenido {
-      column-count: 2;
-    }
-
-    #divArrozConLeche .cbxIngles:checked~.postresContenido .espanol {
-      display: none;
-    }
-
-    #divArrozConLeche .cbxIngles:checked~.postresContenido .ingles {
-      display: inline;
-    }
-
-
-    #divDulceDeLeche .cbxDosColumnas:checked~.postresContenido {
-      column-count: 2;
-    }
-
-    #divDulceDeLeche .cbxIngles:checked~.postresContenido .espanol {
-      display: none;
-    }
-
-    #divDulceDeLeche .cbxIngles:checked~.postresContenido .ingles {
-      display: inline;
-    }
-
-
-    #divCremaCatalana .cbxDosColumnas:checked~.postresContenido {
-      column-count: 2;
-    }
-
-    #divCremaCatalana .cbxIngles:checked~.postresContenido .espanol {
-      display: none;
-    }
-
-    #divCremaCatalana .cbxIngles:checked~.postresContenido .ingles {
-      display: inline;
-    }
-
-
-    #divTartaDeChocolate .cbxDosColumnas:checked~.postresContenido {
-      column-count: 2;
-    }
-
-    #divTartaDeChocolate .cbxIngles:checked~.postresContenido .espanol {
-      display: none;
-    }
-
-    #divTartaDeChocolate .cbxIngles:checked~.postresContenido .ingles {
-      display: inline;
-    }
-
-
-    #divTartaDeManzana .cbxDosColumnas:checked~.postresContenido {
-      column-count: 2;
-    }
-
-    #divTartaDeManzana .cbxIngles:checked~.postresContenido .espanol {
-      display: none;
-    }
-
-    #divTartaDeManzana .cbxIngles:checked~.postresContenido .ingles {
+    .cbxIngles:checked~.postresContenido .ingles {
       display: inline;
     }
 
@@ -278,12 +219,12 @@
         <li id="principal">
           RECETAS
           <ul id="menuLista">
-            <li><a href="#divTiramisu">Tiramisu</a></li>
-            <li><a href="#divArrozConLeche">Arroz Con Leche</a></li>
-            <li><a href="#divDulceDeLeche">Dulce de Leche</a></li>
-            <li><a href="#divCremaCatalana">Crema Catalana</a></li>
-            <li><a href="#divTartaDeChocolate">Tarta de Chocolate</a></li>
-            <li><a href="#divTartaDeManzana">Manzana de Chocolate</a></li>
+            <li><a id="aTiramisu" href="#divTiramisu">Tiramisu</a></li>
+            <li><a id="aArrozConLeche" href="#divArrozConLeche">Arroz Con Leche</a></li>
+            <li><a id="aDulceDeLeche" href="#divDulceDeLeche">Dulce de Leche</a></li>
+            <li><a id="aCremaCatalana" href="#divCremaCatalana">Crema Catalana</a></li>
+            <li><a id="aTartaDeChocolate" href="#divTartaDeChocolate">Tarta de Chocolate</a></li>
+            <li><a id="aTartaDeManzana" href="#divTartaDeManzana">Manzana de Chocolate</a></li>
           </ul>
         </li>
       </ul>
@@ -291,7 +232,7 @@
   </header>
   <div id="divContenido">
 
-    <div id="divTiramisu" class="postres">
+    <div id="divTiramisu" class="postres bordeDoble">
       <input type="checkbox" class="cbxDosColumnas" value="2 columnas"> 2 columnas
       <input type="checkbox" class="cbxIngles" value="ingles"> English
       <div class="miniaturas">
@@ -309,7 +250,7 @@
       </div>
     </div>
 
-    <div id="divArrozConLeche" class="postres">
+    <div id="divArrozConLeche" class="postres bordeDoble">
       <input type="checkbox" class="cbxDosColumnas" value="2 columnas"> 2 columnas
       <input type="checkbox" class="cbxIngles" value="ingles"> English
       <div class="miniaturas">
@@ -329,7 +270,7 @@
       </div>
     </div>
 
-    <div id="divDulceDeLeche" class="postres">
+    <div id="divDulceDeLeche" class="postres bordeDoble">
       <input type="checkbox" class="cbxDosColumnas" value="2 columnas"> 2 columnas
       <input type="checkbox" class="cbxIngles" value="ingles"> English
       <div class="miniaturas">
@@ -355,7 +296,7 @@
       </div>
     </div>
 
-    <div id="divCremaCatalana" class="postres">
+    <div id="divCremaCatalana" class="postres bordeDoble">
       <input type="checkbox" class="cbxDosColumnas" value="2 columnas"> 2 columnas
       <input type="checkbox" class="cbxIngles" value="ingles"> English
       <div class="miniaturas">
@@ -374,7 +315,7 @@
       </div>
     </div>
 
-    <div id="divTartaDeChocolate" class="postres">
+    <div id="divTartaDeChocolate" class="postres bordeDoble">
       <input type="checkbox" class="cbxDosColumnas" value="2 columnas"> 2 columnas
       <input type="checkbox" class="cbxIngles" value="ingles"> English
       <div class="miniaturas">
@@ -394,7 +335,7 @@
       </div>
     </div>
 
-    <div id="divTartaDeManzana" class="postres">
+    <div id="divTartaDeManzana" class="postres bordeDoble">
       <input type="checkbox" class="cbxDosColumnas" value="2 columnas"> 2 columnas
       <input type="checkbox" class="cbxIngles" value="ingles"> English
       <div class="miniaturas">
