@@ -3,9 +3,13 @@
 <head>
   <title>Document</title>
   <style>
+    html{
+      scroll-behavior: smooth;
+    }
     body {
-      margin: 0;
-      padding: 8px 1em;
+      margin: 0 auto;
+      padding: 8px 0;
+      width: 990px;
     }
 
     #divImg {
@@ -61,9 +65,10 @@
       width: 100px;
     }
 
-    header{
+    header {
       margin: auto;
     }
+
     #divMenu nav,
     ul,
     li {
@@ -81,6 +86,12 @@
       padding: 10px 15px;
       background-color: white;
     }
+
+    #principal {
+      height: 45px;
+      width: 100px;
+    }
+
     /*
     .nav >li {
       position: absolute;
@@ -89,7 +100,7 @@
       transform: translate(-50%, -50%);
     }*/
 
-    .nav >li a:hover {
+    .nav>li a:hover {
       background-color: red;
     }
 
@@ -97,11 +108,12 @@
       float: left;
     }
 
-    .nav li ul{
+    .nav li ul {
       display: none;
       position: absolute;
     }
-    .nav li:hover ul{
+
+    .nav li:hover ul {
       display: block;
     }
 
@@ -253,15 +265,15 @@
   <header id="divMenu">
     <nav>
       <ul class="nav">
-        <li>
+        <li id="principal">
           RECETAS
           <ul>
-            <li><a href="">Tiramisu</a></li>
-            <li><a href="">Arroz Con Leche</a></li>
-            <li><a href="">Dulce de Leche</a></li>
-            <li><a href="">Crema Catalana</a></li>
-            <li><a href="">Tarta de Chocolate</a></li>
-            <li><a href="">Manzana de Chocolate</a></li>
+            <li><a href="#divTiramisu">Tiramisu</a></li>
+            <li><a href="#divArrozConLeche">Arroz Con Leche</a></li>
+            <li><a href="#divDulceDeLeche">Dulce de Leche</a></li>
+            <li><a href="#divCremaCatalana">Crema Catalana</a></li>
+            <li><a href="#divTartaDeChocolate">Tarta de Chocolate</a></li>
+            <li><a href="#divTartaDeManzana">Manzana de Chocolate</a></li>
           </ul>
         </li>
       </ul>
