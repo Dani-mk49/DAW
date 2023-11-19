@@ -12,11 +12,6 @@
       width: 990px;
     }
 
-    #divImg {
-      background-color: red;
-      text-align: center;
-    }
-
     #divImg img {
       display: block;
       margin: 0 auto;
@@ -85,9 +80,24 @@
       display: block;
       padding: 10px 15px;
       background-color: white;
+      color: black;
+    }
+
+    ul li a{
+      /*ajustes para que la lista de enlaces se muestre en el lugar adecuado*/
+      margin-left: 77px;
+    }
+
+    #menuLista{
+      /*ajustes para que la lista de enlaces se muestre en el lugar adecuado*/
+      margin-top: 272px;
     }
 
     #principal {
+      /*centrar el "li" que contiene recetas y que ocupe todo el espacio verde*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 45px;
       width: 100px;
     }
@@ -101,7 +111,7 @@
     }*/
 
     .nav>li a:hover {
-      background-color: red;
+      background-color: #DDDDDD;
     }
 
     .nav>li {
@@ -267,7 +277,7 @@
       <ul class="nav">
         <li id="principal">
           RECETAS
-          <ul>
+          <ul id="menuLista">
             <li><a href="#divTiramisu">Tiramisu</a></li>
             <li><a href="#divArrozConLeche">Arroz Con Leche</a></li>
             <li><a href="#divDulceDeLeche">Dulce de Leche</a></li>
