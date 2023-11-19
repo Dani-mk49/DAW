@@ -2,218 +2,22 @@
 <html lang="es">
 <head>
   <title>Document</title>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0 auto;
-      padding: 8px 0;
-      max-width: 990px;
-    }
-
-    #divImg img {
-      display: block;
-      margin: 0 auto;
-      max-width: 100%;
-      height: auto;
-    }
-
-    #divTitulo {
-      position: relative;
-      /*pongo una posicion relativa porque en el h1 voy a poner una posicion*/
-      background-color: #412700;
-      margin-top: 4px;
-      height: 100px;
-    }
-
-    #divTitulo h1 {
-      position: absolute;
-      /*esto va a hacer que se posicione absolutamente dentro de el div en el que está gracias a llevar este posicion relativa*/
-      top: 50%;
-      /*esto lo positiona al 50% del contenedor de manera vertical*/
-      left: 50%;
-      /*esto lo posiciona al 50% del contenedor de manera horizontal*/
-      margin: 0;
-      /*he puesto margen 0 porque el que tiene por defecto es demasiado amplio*/
-      color: white;
-      transform: translate(-50%, -50%);
-      /*con esto hacemos que el centro del contenedor h1 sea el centro que coge la posicion para que de esta manera se pueda centrar correctamente con el top: 50% y el left:50%*/
-    }
-
-    #divTitulo img {
-      /*hago que la imagen flote a la izaquierda del divTitulo con un margen izquierdo de 10px*/
-      float: left;
-      margin-left: 10px;
-    }
-
-    #divMenu {
-      background-color: black;
-      color: white;
-      height: 45px;
-    }
-
-    #divMenu nav {
-      /*position: relative;*/
-      background-color: #00966A;
-      height: 45px;
-      width: 100px;
-    }
-
-    header {
-      margin: auto;
-    }
-
-    #divMenu nav,
-    ul,
-    li {
-      margin: 0;
-      padding: 0;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    .nav li a {
-      text-decoration: none;
-      display: block;
-      padding: 10px 15px;
-      background-color: white;
-      color: black;
-    }
-
-    ul li a {
-      /*ajustes para que la lista de enlaces se muestre en el lugar adecuado*/
-      margin-left: 77px;
-    }
-
-    #menuLista {
-      /*ajustes para que la lista de enlaces se muestre en el lugar adecuado*/
-      margin-top: 272px;
-    }
-
-    #principal {
-      /*centrar el "li" que contiene recetas y que ocupe todo el espacio verde*/
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 45px;
-      width: 100px;
-      cursor: pointer;
-    }
-
-    /*
-    .nav >li {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }*/
-
-    .nav>li a:hover {
-      background-color: #DDDDDD;
-    }
-
-    .nav>li {
-      float: left;
-    }
-
-    .nav li ul {
-      display: none;
-      position: absolute;
-    }
-
-    .nav li:hover ul {
-      display: block;
-    }
-
-    .bordeDoble:target {
-      outline: 2px solid orange !important;
-    }
-
-    #divContenido {
-      background-color: #CEC5C6;
-      display: inline-block;
-      justify-content: center;
-      padding-top: 50px;
-    }
-
-    #divContenido .postres {
-      margin: 0 auto;
-      background-color: white;
-      width: 65%;
-      margin-bottom: 50px;
-      padding: 10px;
-      border: 1px solid black;
-      border-radius: 5px;
-      outline: none;
-    }
-
-    .postresContenido {
-      column-count: 1;
-      /*cambiar de una columna a dos columnas con 2 y 1*/
-      column-gap: 20px;
-      width: 100%;
-    }
-
-    .ingles {
-      display: none;
-      /*display: inline;*/
-    }
-
-    #divContenido .postres .postresContenido span {
-      width: 100%;
-    }
-
-    .miniaturas {
-      float: right;
-      border: 1px solid black;
-      width: 89px;
-    }
-
-    .miniaturas img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    #foot {
-      background-color: black;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 40px;
-      padding: 0 10px;
-    }
-
-    /*funcion de los botones*/
-    .cbxDosColumnas:checked~.postresContenido {
-      column-count: 2;
-    }
-
-    .cbxIngles:checked~.postresContenido .espanol {
-      display: none;
-    }
-
-    .cbxIngles:checked~.postresContenido .ingles {
-      display: inline;
-    }
-
-  </style>
+  <!--enlace a la hoja de estilos-->
+  <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
   <div id="divImg">
     <img src="recetas/cabecera.jpg" alt="foto de vinitos">
+    <!--imagen del cocinero dentro de un div-->
   </div>
   <div id="divTitulo">
+    <!--titulo con el logotipo-->
     <img src="recetas/logotipo.png" alt="logo">
     <h1>Postres Naturales</h1>
   </div>
-  <header id="divMenu">
+  <header>
+    <!--un header con el menú de navegacion hecho con enlaces-->
     <nav>
       <ul class="nav">
         <li id="principal">
@@ -230,9 +34,11 @@
       </ul>
     </nav>
   </header>
+  <!--el contenedor de las recetas propiamente dicho-->
   <div id="divContenido">
 
     <div id="divTiramisu" class="postres bordeDoble">
+      <!--una de las recetas con los correspondientes botones, imagen, titulo y texto-->
       <input type="checkbox" class="cbxDosColumnas" value="2 columnas"> 2 columnas
       <input type="checkbox" class="cbxIngles" value="ingles"> English
       <div class="miniaturas">
@@ -358,6 +164,7 @@
 
   </div>
   <footer id="foot">
+    <!--el footer requerido con mi nombre abajo-->
     <span>Diseño de Interfaces Web - 2023</span>
     <span>Daniel Álvaro Del Río</span>
   </footer>

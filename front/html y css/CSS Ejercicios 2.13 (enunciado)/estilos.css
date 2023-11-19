@@ -1,0 +1,194 @@
+html {
+    scroll-behavior: smooth;
+    /*con esto hacemos que el scroll sea mas lento y fluido*/
+}
+
+body {
+    /*ajuste del body para que el contenido esté centrado, si margen, con un padding superior e inferior de 8px, que es lo mas parecido al video y una anchura maxima de 990px que es el ancho de la imagen*/
+    margin: 0 auto;
+    padding: 8px 0;
+    max-width: 990px;
+}
+
+#divImg img {
+    /*con esto haremos que la imagen se ajuste al espacio del div, que esté en el medio de este, y que no salga del mismo con el display block*/
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#divTitulo {
+    position: relative;
+    /*pongo una posicion relativa porque en el h1 voy a poner una posicion absoluta para que se pueda centrar correctamente*/
+    background-color: #412700;
+    margin-top: 4px;
+    height: 100px;
+}
+
+#divTitulo h1 {
+    position: absolute;
+    /*esto va a hacer que se posicione absolutamente dentro de el div en el que está gracias a llevar este posicion relativa*/
+    top: 50%;
+    /*esto lo positiona al 50% del contenedor de manera vertical*/
+    left: 50%;
+    /*esto lo posiciona al 50% del contenedor de manera horizontal*/
+    margin: 0;
+    /*he puesto margen 0 porque el que tiene por defecto es demasiado amplio*/
+    color: white;
+    transform: translate(-50%, -50%);
+    /*con esto hacemos que el centro del contenedor h1 sea el centro que coge la posicion para que de esta manera se pueda centrar correctamente con el top: 50% y el left:50%*/
+}
+
+#divTitulo img {
+    /*hago que la imagen flote a la izaquierda del divTitulo con un margen izquierdo de 10px*/
+    float: left;
+    margin-left: 10px;
+}
+
+header {
+    /*header con color de fondo negro, color de texto blanco, una altura de 45px y el position sticky y el top 0 para que se quede arriba del todo cuando haces scroll*/
+    background-color: black;
+    color: white;
+    height: 45px;
+    position: sticky;
+    top: 0;
+}
+
+header nav {
+    /*color de fondo y medidas del menu de navegacion*/
+    background-color: #00966A;
+    height: 45px;
+    width: 100px;
+}
+
+#divMenu nav,
+ul,
+li {
+    /*margenes y espaciado a 0*/
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    /*que las listas no tenga ningún tipo de estilo*/
+    list-style: none;
+}
+
+.nav li a {
+    /*quitar decoracion a los enlaces, ponerlos en bloque con su padding un color de fonodo y el color del texto*/
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    background-color: white;
+    color: black;
+}
+
+#menuLista {
+    /*ajustes para que la lista de enlaces se muestre en el lugar adecuado*/
+    margin-top: 380px;
+}
+
+#principal {
+    /*centrar el "li" que contiene recetas y que ocupe todo el espacio verde*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 100px;
+    /*para que cuando pases el cursor por encima el raton cambie de icono*/
+    cursor: pointer;
+}
+
+.nav>li a:hover {
+    /*establecemos un color de fondo*/
+    background-color: #DDDDDD;
+}
+
+.nav>li {
+    /*para hacer que el menu de la lista flote a la izquierda*/
+    float: left;
+}
+
+.nav li ul {
+    /*dandole una posicion al menu lista*/
+    display: none;
+    position: absolute;
+}
+
+.nav li:hover ul {
+    /*hacer que cuandotengo el raton encima de nav que se haga visible la lista*/
+    display: block;
+}
+
+.bordeDoble:target {
+    /*estilo para hacer que cuando clique el link del menu y vaya a la receta correspondiente se le ponga un "doble borde"*/
+    outline: 2px solid rgb(255, 136, 0);
+}
+
+#divContenido {
+    /*ajustado en bloque con una separacion en la parte superior y un color de fondo*/
+    background-color: #CEC5C6;
+    display: inline-block;
+    padding-top: 50px;
+}
+
+#divContenido .postres {
+    /*estilo de los postres, centrar el div en el contenedor color de fondo blanco y una anchura del 65%, separacion inferior de 50px un poco de padding el borde y el redondel del borde*/
+    margin: 0 auto;
+    background-color: white;
+    width: 65%;
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.postresContenido {
+    /*contenido de la receta de cada postre, el column gap es para cuando se separa en dos parrafos*/
+    column-gap: 20px;
+    width: 100%;
+}
+
+.ingles {
+    /*el texto en ingles oculto por defecto*/
+    display: none;
+}
+
+.miniaturas {
+    /*estilo del div de la imagen para que se quede flotando a la derecha con un tamaño en concreto y el borde correspondiente*/
+    float: right;
+    border: 1px solid black;
+    width: 89px;
+}
+
+.miniaturas img {
+    /*estilo de las imagenes de los postres para que se vean con el formato corecto y similar al video*/
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#foot {
+    /*estilo para que el footer con los dos span uno a cada esquina con separacion interior en los dos lados y una altura de 40px*/
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+}
+
+/*funcion para que los botones funcionen*/
+.cbxDosColumnas:checked~.postresContenido {
+    column-count: 2;
+}
+
+.cbxIngles:checked~.postresContenido .espanol {
+    display: none;
+}
+
+.cbxIngles:checked~.postresContenido .ingles {
+    display: inline;
+}
