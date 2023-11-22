@@ -1,0 +1,6 @@
+﻿body {font-family: verdana, arial, sans-serif; font-size:8pt; text-align:justify; color:green;}
+table {border:1px solid black; border-collapse:collapse;}
+td, th{border:1px solid black; padding:10px;}
+th {text-align:center;}
+main h1 {font-size:16pt; font-weight:bold; color:#0066CC;}
+main div{display: flex; flex-direction: column; align-items: center;}

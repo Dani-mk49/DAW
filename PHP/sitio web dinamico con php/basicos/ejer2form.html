@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Hoja 2. Ejercicio 2</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+  <header>
+    <h1>CONVERSOR DE MONEDA</h1>
+  </header>
+  <section>
+    <nav></nav>
+    <main>
+      <form action="ejer2.php" method="post">
+        <p>
+          Introduce cantidad de euros a cambiar:
+          <input type="number" name="cantidad" min="0" step="0.01"><br><br>
+          Selecciona moneda destino:
+          <select name="tipo">
+            <option value="dolar">Dólar Estadounidense</option>
+            <option value="libra">Libra Esterlina</option>
+          </select>
+        </p>
+        <input type="submit" value="Enviar" name="enviar">
+      </form>
+    </main>
+    <aside></aside>
+  </section>
+  <footer></footer>
+</body>
+</html>
