@@ -7,3 +7,17 @@
 
 </body>
 </html>
+<script>
+
+  var numUno = pedirNumero();
+  var numDos = pedirNumero();
+
+  function pedirNumero(){
+    var numerooo;
+    do{
+      numerooo = prompt("Introduce un numero: ");
+    }while(isNaN(numerooo));
+    numerooo = parseInt(numerooo);
+    return numerooo;
+  }
+</script>
