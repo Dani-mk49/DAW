@@ -3,22 +3,50 @@
 <head>
   <title>Document</title>
 </head>
+
 <body>
 
+  <script>
+    //con esta funcion compruebo si su valor es vacio o nulo
+    function isEmpty(valor) {
+      return (!valor || valor.trim() === "");
+    }
+
+    //con esta funcion pido un numero al usuario y hago la comprobacion de que sea un numero
+    function pedirNumero(contenido) {
+      var numerooo;
+      do {
+        numerooo = (prompt("Introduce un numero: " + contenido));
+      } while (isNaN(numerooo) || isEmpty(numerooo));
+      numerooo = parseInt(numerooo);
+      return numerooo;
+    }
+
+    var numUno = pedirNumero("primer numero");
+    var numDos = pedirNumero("segundo numero");
+
+    function mayorMenor(num1, num2) {
+      if (num1 < num2) {
+        return "El segundo numero es mayor que el primer numero";
+      } else {
+        return "El primer numero es mayor que el segundo numero";
+      }
+    }
+    function postivo(num) {
+      return (0 < num);
+    }
+    function negativoODiferenteDeCero(num){
+      if(0=num){
+        return "El Primer numero es 0";
+      }else{
+        if(num<0){
+          return "El primer numero es negativo y distinto que 0";
+        }{
+          return "El primer numero no es negativo y pero es distinto que 0";
+        }
+      }
+
+    }
+  </script>
 </body>
 </html>
-<script>
-
-  var numUno = pedirNumero();
-  var numDos = pedirNumero();
-
-  function pedirNumero(){
-    var numerooo;
-    do{
-      numerooo = prompt("Introduce un numero: ");
-    }while(isNaN(numerooo));
-    numerooo = parseInt(numerooo);
-    return numerooo;
-  }
-
-</script>
