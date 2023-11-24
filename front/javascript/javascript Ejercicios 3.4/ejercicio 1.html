@@ -7,6 +7,24 @@
 <body>
 
   <script>
+    var numUno;
+    var numDos;
+    numUno = pedirNumero("primer numero");
+    numDos = pedirNumero("segundo numero");
+
+    document.writeln(mayorMenor(numUno, numDos));
+    document.writeln('<br>');
+    if (postivo(numDos)) {
+      document.writeln("El segundo numero es positivo");
+    } else {
+      document.writeln("El segundo numero es negativo");
+    }
+    document.writeln('<br>');
+    document.writeln(negativoODiferenteDeCero(numUno));
+    document.writeln('<br>');
+    sumarYComprobar(numUno, numDos);
+    document.writeln(sumarYComprobar(numUno, numDos));
+
     //con esta funcion compruebo si su valor es vacio o nulo
     function isEmpty(valor) {
       return (!valor || valor.trim() === "");
@@ -22,30 +40,38 @@
       return numerooo;
     }
 
-    var numUno = pedirNumero("primer numero");
-    var numDos = pedirNumero("segundo numero");
-
+    //funcion para saber que numero es mayor y cual es el menor
     function mayorMenor(num1, num2) {
       if (num1 < num2) {
         return "El segundo numero es mayor que el primer numero";
+      } else if (num1 === num2) {
+        return "Los dos numeros son iguales";
       } else {
         return "El primer numero es mayor que el segundo numero";
       }
     }
+
+    //funcion para saber si el numero es positivo
     function postivo(num) {
       return (0 < num);
     }
-    function negativoODiferenteDeCero(num){
-      if(0=num){
+
+    //funcion para saber si el numero es negativo o 0
+    function negativoODiferenteDeCero(num) {
+      if (0 === num) {
         return "El Primer numero es 0";
-      }else{
-        if(num<0){
-          return "El primer numero es negativo y distinto que 0";
-        }{
-          return "El primer numero no es negativo y pero es distinto que 0";
+      } else {
+        if (num < 0) {
+          return "El primer numero es negativo y es distinto que 0";
+        } {
+          return "El primer numero no es negativo y es distinto que 0";
         }
       }
-
+    }
+    //suma uno a el primer numero y llama la funcion mayor menor para que vuelva a comprobar cual es mayor
+    function sumarYComprobar(num1, num2) {
+      num1++;
+      return mayorMenor(num1, num2);
     }
   </script>
 </body>
