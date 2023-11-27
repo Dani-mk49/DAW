@@ -20,7 +20,7 @@
       DNI = miVentana.prompt('Introduce un DNI valido: ');
 
     } while (isEmpty(DNI) || !comprobarDNI(DNI));
-    //
+
     //si la ventana anteior esta abierta, que se cierre, lo vuelvo a poner porque sino la ventana no se cierra a tiempo
     if (miVentana || !miVentana.closed) {
       miVentana.close();
@@ -44,10 +44,11 @@
 
         // Verifica la letra del DNI
         if (Letras[numeros % 23] === DNI.charAt(8)) {
+          //correcto
           return true;
         } else {
-          return false;
           //incorrecto
+          return false;
         }
       } else {
         //no cumple con el formato
@@ -55,6 +56,7 @@
       }
     }
 
+    //con esta funcion compruebo si es una letra de la 'A' hasta la 'Z' incluyendo estas
     function esLetra(caracter) {
       return (caracter >= 'A' && caracter <= 'Z');
     }
