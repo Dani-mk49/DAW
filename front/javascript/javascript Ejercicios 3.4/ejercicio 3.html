@@ -3,7 +3,33 @@
 <head>
   <title>Document</title>
 </head>
-<body>
 
+<body>
+  <script>
+    //clase de productos alimentacion con un constructor y un metodo imprimirDatos
+    class ProcudtosAlimenticios {
+      //contructor con 3 parametros, codigo, nombre y precio
+      constructor(codigo, nombre, precio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+      }
+      //metodo para imprimir por pantalla el objeto y poner un espacio
+      imprimeDatos() {
+        document.writeln(this.codigo + ", " + this.nombre + ", " + this.precio);
+        document.writeln('<br>');
+      }
+    }
+    //creo un nuevo array con 3 instancias
+    var almacenador = new Array(3);
+    //le doy valor a las 3 instancias del array metiendo en cada una de ellas un producto alimenticio con los datos correspondientes
+    almacenador[0] = new ProcudtosAlimenticios("34567", "pasta", "2.99");
+    almacenador[1] = new ProcudtosAlimenticios("54677", "pesto", "1.99");
+    almacenador[2] = new ProcudtosAlimenticios("97845", "condones Durex", "9.99");
+    //con un for recorro todos los datos del array para mostrarlos por pantalla
+    for (var i = 0; i < almacenador.length; i++) {
+      almacenador[i].imprimeDatos();
+    }
+  </script>
 </body>
 </html>
