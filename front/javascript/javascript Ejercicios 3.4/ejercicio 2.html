@@ -3,7 +3,68 @@
 <head>
   <title>Document</title>
 </head>
-<body>
 
+<body>
+  <script>
+    // Abre una nueva ventana
+    var miVentana;
+    var DNI;
+    var nuevaVentana;
+    //hago un bucle para que si le dan a cancelar o si meten un resultado no deseado ocorrecto la ventana se mantenga
+    do {
+      //si la ventana se ha cerrado, que se abra
+      if (!miVentana || miVentana.closed) {
+        miVentana = window.open('', 'DNI', 'width=500,height=500');
+      }
+      //pedimos el valor mediante un prompt
+      DNI = miVentana.prompt('Introduce un DNI valido: ');
+
+    } while (isEmpty(DNI) || !comprobarDNI(DNI));
+    //
+    //si la ventana anteior esta abierta, que se cierre, lo vuelvo a poner porque sino la ventana no se cierra a tiempo
+    if (miVentana || !miVentana.closed) {
+      miVentana.close();
+    }
+    //hago un bucle para asegurarme de que la nueva ventana se abre
+    do {
+      nuevaVentana = window.open('', 'Resultado', 'width=500,height=500');
+    } while (!nuevaVentana || nuevaVentana.closed);
+    //he tenido que meter un settimeout porque sino no se llegaba a cerrar la ventana "miVentana" a tiempo, de esta manera la ventana se cierra antes de que salta la "nuevaVentana"
+    setTimeout(() => {
+      nuevaVentana.alert('La letra del DNI es correcta');
+    }, 1);
+
+
+    function comprobarDNI(DNI) {
+      DNI = DNI.toUpperCase();
+      // Verifica el formato del DNI
+      if (DNI.length === 9 && !isNaN(DNI.substring(0, 8)) && esLetra(DNI.charAt(8))) {
+        var numeros = DNI.substring(0, 8);
+        var Letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+
+        // Verifica la letra del DNI
+        if (Letras[numeros % 23] === DNI.charAt(8)) {
+          return true;
+        } else {
+          return false;
+          //incorrecto
+        }
+      } else {
+        //no cumple con el formato
+        return false;
+      }
+    }
+
+    function esLetra(caracter) {
+      return (caracter >= 'A' && caracter <= 'Z');
+    }
+    //con esta funcion compruebo si su valor es vacio o nulo
+    function isEmpty(valor) {
+      return (!valor || valor.trim() === "");
+    }
+    function cerrarVentana() {
+
+    }
+  </script>
 </body>
 </html>
