@@ -65,7 +65,13 @@
     //con esta funcion compruebo si su valor es vacio o nulo
     //este codigo unicamente se utiliza para comprobar cuando metemos algún valor en el prompt
     function isEmpty(valor) {
-      return (!valor || valor.trim() === "");
+      if(!valor) return true;
+      var arr = stringToArray(valor);
+      for(var i = 0; i< arr.length;i++){
+        if(arr[i]===" ")return true;
+      }
+      return (arr.length === 0)
+      //return (!valor || valor.trim() === "");
     }
 
     //funcion para pasar de string a array
@@ -78,9 +84,9 @@
     }
 
     //funcion para comprobar que el numeor es realmente un numero
-    function comprobadorNumero(arr){
-      for(var i = 0; i < arr.length -1; i++){
-        if(isNaN(arr[i])){
+    function comprobadorNumero(arr) {
+      for (var i = 0; i < arr.length - 1; i++) {
+        if (isNaN(arr[i])) {
           return false;
         }
       }
@@ -88,9 +94,9 @@
     }
 
     //funcion para meter en una variable solo el numero
-    function sacarNumero(arr){
-      var num ="";
-      for(var i = 0; i < arr.length -1; i++){
+    function sacarNumero(arr) {
+      var num = "";
+      for (var i = 0; i < arr.length - 1; i++) {
         num = num + arr[i];
       }
       return num;
