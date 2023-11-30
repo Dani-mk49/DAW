@@ -13,7 +13,11 @@ header {
     align-items: center;
 }
 
-header img {}
+header .logo {
+    /*falta ajustar logo*/
+    display: block;
+    height: 10px;
+}
 
 header h1 {}
 
