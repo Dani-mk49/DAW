@@ -41,10 +41,10 @@
       if (DNIArray.length === 9 && comprobadorNumero(DNIArray) && esLetra(DNIArray[8])) {
         //var numeros = DNI.substring(0, 8);
         var numeros = sacarNumero(DNIArray);
-        var Letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
-
+        var LetrasMayus = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+        var LetrasMinus = ['t', 'r', 'w', 'a', 'g', 'm', 'y', 'f', 'p', 'd', 'x', 'b', 'n', 'j', 'z', 's', 'q', 'v', 'h', 'l', 'c', 'k', 'e'];
         // Verifica la letra del DNI
-        if (Letras[numeros % 23] === DNIArray[8]) {
+        if (LetrasMayus[numeros % 23] === DNIArray[8] || LetrasMinus[numeros % 23] === DNIArray[8]) {
           //correcto
           return true;
         } else {
@@ -59,7 +59,7 @@
 
     //con esta funcion compruebo si es una letra de la 'A' hasta la 'Z' incluyendo estas
     function esLetra(caracter) {
-      return (caracter >= 'A' && caracter <= 'Z');
+      return (caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z');
     }
 
     //con esta funcion compruebo si su valor es vacio o nulo
