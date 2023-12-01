@@ -11,8 +11,10 @@ header {
     position: relative;
 }
 .logo{
-    /*float: left;*/
-    width: 50px;
+    float: left;
+    width: 60px;
+    padding-top: 18px;
+    padding-left: 10px;
 }
 .logo img{
     width: 100%;
@@ -92,6 +94,8 @@ header h1 {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
     display: flex;
     margin: 0;
     background-color: black;
@@ -105,4 +109,7 @@ footer {
 p {
     margin: 0;
     padding: 0;
+}
+#inicio{
+    font-weight: bold;
 }
