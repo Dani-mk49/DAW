@@ -1,25 +1,32 @@
-body {
+   body {
     padding: 0;
     margin: 0;
 }
 
 header {
-    display: flex;
     background-color: black;
     color: white;
     width: 100%;
     height: 100px;
-    justify-content: flex;
-    align-items: center;
+    position: relative;
 }
-
-header .logo {
-    /*falta ajustar logo*/
+.logo{
+    /*float: left;*/
+    width: 50px;
+}
+.logo img{
+    width: 100%;
+    height: auto;
     display: block;
-    height: 10px;
 }
 
-header h1 {}
+header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+}
 
 #menuSuperior {
     display: flex;
