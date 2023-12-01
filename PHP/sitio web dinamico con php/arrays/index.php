@@ -7,7 +7,8 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_arrays.php'; ?>
       <main>
-        <h1>ARRAYS</h1>
+        <h2>Zona de ejercicios con arrays</h2>
+        <p>Aquí se pueden consultar desde el menú de navegación algunos de los ejercicios realizados en el módulo sobre programación de estructuras de datos</p>
       </main>
       <?php include '../includes/aside2.php'; ?>
       </div>

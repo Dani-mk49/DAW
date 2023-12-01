@@ -7,7 +7,8 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_basicos.php'; ?>
       <main>
-        <h1>BASICOS</h1>
+        <h2>Zona de ejercicios básicos</h2>
+        <p>Aquí se pueden consulta desde el menú de navegación algunos de los ejercicios realizados en el modulo sobre la programación basica</p>
       </main>
       <?php include '../includes/aside2.php'; ?>
       </div>

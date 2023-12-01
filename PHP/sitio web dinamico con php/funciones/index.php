@@ -7,7 +7,8 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_funciones.php'; ?>
       <main>
-        <h1>FUNCIONES</h1>
+<h2>Zona de ejercicios con funciones</h2>
+<p>Aquí se pueden consultar desde el menú de navegación algunos de los ejercicios realizados en el módulo sobre programación básica y funciones</p>
       </main>
       <?php include '../includes/aside2.php'; ?>
       </div>

@@ -7,7 +7,8 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_bbdd.php'; ?>
       <main>
-        <h1>BBDD</h1>
+        <h2>Zona de ejercicios con bases de datos</h2>
+        <p>Aquí se pueden consultar desde el menú de navegación algunos de los ejercicios realizados en el módulo sobre programación de acceso a datos con PHP y MySQL</p>
       </main>
       <?php include '../includes/aside2.php'; ?>
       </div>

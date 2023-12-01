@@ -1,17 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-<head>
-	<title>Hoja 4. Ejercicio 2</title>
-	<meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-</head>
-<body>
-    <header>
-        <h1>DESGLOSE MONEDAS</h1>
-    </header>
-    <section>
-        <nav></nav>
-        <main>
+    <?php include '../includes/metadata2.php'; ?>
+  <body>
+    <?php include '../includes/header2.php'; ?>
+    <?php include '../includes/menu2.php'; ?>
+    <div class="contenedorCentral">
+      <?php include '../includes/nav_arrays.php'; ?>
+	  <main>
+		  <a href="index.php">Inicio - Ejercicios de Arrays</a>
 			<?php
 				if ($_REQUEST) {
 					$cantidad = $_REQUEST['euros'];
@@ -37,8 +33,8 @@
 				}
 			?>
 		</main>
-		<aside></aside>
-	</section>
-<footer></footer>
-</body>
+      <?php include '../includes/aside2.php'; ?>
+      </div>
+      <?php include '../includes/footer2.php'; ?>
+    </body>
 </html>

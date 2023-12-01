@@ -1,18 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-<head>
-	<title>Hoja 4. Ejercicio 3</title>
-	<meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-	<link rel="stylesheet" type="text/css" href="estilosimple.css"/>
-</head>
-<body>
-    <header>
-        <h1>TEMPERATURA MEDIA DE LA SEMANA</h1>
-    </header>
-    <section>
-        <nav></nav>
-        <main>
+    <?php include '../includes/metadata2.php'; ?>
+  <body>
+    <?php include '../includes/header2.php'; ?>
+    <?php include '../includes/menu2.php'; ?>
+    <div class="contenedorCentral">
+      <?php include '../includes/nav_arrays.php'; ?>
+	  <main>
+		  <a href="index.php">Inicio - Ejercicios de Arrays</a>
 			<?php
 				echo"<h1>CÁLCULO TEMPERATURA MEDIA</h1>";
 				$v=$_REQUEST["v"];		//La variable $v se convierte en un array con los datos almacenados en el array $_REQUEST
@@ -30,8 +25,8 @@
 				El resultado sigue siendo: ",round(array_sum($v)/count($v),2);
 			?>
 		</main>
-		<aside></aside>
-	</section>
-	<footer></footer>
-</body>
+      <?php include '../includes/aside2.php'; ?>
+      </div>
+      <?php include '../includes/footer2.php'; ?>
+    </body>
 </html>
