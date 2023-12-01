@@ -15,7 +15,7 @@ if (!$_REQUEST) {
 	echo "Selecciona el telefono del cliente: &nbsp;";
 	echo"<select name='codigocliente'>";
 
-	$c=mysqli_connect("localhost","jardinero","jardinero");
+	$c=mysqli_connect("127.0.0.1", "root", "", "jardineria");
 	mysqli_select_db($c,"jardineria");
 
 	$consulta1="SELECT codigocliente, telefono, nombrecliente FROM clientes";

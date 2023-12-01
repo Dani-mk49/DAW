@@ -9,7 +9,7 @@
 	  <main>
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
-$c=mysqli_connect ("localhost","jardinero","jardinero");
+$c=mysqli_connect ("127.0.0.1", "root", "", "jardineria");
 mysqli_select_db ($c,"jardineria");
 if (isset($_REQUEST['enviar'])){
 //Coger valores del formulario, pero es más rápido con extract

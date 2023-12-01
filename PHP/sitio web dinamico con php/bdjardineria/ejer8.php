@@ -10,7 +10,7 @@
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
 //Conectamos con bd jardineria
-$conexion = mysqli_connect ("localhost", "jardinero", "jardinero") or die ("No se puede conectar con el servidor.");
+$conexion = mysqli_connect ("127.0.0.1", "root", "", "jardineria") or die ("No se puede conectar con el servidor.");
 mysqli_select_db ($conexion,"jardineria") or die ("No se puede seleccionar la BD.");
 
 if (isset($_REQUEST['enviar']))  //Se ha recibido código y nombre del cliente y se procede a obtener y mostrar información de sus pedidos
@@ -88,7 +88,7 @@ echo "<input type='submit' name='enviar' value='Enviar consulta'>";
 echo "</form>";
 mysqli_close ($conexion);
 ?>
-		</main>>
+		</main>
       <?php include '../includes/aside2.php'; ?>
       </div>
       <?php include '../includes/footer2.php'; ?>

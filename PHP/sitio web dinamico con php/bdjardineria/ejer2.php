@@ -10,7 +10,7 @@
          <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
    // Conectar con el servidor de base de datos
-   $conexion = mysqli_connect ("localhost", "jardinero", "jardinero")
+   $conexion = mysqli_connect ("127.0.0.1", "root", "", "jardineria")
       or die ("No se puede conectar con el servidor");
 
    // Seleccionar base de datos

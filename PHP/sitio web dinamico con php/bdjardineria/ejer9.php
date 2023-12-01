@@ -12,7 +12,7 @@
 //Versión con importes
 
 //Conectamos con bd jardineria
-$conexion = mysqli_connect("localhost", "jardinero", "jardinero") or exit("No se puede conectar con el servidor.");
+$conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor.");
     mysqli_select_db($conexion, "jardineria")                     or exit("No se puede seleccionar la BD.");
 
     if (isset($_REQUEST['enviar'])) {  //Se ha recibido código y nombre del cliente y se procede a obtener y mostrar información de sus pedidos

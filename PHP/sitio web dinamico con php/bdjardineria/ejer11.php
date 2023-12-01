@@ -26,7 +26,7 @@ if (!isset($_REQUEST['enviar'])) {
 <?php
 } else {
     // Comprobar que el usuario está autorizado a consultar la base de datos
-    $conexion = mysqli_connect("localhost", "jardinero", "jardinero") or exit("No se puede conectar con el servidor");
+    $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor");
     mysqli_select_db($conexion, "jardineria")                         or exit("No se puede seleccionarc la BD");
 
     $user = $_REQUEST['usuario'];

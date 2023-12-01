@@ -36,7 +36,7 @@
 		 <a href='mailto:admin@localhost'>administrador</a> del sitio</p>";
   } else {
       // Comprobar que el usuario está autorizado a consultar la base de datos
-      $conexion = mysqli_connect("localhost", "jardinero", "jardinero") or exit("No se puede conectar con el servidor");
+      $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor");
       mysqli_select_db($conexion, "jardineria")                         or exit("No se puede seleccionar la BD");
       //Versión insegura: permite "inyección SQL"
       //Probar ésta introduciendo en el formulario cualquier cosa en usuario y en password: ' or '1'='1

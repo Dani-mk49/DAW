@@ -13,14 +13,14 @@
 // Creación de array de usuarios y claves
     $usuarios = ["jardinero" => "jardinero", "cristina" => "cristina", "enrique" => "enrique", "marta" => "marta"];
 
-    $conexion = mysqli_connect("localhost", "jardinero", "jardinero") or exit("No se puede conectar con el servidor");
+    $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor");
     mysqli_select_db($conexion, "jardineria")                         or exit("No se puede seleccionar la base de datos");
 
-    $sql = "CREATE TABLE usuarios(
+    $sql = 'CREATE TABLE usuarios(
 		nombre varchar(50) NOT NULL,
 		clave varchar(100) NOT NULL,
 		PRIMARY KEY (nombre)
-		) engine=innodb;";
+		) engine=innodb;';
 
     $consulta = mysqli_query($conexion, $sql) or exit("Fallo en creación tabla usuarios");
 

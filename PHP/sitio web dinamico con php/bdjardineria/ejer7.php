@@ -6,8 +6,8 @@
     <?php include '../includes/menu2.php'; ?>
     <div class="contenedorCentral">
       <?php include '../includes/nav_bbdd.php'; ?>
-      <a href="index.php">Inicio - Ejercicios BBDD</a>
       <main>
+          <a href="index.php">Inicio - Ejercicios BBDD</a>
 	  <?php
 if (isset($_REQUEST['respuesta'])) { // 3ª parte:  se procede a borrar el registro del cliente y, previamente, todos lo registros relacionados en tablas subordinadas
     borrarCliente($_REQUEST['codigo'], $_REQUEST['respuesta']);
@@ -37,7 +37,7 @@ if (isset($_REQUEST['respuesta'])) { // 3ª parte:  se procede a borrar el regis
     //Funciones auxiliares
     function mostrarClienteyPreguntarBorrar($tel)
     {
-        $conexion = mysqli_connect("localhost", "jardinero", "jardinero") or exit("Error en conexión con servidor bd");
+        $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("Error en conexión con servidor bd");
         mysqli_select_db($conexion, "jardineria")                         or exit("Error al seleccionar bd jardinería");
         if(!empty($tel)) {
             $consulta = mysqli_query($conexion, "SELECT * FROM clientes WHERE telefono='$tel';")
