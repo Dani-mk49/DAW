@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <title>Hoja 3. Ejercicio 3</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-</head>
-<body>
-    <header>
-        <h1>NÚMEROS PRIMOS</h1>
-    </header>
-    <section>
-        <nav></nav>
-        <main>
+    <?php include '../includes/metadata2.php'; ?>
+  <body>
+    <?php include '../includes/header2.php'; ?>
+    <?php include '../includes/menu2.php'; ?>
+    <div class="contenedorCentral">
+      <?php include '../includes/nav_funciones.php'; ?>
+      <main>
 		<div>
             <?php
                 function esprimo1($x)
@@ -71,56 +66,56 @@
                 }
 
                 print "<h1>Pruebas de función para números primos</h1>";
-            print "<h2>Función <em>esprimo1</em></h2>";
+    print "<h2>Función <em>esprimo1</em></h2>";
 
-            $n = rand(1, 20);
-            if (esprimo1($n)) {
-                print "El número $n es primo.<br/>";
-            } else {
-                print "El número $n no es primo.<br/>";
-            }
+    $n = rand(1, 20);
+    if (esprimo1($n)) {
+        print "El número $n es primo.<br/>";
+    } else {
+        print "El número $n no es primo.<br/>";
+    }
 
-            $n = rand(1, 20);
-            if (esprimo1($n)) {
-                print "El número $n es primo.<br/>";
-            } else {
-                print "El número $n no es primo.<br/>";
-            }
+    $n = rand(1, 20);
+    if (esprimo1($n)) {
+        print "El número $n es primo.<br/>";
+    } else {
+        print "El número $n no es primo.<br/>";
+    }
 
-            print "<h2>Función <em>esprimo2</em></h2>";
-            $n = rand(1, 20);
-            if (esprimo2($n)) {
-                print "El número $n es primo.<br/>";
-            } else {
-                print "El número $n no es primo.<br/>";
-            }
+    print "<h2>Función <em>esprimo2</em></h2>";
+    $n = rand(1, 20);
+    if (esprimo2($n)) {
+        print "El número $n es primo.<br/>";
+    } else {
+        print "El número $n no es primo.<br/>";
+    }
 
-            $n = rand(1, 20);
-            if (esprimo2($n)) {
-                print "El número $n es primo.<br/>";
-            } else {
-                print "El número $n no es primo.<br/>";
-            }
+    $n = rand(1, 20);
+    if (esprimo2($n)) {
+        print "El número $n es primo.<br/>";
+    } else {
+        print "El número $n no es primo.<br/>";
+    }
 
-            print "<h2>Función <em>esprimo3</em></h2>";
-            $n = rand(1, 20);
-            if (esprimo3($n)) {
-                print "El número $n es primo.<br/>";
-            } else {
-                print "El número $n no es primo.<br/>";
-            }
+    print "<h2>Función <em>esprimo3</em></h2>";
+    $n = rand(1, 20);
+    if (esprimo3($n)) {
+        print "El número $n es primo.<br/>";
+    } else {
+        print "El número $n no es primo.<br/>";
+    }
 
-            $n = rand(1, 20);
-            if (esprimo3($n)) {
-                print "El número $n es primo.<br/>";
-            } else {
-                print "El número $n no es primo.<br/>";
-            }
-            ?>
+    $n = rand(1, 20);
+    if (esprimo3($n)) {
+        print "El número $n es primo.<br/>";
+    } else {
+        print "El número $n no es primo.<br/>";
+    }
+    ?>
         </div>
             </main>
-            <aside></aside>
-        </section>
-        <footer></footer>
+      <?php include '../includes/aside2.php'; ?>
+      </div>
+      <?php include '../includes/footer2.php'; ?>
     </body>
 </html>

@@ -47,7 +47,7 @@ header h1 {
 .contenedorCentral {
     display: grid;
     grid-template-columns: 15% 70% 15%;
-    height: 76vh;
+    min-height: 76vh;
 }
 
 .contenedorCentral nav {
@@ -82,6 +82,8 @@ header h1 {
 .contenedorCentral main {
     background-color: white;
     padding: 20px;
+
+    box-sizing: border-box; /* Asegurarse de que el padding se incluya en el tamaño total */
 }
 
 .contenedorCentral aside {
@@ -93,9 +95,7 @@ header h1 {
     align-items: center;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
+/*footer {
     display: flex;
     margin: 0;
     background-color: black;
@@ -103,13 +103,18 @@ footer {
     height: 90px;
     justify-content: center;
     align-items: center;
+}*/
+footer {
+    display: flex;
+    margin: 0;
+    background-color: black;
+    color: white;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Añadir posición relativa */
 }
 
-/*temporal*/
-p {
-    margin: 0;
-    padding: 0;
-}
 #inicio{
     font-weight: bold;
 }
