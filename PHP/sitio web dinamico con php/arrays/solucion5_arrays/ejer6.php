@@ -1,69 +1,136 @@
-<?php
-    function PALINDROMO($str){
-
-        $Mstr=strtoupper($str);     //Convertimos la frase a mayúsculas
-        $Vstr=str_replace(' ','', $Mstr);   //Eliminamos los espacios entre palabras sustituyéndolos por ningún carácter (nada entre las comillas)
-        $Rstr=strrev($Vstr);        //Le damos la vuelta a la cadena de caracteres en mayúsculas y sin espacios
-        echo "<br>El texto introducido es: $Mstr";
-        echo "<br><br>";
-        if ($Rstr==$Vstr){
-            echo "Se trata de un palíndromo.<br>";
-        }else{
-            echo "No se trata de un palíndromo.<br>";
-        }
-}
-//Otra versión: la función palíndromo averigua si es o no una frase palíndromo y devuelve true si es cierto o false si no lo es
-function esPALINDROMO($str){
-
-        $Mstr=strtoupper($str);
-        $Vstr=str_replace(' ', '', $Mstr);
-        $Rstr=strrev($Vstr);
-        if ($Rstr==$Vstr){
-            return true;
-        }else{
-            return false;
-        }
-}
-?>
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Hoja 5. Ejercicio 6</title>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hoja 5. Ejercicio 2</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
-    </head>
-    <body>
+	<link rel="stylesheet" type="text/css" href="estilosimple.css">
+</head>
+<body>
     <header>
-        <h1>PALÍNDROMOS</h1>
+        <h1>ARRAYS ASOCIATIVOS</h1>
     </header>
     <section>
         <nav></nav>
         <main>
 		<div>
-            <?php
-            if($_REQUEST) {
-                // Probamos 1ª versión
-                $cadenaRecibida = $_REQUEST['STRING'];
-                PALINDROMO($cadenaRecibida);
-                // Probamos 2ª versión
-                if(espalindromo($cadenaRecibida)) {
-                    print '<br>La cadena "'.$cadenaRecibida.'" SÍ es un palíndromo.<br><br>';
-                } else {
-                    print '<br>La cadena "'.$cadenaRecibida.'" NO es un palíndromo.<br><br>';
-                }
-            }
-            ?>
-            <br>
-            <h1>Formulario</h1>
-            <form action="ejer6.php" method="post">
-                <label for="STRING">Introduce texto</label><br>
-                <input type="text" name="STRING" size="40"><br><br>
-                <input type="submit" name="submit" value="Enviar">
-            </form>
-        </div>
+<?php
+function dibujarArray($array)
+{
+    print "<h2>DATOS DEL ARRAY RECIBIDO</h2>";
+    print "<table>";
+    print "<tr>";
+    print "<th>INDICE</th>";
+    print "<th>VALOR</th";
+    print "</tr>";
+    foreach ($array as $indice => $valor) {
+        print "<tr>";
+        print "<td>$indice</td>";
+        print "<td>$valor</td>";
+        print "</tr>";
+    }
+    print "</table>";
+}
+
+function dibujarArrayOrdenadoPorValor($array)
+{
+    //Primero ordenamos el array por valor de mayor a menor.
+    //No se va a utilizar la llamada a rsort($array) ya que entonces ordena por valor
+    //pero convierte a indices escalares con lo que perdemos las claves.
+    //Mejor utilizamos arsort para que conserve  los índices originales
+    //respetando cada índice con su correspondiente valor.
+    arsort($array);
+    print "<h2>DATOS DEL ARRAY RECIBIDO ORDENADOS POR VALOR</h2>";
+    print "<table>";
+    print "<tr>";
+    print "<th>INDICE</th>";
+    print "<th>VALOR</tdh";
+    print "</tr>";
+    foreach ($array as $indice => $valor) {
+        print "<tr>";
+        print "<td>$indice</td>";
+        print "<td>$valor</td>";
+        print "</tr>";
+    }
+    print "</table>";
+}
+
+function dibujarArrayOrdenadoPorIndice($array)
+{
+    print "<h2>DATOS DEL ARRAY RECIBIDO ORDENADOS POR CLAVE</h2>";
+    ksort($array);
+    print "<table>";
+    print "<tr>";
+    print "<th>INDICE</th>";
+    print "<th>VALOR</tdh";
+    print "</tr>";
+    foreach ($array as $indice => $valor) {
+        print "<tr>";
+        print "<td>$indice</td>";
+        print "<td>$valor</td>";
+        print "</tr>";
+    }
+    print "</table>";
+}
+
+$localidades = [
+    "Palencia"   => 80000,
+    "Valladolid" => 350000,
+    "Oviedo"     => 120000,
+    "Madrid"     => 3320000,
+    "Barcelona"  => 1620000,
+    "Zaragoza"   => 666880,
+    "Soria"      => 39112,
+    "Huesca"     => 52463,
+    "Teruel"     => 35691];
+
+//Llamadas a las distintas funciones implementadas
+print "<br>";
+print "<h1>LLAMADAS A FUNCIONES CON ARRAY DE LOCALIDADES</h1>";
+print "<br>";
+dibujarArray($localidades);
+print "<br>";
+dibujarArrayOrdenadoPorValor($localidades);
+print "<br>";
+dibujarArrayOrdenadoPorIndice($localidades);
+print "<br>";
+
+//Nueva prueba de funciones con otro array (el del ejercicio 2)
+print "<h1>LLAMADAS A FUNCIONES CON ARRAY DE RESULTADOS LIGA FUTBOL</h1>";
+$listaEquipos = [
+    "F.C. Barcelona"  => 82,
+    "Real Madrid"     => 84,
+    "Atlético Madrid" => 78,
+    "Valencia"        => 75,
+    "Sevilla"         => 76,
+    "Villarreal"      => 60,
+    "Málaga"          => 50,
+    "Espanyol"        => 47,
+    "Athletic Bilbao" => 55,
+    "Celta"           => 51,
+    "Real Sociedad"   => 46,
+    "Rayo Vallecano"  => 49,
+    "Getafe"          => 36,
+    "Osasuna"         => 33,
+    "Elche"           => 41,
+    "Deportivo"       => 38,
+    "Almería"         => 29,
+    "Levante"         => 37,
+    "Granada"         => 35,
+    "Zaragoza"        => 32];
+
+print "<br>";
+dibujarArray($listaEquipos);
+print "<br>";
+dibujarArrayOrdenadoPorValor($listaEquipos);
+print "<br>";
+dibujarArrayOrdenadoPorIndice($listaEquipos);
+print "<br>";
+?>
+		</div>
 		</main>
-        <aside></aside>
-    </section>
-    <footer></footer>
-	</body>
+		<aside></aside>
+	</section>
+	<footer></footer>
+</body>
 </html>

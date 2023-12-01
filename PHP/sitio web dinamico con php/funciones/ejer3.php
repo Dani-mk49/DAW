@@ -7,6 +7,7 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_funciones.php'; ?>
       <main>
+      <a href="index.php">Inicio - Ejercicios de funciones</a>
 		<div>
             <?php
                 function esprimo1($x)

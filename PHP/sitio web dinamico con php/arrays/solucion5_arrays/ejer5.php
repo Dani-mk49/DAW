@@ -2,71 +2,45 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Hoja 5. Ejercicio 5</title>
+	<title>Hoja 5. Ejercicio 1</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
 	<link rel="stylesheet" type="text/css" href="estilosimple.css">
 </head>
 <body>
     <header>
-        <h1>ARRAYS Y STRINGS</h1>
+        <h1>ARRAYS NUMÉRICOS</h1>
     </header>
     <section>
         <nav></nav>
         <main>
-		<div>
-            <h1>Uso de funciones propias de strings</h1>
+            <h1>Implementación de funciones de arrays</h1>
 <?php
-    $words = ["gato", "perro", "elefante", "jirafa", "tortuga", "leon", "tigre", "loro", "canguro", "pinguino"];
-
-    print "<br><br>Array de strings: " . implode(", ", $words) . "<br><br>";
-
-// Encuentra la palabra más larga
-$longestWord = "";
-foreach ($words as $word) {
-    if (strlen($word) > strlen($longestWord)) {
-        $longestWord = $word;
-    }
-}
-
-// Encuentra la palabra más corta
-$shortestWord = $words[0];
-foreach ($words as $word) {
-    if (strlen($word) < strlen($shortestWord)) {
-        $shortestWord = $word;
-    }
-}
-
-// Encuentra palabras con más de 5 letras
-$longWords = [];
-foreach ($words as $word) {
-    if (strlen($word) > 5) {
-        $longWords[] = $word;
-    }
-}
-
-// Ordena el array alfabéticamente
-sort($words);
-
-// Función para invertir palabras
-function inviertePalabras($array)
+function generarArrayAleatorio($length, $min, $max)
 {
-    $invertedWords = [];
-    foreach ($array as $word) {
-        $invertedWords[] = strrev($word);
+    for ($i = 0; $i < $length; $i++) {
+        $array[] = rand($min, $max);
     }
-    return $invertedWords;
+    return $array;
 }
 
-// Invierte las palabras
-$invertedArray = inviertePalabras($words);
+function eliminarRepetidos($array)
+{
+    return array_unique($array);
+}
 
-print "Palabra más larga: $longestWord<br><br>";
-print "Palabra más corta: $shortestWord<br><br>";
-print "Palabras con más de 5 letras: " . implode(", ", $longWords) . "<br><br>";
-print "Array ordenado alfabéticamente: " . implode(", ", $words) . "<br><br>";
-print "Palabras invertidas: " . implode(", ", $invertedArray) . "<br><br>";
+function calcularMedia($array)
+{
+    return array_sum($array) / count($array);
+}
+
+$randomArray = generarArrayAleatorio(50, 1, 100);
+$uniqueArray = eliminarRepetidos($randomArray);
+$average = calcularMedia($uniqueArray);
+
+print "<br>Array aleatorio: " . implode(", ", $randomArray) . "<br>";
+print "<br>Array sin duplicados: " . implode(", ", $uniqueArray) . "<br>";
+print "<br>Media de los números:".round($average,2)."<br>";
 ?>
-        </div>
         </main>
         <aside></aside>
     </section>

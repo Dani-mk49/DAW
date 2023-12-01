@@ -7,6 +7,7 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_funciones.php'; ?>
       <main>
+        <a href="index.php">Inicio - Ejercicios de funciones</a>
 		    <div>
                 <?php
                     define("PI", 3.141592);       //También se puede definir una variable constante (const PI=3.141592) o simplemente usar pi() o M_PI, ya definidas en PHP

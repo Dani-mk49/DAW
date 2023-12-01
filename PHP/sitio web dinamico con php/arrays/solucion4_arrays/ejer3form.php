@@ -11,6 +11,7 @@
 			<h1>TEMPERATURA MEDIA DE LA SEMANA</h1>
 	</header>
 	<section>
+		<!--en principio esto estba en .html, si funciona mal cambiarlo-->
 			<nav></nav>
 			<main>
 				<h1>FORMULARIO PETICIÓN TEMPERATURAS</h1>
