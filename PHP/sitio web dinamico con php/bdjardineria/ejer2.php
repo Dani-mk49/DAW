@@ -1,19 +1,13 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="es">
-<head>
-   <meta charset="utf-8" />
-   <title>Hoja 6. Ejercicio 2</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-    <link rel="stylesheet" type="text/css" href="estilosimple.css">
-</head>
-
-<body>
-    <header>
-        <h1>CONSULTA DE PRODUCTOS</h1>
-    </header>
-    <section>
-        <nav></nav>
-        <main>
+    <?php include '../includes/metadata2.php'; ?>
+  <body>
+    <?php include '../includes/header2.php'; ?>
+    <?php include '../includes/menu2.php'; ?>
+    <div class="contenedorCentral">
+      <?php include '../includes/nav_bbdd.php'; ?>
+      <main>
+         <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
    // Conectar con el servidor de base de datos
    $conexion = mysqli_connect ("localhost", "jardinero", "jardinero")
@@ -86,8 +80,8 @@
    mysqli_close ($conexion);
 ?>
       </main>
-      <aside></aside>
-   </section>
-   <footer></footer>
-</body>
+      <?php include '../includes/aside2.php'; ?>
+      </div>
+      <?php include '../includes/footer2.php'; ?>
+    </body>
 </html>

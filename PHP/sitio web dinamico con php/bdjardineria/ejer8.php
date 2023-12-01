@@ -1,18 +1,13 @@
-<!DOCTYPE HTML>
-<html lang="es-ES">
-<head>
-     <meta charset="utf-8" />
-	<title>Hoja 6. Ejercicio 8</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-	<link rel="stylesheet" type="text/css" href="estilosimple.css"/>
-</head>
-<body>
-    <header>
-        <h1>PEDIDOS CLIENTES</h1>
-    </header>
-    <section>
-        <nav></nav>
-        <main>
+<!DOCTYPE html>
+<html lang="es">
+    <?php include '../includes/metadata2.php'; ?>
+  <body>
+    <?php include '../includes/header2.php'; ?>
+    <?php include '../includes/menu2.php'; ?>
+    <div class="contenedorCentral">
+      <?php include '../includes/nav_bbdd.php'; ?>
+	  <main>
+		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
 //Conectamos con bd jardineria
 $conexion = mysqli_connect ("localhost", "jardinero", "jardinero") or die ("No se puede conectar con el servidor.");
@@ -93,9 +88,9 @@ echo "<input type='submit' name='enviar' value='Enviar consulta'>";
 echo "</form>";
 mysqli_close ($conexion);
 ?>
-		</main>
-		<aside></aside>
-	</section>
-	<footer></footer>
-</body>
+		</main>>
+      <?php include '../includes/aside2.php'; ?>
+      </div>
+      <?php include '../includes/footer2.php'; ?>
+    </body>
 </html>

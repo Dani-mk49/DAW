@@ -1,18 +1,13 @@
-<!DOCTYPE HTML>
-<html lang="es-ES">
-<head>
-    <meta charset="UTF-8" />
-    <title>Hoja 6. Ejercicio 5</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-    <link rel="stylesheet" type="text/css" href="estilosimple.css"/>
-</head>
-<body>
-    <header>
-        <h1>INSERTAR CLIENTES</h1>
-    </header>
-    <section>
-        <nav></nav>
-        <main>
+<!DOCTYPE html>
+<html lang="es">
+    <?php include '../includes/metadata2.php'; ?>
+  <body>
+    <?php include '../includes/header2.php'; ?>
+    <?php include '../includes/menu2.php'; ?>
+    <div class="contenedorCentral">
+      <?php include '../includes/nav_bbdd.php'; ?>
+	  <main>
+		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
 $c=mysqli_connect ("localhost","jardinero","jardinero");
 mysqli_select_db ($c,"jardineria");
@@ -111,8 +106,8 @@ else{?>
 <?php
 }?>
 		</main>
-		<aside></aside>
-	</section>
-	<footer></footer>
-</body>
+      <?php include '../includes/aside2.php'; ?>
+      </div>
+      <?php include '../includes/footer2.php'; ?>
+    </body>
 </html>

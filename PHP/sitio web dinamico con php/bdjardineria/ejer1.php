@@ -1,20 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="utf-8" />
-	<title>Hoja 6. Ejercicio 1</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-    <link rel="stylesheet" type="text/css" href="estilosimple.css">
-</head>
-<body>
-    <header>
-        <h1>CONSULTA DE CLIENTES</h1>
-    </header>
-    <section>
-        <nav></nav>
-        <main>
+    <?php include '../includes/metadata2.php'; ?>
+  <body>
+    <?php include '../includes/header2.php'; ?>
+    <?php include '../includes/menu2.php'; ?>
+    <div class="contenedorCentral">
+      <?php include '../includes/nav_bbdd.php'; ?>
+	  <main>
+		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
-	$conexion = mysqli_connect ("localhost", "jardinero", "jardinero","jardineria") or die ("No se puede conectar con el servidor");
+	$conexion = mysqli_connect ("127.0.0.1", "root", "", "jardineria") or die ("No se puede conectar con el servidor");
 	echo "<h1>Conexión correcta...</h1><br>";
 
 	$sql="SELECT CodigoCliente, NombreCliente, NombreContacto from clientes";
@@ -37,8 +32,8 @@
 	mysqli_close($conexion);
 ?>
 		</main>
-		<aside></aside>
-	</section>
-	<footer></footer>
-</body>
-</htmlL>
+      <?php include '../includes/aside2.php'; ?>
+      </div>
+      <?php include '../includes/footer2.php'; ?>
+    </body>
+</html>
