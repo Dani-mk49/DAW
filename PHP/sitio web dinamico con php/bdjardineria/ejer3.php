@@ -8,6 +8,7 @@
       <?php include '../includes/nav_bbdd.php'; ?>
       <main>
          <a href="index.php">Inicio - Ejercicios BBDD</a>
+         <h1>Estadisticas</h1>
 <?php
    // Conectar con el servidor de base de datos
    $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria")

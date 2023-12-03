@@ -8,6 +8,7 @@
       <?php include '../includes/nav_bbdd.php'; ?>
 	  <main>
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
+          <h1>Importe pedidos</h1>
 <?php
 //Versión con importes
 
@@ -21,7 +22,7 @@ $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se
         $datoscli  = explode(":", $menu);
         $codigocli = $datoscli[0];
         $nombrecli = $datoscli[1];
-        print "<h1>LISTADO DE PEDIDOS DEL CLIENTE $nombrecli <br>CON CÓDIGO  $codigocli</h1><br>";
+        print "<h2>LISTADO DE PEDIDOS DEL CLIENTE $nombrecli <br>CON CÓDIGO  $codigocli</h2><br>";
 
         //2º Buscamos los pedidos del cliente cuyo código se ha enviado desde el formulario
         $sql1                 = "SELECT CodigoPedido, FechaPedido FROM pedidos WHERE pedidos.CodigoCliente='$codigocli' ";
@@ -31,7 +32,7 @@ $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se
         // y el nombre de cada producto, devolviéndolo todo en una tabla HTML
         $npedidos = mysqli_num_rows($resulconsultapedidos);
         if($npedidos == 0) {
-            print "<h1>ESTE CLIENTE NO TIENE REGISTRADO NINGÚN PEDIDO </h1>";
+            print "<h2>ESTE CLIENTE NO TIENE REGISTRADO NINGÚN PEDIDO </h2>";
         } else {
             $imp_total = 0;
             for($fp = 1; $fp <= $npedidos; $fp++) {
@@ -86,7 +87,7 @@ $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se
     //Sacamos menu de selección para elegir el cliente
     $consulta = mysqli_query($conexion, "select CodigoCliente,NombreCliente from clientes") or exit("Fallo en la consulta");
     $nfilas   = mysqli_num_rows($consulta);
-    print "<h1>Selecciona cliente a consultar</h1><br>";
+    print "<h2>Selecciona cliente a consultar</h2><br>";
     print "<form  action='ejer9.php' method='get'>";
     print "<select name='menu'>";
     for($f = 1; $f <= $nfilas; $f++) {

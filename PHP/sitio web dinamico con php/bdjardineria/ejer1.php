@@ -11,9 +11,10 @@ session_start();
       <?php include '../includes/nav_bbdd.php'; ?>
 	  <main>
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
+		  <h1>Lista de clientes</h1>
 <?php
 	$conexion = mysqli_connect ("127.0.0.1", "root", "", "jardineria") or die ("No se puede conectar con el servidor");
-	echo "<h1>Conexión correcta...</h1><br>";
+	//echo "<h1>Conexión correcta...</h1><br>";
 
 	$sql="SELECT CodigoCliente, NombreCliente, NombreContacto from clientes";
 	$resulconsulta=mysqli_query($conexion,$sql) or die ("Error al hacer la consulta");

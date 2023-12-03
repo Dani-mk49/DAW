@@ -8,6 +8,7 @@
       <?php include '../includes/nav_bbdd.php'; ?>
 	  <main>
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
+		  <h1>Insertar cliente</h1>
 <?php
 $c=mysqli_connect ("127.0.0.1", "root", "", "jardineria");
 mysqli_select_db ($c,"jardineria");
@@ -47,7 +48,6 @@ extract($_REQUEST);
 }
 else{?>
 <form action='#' method='get'>
-	<h2>Formulario para rellenar los datos de un nuevo cliente</h2><br>
 	<table>
 	<tr>
 		<td>Nombre del cliente</td>

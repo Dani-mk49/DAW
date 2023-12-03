@@ -8,6 +8,7 @@
       <?php include '../includes/nav_bbdd.php'; ?>
       <main>
           <a href="index.php">Inicio - Ejercicios BBDD</a>
+          <h1>Borrar cliente</h1>
 	  <?php
 if (isset($_REQUEST['respuesta'])) { // 3ª parte:  se procede a borrar el registro del cliente y, previamente, todos lo registros relacionados en tablas subordinadas
     borrarCliente($_REQUEST['codigo'], $_REQUEST['respuesta']);

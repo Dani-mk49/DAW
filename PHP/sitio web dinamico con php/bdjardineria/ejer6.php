@@ -9,6 +9,7 @@
       <?php include '../includes/nav_bbdd.php'; ?>
 	  <main>
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
+		  <h1>Modificar cliente</h1>
 <?php
 if (!$_REQUEST) {
 	echo "<form  action='ejer6.php' method='get'>";
