@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
+    <?php include 'conectabd.php' ?>
   <body>
     <?php include '../includes/header2.php'; ?>
     <?php include '../includes/menu2.php'; ?>
@@ -11,16 +12,15 @@
          <h1>Estadisticas</h1>
 <?php
    // Conectar con el servidor de base de datos
-   $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria")
-      or exit("No se puede conectar con el servidor");
+   conectar();
 
     // Seleccionar base de datos
-    mysqli_select_db($conexion, "jardineria")
+    mysqli_select_db($GLOBALS['conexion'], "jardineria")
        or exit("No se puede seleccionar la base de datos");
 
     // Enviar consulta
     $instruccionSQL = "SELECT productos.Gama, gamasproductos.DescripcionTexto, COUNT(*) FROM productos INNER JOIN gamasproductos ON productos.Gama=gamasproductos.Gama GROUP BY productos.Gama";
-    $resulconsulta  = mysqli_query($conexion, $instruccionSQL)
+    $resulconsulta  = mysqli_query($GLOBALS['conexion'], $instruccionSQL)
        or exit("Fallo en la consulta");
 
     // Mostrar resultados de la consulta
@@ -47,7 +47,7 @@
     }
 
     // Cerrar conexión
-    mysqli_close($conexion);
+    desconectar();
     ?>
       </main>
       <?php include '../includes/aside2.php'; ?>

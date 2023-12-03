@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
+	<?php include 'conectabd.php' ?>
   <body>
     <?php include '../includes/header2.php'; ?>
     <?php include '../includes/menu2.php'; ?>
@@ -10,8 +11,7 @@
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 		  <h1>Insertar cliente</h1>
 <?php
-$c=mysqli_connect ("127.0.0.1", "root", "", "jardineria");
-mysqli_select_db ($c,"jardineria");
+conectar();
 if (isset($_REQUEST['enviar'])){
 //Coger valores del formulario, pero es más rápido con extract
 	/*
@@ -34,13 +34,13 @@ Se puede ver documentación en php.net o en w3Schools*/
 extract($_REQUEST);
 	//Se averigua cuál es el código máximo de cliente existente.
 	$consulta2 = "SELECT MAX(CodigoCliente) FROM clientes";
-    $rescon2 = mysqli_query ($c,$consulta2);
+    $rescon2 = mysqli_query ($GLOBALS['conexion'],$consulta2);
     $valor = mysqli_fetch_row ($rescon2);
 	$CodigoCliente = $valor[0] +1;
 	echo "<b>Se procede a la inserción de un nuevo cliente con código $CodigoCliente</b><br>";
 		$insercion = "INSERT INTO clientes VALUES($CodigoCliente, '$NombreCliente','$NombreContacto', '$ApellidoContacto', '$Telefono', '$Fax', '$LineaDireccion1', '$LineaDireccion2', '$Ciudad', '$Region', '$Pais', '$CodigoPostal', $CodigoEmpleadoRepVentas, $LimiteCredito)";
 	echo "<b>Sentencia de inserción:</b><br>$insercion<br>";
-		if(mysqli_query($c,$insercion))	//Devuelve true si se ha podido realizar la consulta y a la vez la ejecuta
+		if(mysqli_query($GLOBALS['conexion'],$insercion))	//Devuelve true si se ha podido realizar la consulta y a la vez la ejecuta
 			echo "<br><b>Inserción completada correctamente.</b><br><br>";
 		else
 			echo "<br><b>Ha ocurrido error al ejecutar sentencia SQL INSERT.</b><br/>";
@@ -91,12 +91,12 @@ else{?>
 			echo "<select name='CodigoEmpleadoRepVentas'>";
 
 			$consulta = "SELECT CodigoEmpleado, Nombre, Apellido1, Apellido2 FROM empleados";
-			$rescon = mysqli_query ($c,$consulta);
+			$rescon = mysqli_query ($GLOBALS['conexion'],$consulta);
 
 			while($valor = mysqli_fetch_row ($rescon)){
 				echo "<option value = $valor[0]>".$valor[0]."-".$valor[1]." ".$valor[2]." ".$valor[3]."</option>";
 			}	//Este input tipo 'select' cogerá en su atributo 'value' el CodigoEmpleado (Representante de ventas) de la opción seleccionada
-			mysqli_close ($c);
+			desconectar();
 			echo "</select>";
 		?></td>
 	</tr>

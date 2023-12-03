@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
+	<?php include 'conectabd.php' ?>
   <body>
     <?php include '../includes/header2.php'; ?>
     <?php include '../includes/menu2.php'; ?>
@@ -16,11 +17,10 @@ if (!$_REQUEST) {
 	echo "Selecciona el telefono del cliente: &nbsp;";
 	echo"<select name='codigocliente'>";
 
-	$c=mysqli_connect("127.0.0.1", "root", "", "jardineria");
-	mysqli_select_db($c,"jardineria");
+	conectar();
 
 	$consulta1="SELECT codigocliente, telefono, nombrecliente FROM clientes";
-	$resulconsulta1=mysqli_query($c,$consulta1);
+	$resulconsulta1=mysqli_query($GLOBALS['conexion'],$consulta1);
 
 	while ($registro = mysqli_fetch_row($resulconsulta1)){
 		echo"<option value=$registro[0]>".$registro[1]."--".$registro[2]."</option>";
@@ -34,11 +34,10 @@ else
 	if(!isset($_REQUEST["modificar"])){
 		$codigocliente=$_REQUEST['codigocliente'];
 
-		$c=mysqli_connect("localhost","root","");
-		mysqli_select_db($c,"jardineria");
+		conectar();
 
 		$consulta2="SELECT * FROM clientes where codigocliente='$codigocliente' ";
-		$resulconsulta2=mysqli_query($c,$consulta2);
+		$resulconsulta2=mysqli_query($GLOBALS['conexion'],$consulta2);
 		$registro = mysqli_fetch_row($resulconsulta2);
 
 		//Se puede almacenar en distintas variables cada uno de los registros del cliente elegido por el usuario
@@ -113,7 +112,7 @@ else
 			<td> <?php	echo "<select name = 'codigoempleadorepventas'>";
 
 					$consulta = "SELECT CodigoEmpleado, Nombre, Apellido1, Apellido2 FROM empleados";
-					$rescon = mysqli_query ($c,$consulta);
+					$rescon = mysqli_query ($GLOBALS['conexion'],$consulta);
 
 					while($valor = mysqli_fetch_row ($rescon)){
 						echo "<option ";
@@ -121,7 +120,7 @@ else
 							echo "selected "; //Para que aparezca seleccionado por defecto el empleado asignado al cliente
 						echo "value = $valor[0]>".$valor[1]." ".$valor[2]." ".$valor[3]."</option>";
 					}
-					mysqli_close ($c);
+					desconectar();
 					echo "</select>";
 			?>
 			</td>
@@ -154,14 +153,13 @@ else
 		$codigoempleadorepventas=$_REQUEST['codigoempleadorepventas'];
 		$limitecredito=$_REQUEST['limitecredito'];
 
-		$c=mysqli_connect("localhost","root","");
-		mysqli_select_db($c,"jardineria");
+		conectar();
 
 		echo "<b>Se procede a la modificación del cliente con código $codigocliente</b><br>";
 		$modificacion="UPDATE clientes SET nombrecliente='$nombrecliente', nombrecontacto='$nombrecontacto', apellidocontacto='$apellidocontacto', telefono='$telefono', fax='$fax', lineadireccion1='$lineadireccion1', lineadireccion2='$lineadireccion2', ciudad='$ciudad', region='$region', pais='$pais', codigopostal='$codigopostal', codigoempleadorepventas='$codigoempleadorepventas', limitecredito='$limitecredito' WHERE codigocliente = '$codigocliente'";
 
 		echo "<b>Sentencia de modificación:</b><br>$modificacion<br>";
-		if(mysqli_query($c,$modificacion))	//Devuelve true si se ha podido realizar la consulta y a la vez la ejecuta
+		if(mysqli_query($GLOBALS['conexion'],$modificacion))	//Devuelve true si se ha podido realizar la consulta y a la vez la ejecuta
 			echo "<br><b>Inserción completada correctamente.</b><br><br>";
 		else
 			echo "<br><b>Ha ocurrido error al ejecutar sentencia SQL INSERT.</b><br/>";

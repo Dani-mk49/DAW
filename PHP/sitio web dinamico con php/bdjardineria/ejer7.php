@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
+    <?php include 'conectabd.php' ?>
   <body>
     <?php include '../includes/header2.php'; ?>
     <?php include '../includes/menu2.php'; ?>
@@ -38,10 +39,10 @@ if (isset($_REQUEST['respuesta'])) { // 3ª parte:  se procede a borrar el regis
     //Funciones auxiliares
     function mostrarClienteyPreguntarBorrar($tel)
     {
-        $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("Error en conexión con servidor bd");
-        mysqli_select_db($conexion, "jardineria")                         or exit("Error al seleccionar bd jardinería");
+        conectar();
+        mysqli_select_db($GLOBALS['conexion'], "jardineria")                         or exit("Error al seleccionar bd jardinería");
         if(!empty($tel)) {
-            $consulta = mysqli_query($conexion, "SELECT * FROM clientes WHERE telefono='$tel';")
+            $consulta = mysqli_query($GLOBALS['conexion'], "SELECT * FROM clientes WHERE telefono='$tel';")
                 or exit("Error al seleccionar cliente");
             // Si hubiese varios clientes con el mismo teléfono nos quedaríamos con el primero obtenido
             $fila = mysqli_fetch_assoc($consulta);
@@ -73,11 +74,11 @@ if (isset($_REQUEST['respuesta'])) { // 3ª parte:  se procede a borrar el regis
         print "<p>RESULTADOS DE BORRADO DE CLIENTE DE CÓDIGO $codigo.</p>";
 
         if($respuesta == "Si") {
-            $conexion = mysqli_connect("localhost", "jardinero", "jardinero") or exit("Error en conexión con servidor bd.");
-            mysqli_select_db($conexion, "jardineria");
+            conectar();
+            mysqli_select_db($GLOBALS['conexion'], "jardineria");
 
             //Borrado de pagos del cliente
-            mysqli_query($conexion, "DELETE FROM pagos WHERE codigoCliente = $codigo;")
+            mysqli_query($GLOBALS['conexion'], "DELETE FROM pagos WHERE codigoCliente = $codigo;")
                 or exit("Error al borrar pagos del cliente.");
             print "Se han borrado los pagos del cliente.<br>";
 
@@ -85,20 +86,20 @@ if (isset($_REQUEST['respuesta'])) { // 3ª parte:  se procede a borrar el regis
             $query = "DELETE FROM detallepedidos WHERE CodigoPedido IN (SELECT DISTINCT CodigoPedido FROM pedidos WHERE CodigoCliente = $codigo);";
             /* Y otra forma más de expresar este delete:
             $query= "DELETE DetallePedidos FROM DetallePedidos NATURAL JOIN Pedidos WHERE Pedidos.CodigoCliente = $codigo;"; */
-            mysqli_query($conexion, $query) or exit("Fallo al eliminar los detalles pedidos del cliente $codigo.");
+            mysqli_query($GLOBALS['conexion'], $query) or exit("Fallo al eliminar los detalles pedidos del cliente $codigo.");
             print "Se han borrado los detalles de pedidos del cliente.<br>";
 
             //Borrado de pedidos del cliente
-            mysqli_query($conexion, "DELETE FROM pedidos WHERE codigoCliente = $codigo;")
+            mysqli_query($GLOBALS['conexion'], "DELETE FROM pedidos WHERE codigoCliente = $codigo;")
                 or exit("Error al borrar pedidos del cliente.");
             print "Se han borrado los pedidos del cliente.<br>";
 
             //Borrado de cliente de la tabla clientes
-            mysqli_query($conexion, "DELETE FROM clientes WHERE codigoCliente = $codigo;")
+            mysqli_query($GLOBALS['conexion'], "DELETE FROM clientes WHERE codigoCliente = $codigo;")
                 or exit("Error al borrar cliente.");
             print "Se ha borrado el cliente de la tabla clientes.<br>";
 
-            mysqli_close($conexion);
+            mysqli_close($GLOBALS['conexion']);
         } else {
             print "No se ha borrado el cliente.";
         }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
+    <?php include 'conectabd.php' ?>
   <body>
     <?php include '../includes/header2.php'; ?>
     <?php include '../includes/menu2.php'; ?>
@@ -10,11 +11,10 @@
           <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
     // Conectar con el servidor de base de datos
-    $conexion = mysqli_connect ("127.0.0.1", "root", "", "jardineria")
-        or die ("No se puede conectar con el servidor");
+    conectar();
 
     // Seleccionar base de datos
-    mysqli_select_db ($conexion,"jardineria")
+    mysqli_select_db ($GLOBALS['conexion'],"jardineria")
         or die ("No se puede seleccionar la base de datos");
 
     if (isset($_REQUEST['enviar']))
@@ -22,7 +22,7 @@
         $pais=$_REQUEST['Pais'];
         // Enviar consulta
         $instruccion = "SELECT CodigoCliente, NombreCliente, NombreContacto, ApellidoContacto  FROM  clientes WHERE Pais='$pais' ORDER BY CodigoCliente";
-        $resconsulta = mysqli_query ($conexion,$instruccion)
+        $resconsulta = mysqli_query ($GLOBALS['conexion'],$instruccion)
             or die ("Fallo en la consulta");
         // Mostrar resultados de la consulta
         echo "<h1>LISTADO  DE CLIENTES DE --".$pais."-- EN BD JARDINERIA</h1><br>";
@@ -43,7 +43,7 @@
     {
         echo "<h1>Consulta de clientes por pais</h1><br>";
         $instruccion = "SELECT DISTINCT Pais FROM clientes ORDER BY Pais";
-        $resconsulta = mysqli_query ($conexion,$instruccion)
+        $resconsulta = mysqli_query ($GLOBALS['conexion'],$instruccion)
             or die ("Fallo en la consulta");
 
         print ("<form action='ejer4.php' method='GET'>");
@@ -63,7 +63,7 @@
         print ("</form>");
     }
     // Cerrar conexión
-    mysqli_close ($conexion);
+    desconectar();
 ?>
         </main>
       <?php include '../includes/aside2.php'; ?>

@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
+<?php include 'conectabd.php' ?>
     <?php include '../includes/metadata2.php'; ?>
   <body>
     <?php include '../includes/header2.php'; ?>
@@ -10,11 +11,10 @@
          <a href="index.php">Inicio - Ejercicios BBDD</a>
 <?php
    // Conectar con el servidor de base de datos
-   $conexion = mysqli_connect ("127.0.0.1", "root", "", "jardineria")
-      or die ("No se puede conectar con el servidor");
+   conectar();
 
    // Seleccionar base de datos
-   mysqli_select_db ($conexion,"jardineria")
+   mysqli_select_db ($GLOBALS['conexion'],"jardineria")
       or die ("No se puede seleccionar la base de datos");
 
    if (isset($_REQUEST['gama']))
@@ -22,7 +22,7 @@
       $gama=$_REQUEST['gama'];
       // Enviar consulta
       $instruccion = "SELECT CodigoProducto, Nombre, CantidadEnStock FROM  productos WHERE Gama='$gama' ORDER BY Nombre";
-      $resconsulta = mysqli_query ($conexion,$instruccion)
+      $resconsulta = mysqli_query ($GLOBALS['conexion'],$instruccion)
          or die ("Fallo en la consulta");
 
       // Mostrar resultados de la consulta
@@ -56,7 +56,7 @@
       echo "<h1>Consulta de productos por gama</h1><br>";
 
 	   $instruccion = "SELECT Gama, DescripcionTexto FROM  gamasproductos ORDER BY DescripcionTexto";
-      $resconsulta = mysqli_query ($conexion,$instruccion)
+      $resconsulta = mysqli_query ($GLOBALS['conexion'],$instruccion)
          or die ("Fallo en la consulta");
 
 	   echo "<form action='ejer2.php' method='GET'>";
@@ -77,7 +77,7 @@
 	   echo "</form>";
    }
    // Cerrar conexión
-   mysqli_close ($conexion);
+   desconectar();
 ?>
       </main>
       <?php include '../includes/aside2.php'; ?>

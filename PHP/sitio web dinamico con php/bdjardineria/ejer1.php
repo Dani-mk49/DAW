@@ -1,7 +1,5 @@
-﻿<?php
-session_start();
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+<?php include 'conectabd.php' ?>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
   <body>
@@ -13,11 +11,11 @@ session_start();
 		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 		  <h1>Lista de clientes</h1>
 <?php
-	$conexion = mysqli_connect ("127.0.0.1", "root", "", "jardineria") or die ("No se puede conectar con el servidor");
+	conectar();
 	//echo "<h1>Conexión correcta...</h1><br>";
 
 	$sql="SELECT CodigoCliente, NombreCliente, NombreContacto from clientes";
-	$resulconsulta=mysqli_query($conexion,$sql) or die ("Error al hacer la consulta");
+	$resulconsulta=mysqli_query($GLOBALS['conexion'],$sql) or die ("Error al hacer la consulta");
 
 	$nfilas=mysqli_num_rows($resulconsulta);
 	echo "<table border='1'>";
@@ -33,7 +31,7 @@ session_start();
 		echo "</tr>";
 	}
 	echo "</table>";
-	mysqli_close($conexion);
+	desconectar();
 ?>
 		</main>
       <?php include '../includes/aside2.php'; ?>
