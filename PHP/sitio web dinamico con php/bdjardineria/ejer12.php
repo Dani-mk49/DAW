@@ -1,15 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-    <?php include '../includes/metadata2.php'; ?>
-  <body>
-    <?php include '../includes/header2.php'; ?>
-    <?php include '../includes/menu2.php'; ?>
-    <div class="contenedorCentral">
-      <?php include '../includes/nav_bbdd.php'; ?>
-      <main align="center">
-        <?php include 'creacionDeTablaUsuarios.php' ?>
-		  <a href="index.php" style="display: flex; justify-content: start;">Inicio - Ejercicios BBDD</a>
-		  <?php
+<?php include '../includes/metadata2.php'; ?>
+<style>
+  td{
+    text-align: left;
+    padding: 15px;
+  }
+</style>
+<body>
+  <?php include '../includes/header2.php'; ?>
+  <?php include '../includes/menu2.php'; ?>
+  <div class="contenedorCentral">
+    <?php include '../includes/nav_bbdd.php'; ?>
+    <main align="center">
+      <?php include 'creacionDeTablaUsuarios.php' ?>
+      <a href="index.php" style="display: flex; justify-content: start;">Inicio - Ejercicios BBDD</a>
+      <?php
 //Problemas de seguridad por inyección de código SQL malicioso.
 //"SQL Injection" es una técnica de ataque a paginas, que intentan colar código SQL
 // dentro del codigo SQL de la aplicación destino, para romper o acceder a información almacenada en la base de datos.
@@ -18,20 +24,36 @@
 //por medio del uso de la función mysqli_real_escape_string que recibe un texto y lo devuelve a formato seguro.
 
 //Mostrar formulario pidiendo usuario y clave
-  if (!isset($_REQUEST['enviar'])) {
-      print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
+  if (!isset($_REQUEST['enviar'])) {?>
+      <h2>LOGIN PARA USUARIOS REGISTRADOS</h2>
 
-      print "<form action='ejer12.php' method='get'><br>";
-
-      print "<p>Usuario: ";
-      print "<input type='text' name='usuario' size='15'></p>";
-      print "<p>Clave: ";
-      print "<input type='password' name='clave' size='15'></p>";
-      print "<p><input type='submit' name='enviar' value='Entrar'></p>";
-
-      print "</form>";
-
-
+      <form action='ejer12.php' method='get'><br>
+        <table align="center" width="400px">
+          <tr>
+            <td>Usuario:</td>
+            <td>
+              <input type='text' name='usuario' size='15'>
+            </td>
+          </tr>
+          <tr>
+            <td>Contraseña:</td>
+            <td>
+              <input type='password' name='clave' size='15'>
+            </td>
+          </tr>
+          </tr>
+          <tr>
+            <td>Vuelva a introducir la contraseña:</td>
+            <td>
+              <input type='password' name='claveRepe' size='15'>
+            </td>
+          </tr>
+          <tr><td></td><td style="text-align: center;">
+            <input type='submit' name='registrar' value='Registrarse'>
+          </td></tr>
+        </table>
+      </form>
+      <?php
   } else {
       // Comprobar que el usuario está autorizado a consultar la base de datos
       $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor");
@@ -85,10 +107,10 @@
       }
       mysqli_close($conexion);
   }
-    ?>
-      </main>
-      <?php include '../includes/aside2.php'; ?>
-      </div>
-      <?php include '../includes/footer2.php'; ?>
-    </body>
+?>
+    </main>
+    <?php include '../includes/aside2.php'; ?>
+  </div>
+  <?php include '../includes/footer2.php'; ?>
+</body>
 </html>
