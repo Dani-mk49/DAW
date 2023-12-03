@@ -1,7 +1,5 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
+<?php include 'conectabd.php' ?>
 <html lang="es">
 <?php include '../includes/metadata2.php'; ?>
 <style>
@@ -56,8 +54,8 @@ session_start();
       <?php
   } else {
       // Comprobar que el usuario está autorizado a consultar la base de datos
-      $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor");
-      mysqli_select_db($conexion, "jardineria")                         or exit("No se puede seleccionar la BD");
+      conectar();
+      //mysqli_select_db($GLOBALS['conexion'], "jardineria")                         or exit("No se puede seleccionar la BD");
       //Versión insegura: permite "inyección SQL"
       //Probar ésta introduciendo en el formulario cualquier cosa en usuario y en password: ' or '1'='1
       //y observar que entonces la condición WHERE del SELECT siempre se cumple ya que se convierte en:
@@ -66,24 +64,24 @@ session_start();
       //$usuario             = $_REQUEST['usuario'];
       //$clave               = $_REQUEST['clave'];
       //$sqlcomprobarusuario = "SELECT nombre, clave FROM usuarios WHERE nombre='$usuario' AND clave='$clave'";
-      //$resulcomprobacion   = mysqli_query($conexion, $sqlcomprobarusuario) or exit("Fallo en acceso a comprobación1");
+      //$resulcomprobacion   = mysqli_query($GLOBALS['conexion'], $sqlcomprobarusuario) or exit("Fallo en acceso a comprobación1");
 
       //Versión más segura: hace uso de función mysqli_real_scape_string que recibe un texto y lo devuelve a su formato seguro:
       //lo que hace es pasar a forma escapada los caracteres peligrosos (como comillas, saltos de línea, punto y coma, etc),
       //así, por ejemplo, la comilla simple (') se convierte en (\'), con lo cual no se pueden delimitar nuevas
       //instrucciones o elementos y estaremos más seguros ante una inyección SQL
-      $usuario = mysqli_real_escape_string($conexion, $_REQUEST['usuario']);
-      $clave = mysqli_real_escape_string($conexion, $_REQUEST['clave']);
+      $usuario = mysqli_real_escape_string($GLOBALS['conexion'], $_REQUEST['usuario']);
+      $clave = mysqli_real_escape_string($GLOBALS['conexion'], $_REQUEST['clave']);
       $sqlcomprobarusuario="select nombre, clave from usuarios where nombre='$usuario'";
       //$sqlcomprobarusuario="select nombre, clave from usuarios where nombre='$usuario' and clave='$clave'";
-      $resulcomprobacion = mysqli_query($conexion, $sqlcomprobarusuario) or die("Fallo en acceso a comprobación2");
+      $resulcomprobacion = mysqli_query($GLOBALS['conexion'], $sqlcomprobarusuario) or die("Fallo en acceso a comprobación2");
 
       //Otra forma de implementar versión más segura. Probarlo también  así:
       //$usuario=$_REQUEST['usuario'];
       //$clave=$_REQUEST['clave'];
       //$sqlcomprobarusuario="select nombre, pass from usuarios where nombre='$usuario' and pass='$clave'";
-      //$sqlseguro=mysqli_real_escape_string($conexion,$sqlcomprobarusuario);
-      //$resulcomprobacion = mysqli_query ($conexion,$sqlcomprobarusuario) or die("Fallo en acceso a comprobación2");
+      //$sqlseguro=mysqli_real_escape_string($GLOBALS['conexion'],$sqlcomprobarusuario);
+      //$resulcomprobacion = mysqli_query ($GLOBALS['conexion'],$sqlcomprobarusuario) or die("Fallo en acceso a comprobación2");
 
       /*print mysqli_num_rows($resulcomprobacion).'<br>';
       print $_REQUEST['usuario'].'<br>';
@@ -106,7 +104,7 @@ session_start();
           print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
           print "<p>Contrraseña incorrecta. Vuelve a <a href='login.php'>introducir</a> tus datos</p>";
       }
-      mysqli_close($conexion);
+      desconectar();
   }
     ?>
     </main>
