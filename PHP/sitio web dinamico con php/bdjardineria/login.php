@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
   <body>
@@ -75,13 +75,13 @@
           } else {
               print "<br/><br/>";
               print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
-              print "<p>Contrraseña incorrecta. Vuelve a <a href='ejer12.php'>introducir</a> tus datos</p>";
+              print "<p>Contrraseña incorrecta. Vuelve a <a href='login.php'>introducir</a> tus datos</p>";
           }
 
       } else { //Intento de entrada fallido
           print "<br/><br/>";
           print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
-          print "<p>Contrraseña incorrecta. Vuelve a <a href='ejer12.php'>introducir</a> tus datos</p>";
+          print "<p>Contrraseña incorrecta. Vuelve a <a href='login.php'>introducir</a> tus datos</p>";
       }
       mysqli_close($conexion);
   }

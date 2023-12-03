@@ -6,9 +6,8 @@
     <?php include '../includes/menu2.php'; ?>
     <div class="contenedorCentral">
       <?php include '../includes/nav_bbdd.php'; ?>
-      <main align="center">
-        <?php include 'creacionDeTablaUsuarios.php' ?>
-		  <a href="index.php" style="display: flex; justify-content: start;">Inicio - Ejercicios BBDD</a>
+      <main>
+		  <a href="index.php">Inicio - Ejercicios BBDD</a>
 		  <?php
 //Problemas de seguridad por inyección de código SQL malicioso.
 //"SQL Injection" es una técnica de ataque a paginas, que intentan colar código SQL
@@ -19,19 +18,22 @@
 
 //Mostrar formulario pidiendo usuario y clave
   if (!isset($_REQUEST['enviar'])) {
-      print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
+      print "<h2>Esta zona tiene el acceso restringido.<br> " .
+         " Para entrar debe identificarse</h2>";
 
       print "<form action='ejer12.php' method='get'><br>";
 
       print "<p>Usuario: ";
       print "<input type='text' name='usuario' size='15'></p>";
       print "<p>Clave: ";
-      print "<input type='password' name='clave' size='15'></p>";
+      print "<input type='text' name='clave' size='15'></p>";
       print "<p><input type='submit' name='enviar' value='Entrar'></p>";
 
       print "</form>";
 
-
+      print "<p>NOTA: si no dispone de identificación o tiene problemas
+		 para entrar<br>póngase en contacto con el
+		 <a href='mailto:admin@localhost'>administrador</a> del sitio</p>";
   } else {
       // Comprobar que el usuario está autorizado a consultar la base de datos
       $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor");
@@ -41,20 +43,19 @@
       //y observar que entonces la condición WHERE del SELECT siempre se cumple ya que se convierte en:
       //SELECT nombre, pass FROM usuarios WHERE nombre='....' and pass='' or '1'='1'
       //con lo cual permite acceder sin introducir el usuario y password correctos. FALLO DE SEGURIDAD.
-      //$usuario             = $_REQUEST['usuario'];
-      //$clave               = $_REQUEST['clave'];
-      //$sqlcomprobarusuario = "SELECT nombre, clave FROM usuarios WHERE nombre='$usuario' AND clave='$clave'";
-      //$resulcomprobacion   = mysqli_query($conexion, $sqlcomprobarusuario) or exit("Fallo en acceso a comprobación1");
+      $usuario             = $_REQUEST['usuario'];
+      $clave               = $_REQUEST['clave'];
+      $sqlcomprobarusuario = "SELECT nombre, clave FROM usuarios WHERE nombre='$usuario' AND clave='$clave'";
+      $resulcomprobacion   = mysqli_query($conexion, $sqlcomprobarusuario) or exit("Fallo en acceso a comprobación1");
 
       //Versión más segura: hace uso de función mysqli_real_scape_string que recibe un texto y lo devuelve a su formato seguro:
       //lo que hace es pasar a forma escapada los caracteres peligrosos (como comillas, saltos de línea, punto y coma, etc),
       //así, por ejemplo, la comilla simple (') se convierte en (\'), con lo cual no se pueden delimitar nuevas
       //instrucciones o elementos y estaremos más seguros ante una inyección SQL
-      $usuario = mysqli_real_escape_string($conexion, $_REQUEST['usuario']);
-      $clave = mysqli_real_escape_string($conexion, $_REQUEST['clave']);
-      $sqlcomprobarusuario="select nombre, clave from usuarios where nombre='$usuario'";
-      //$sqlcomprobarusuario="select nombre, clave from usuarios where nombre='$usuario' and clave='$clave'";
-      $resulcomprobacion = mysqli_query($conexion, $sqlcomprobarusuario) or die("Fallo en acceso a comprobación2");
+      //$usuario = mysqli_real_escape_string($conexion,$_REQUEST['usuario']);
+      //$clave = mysqli_real_escape_string($conexion,$_REQUEST['clave']);
+      //$sqlcomprobarusuario="select nombre, pass from usuarios where nombre='$usuario' and pass='$clave'";
+      //$resulcomprobacion = mysqli_query ($conexion,$sqlcomprobarusuario) or die("Fallo en acceso a comprobación2");
 
       //Otra forma de implementar versión más segura. Probarlo también  así:
       //$usuario=$_REQUEST['usuario'];
@@ -63,25 +64,22 @@
       //$sqlseguro=mysqli_real_escape_string($conexion,$sqlcomprobarusuario);
       //$resulcomprobacion = mysqli_query ($conexion,$sqlcomprobarusuario) or die("Fallo en acceso a comprobación2");
 
-      /*print mysqli_num_rows($resulcomprobacion).'<br>';
-      print $_REQUEST['usuario'].'<br>';
-      print password_hash($_REQUEST['clave'], PASSWORD_BCRYPT).'<br>';*/
       if (mysqli_num_rows($resulcomprobacion) > 0) { //Comprobación satisfactoria. usuario y contraseña correctos
-          $fila = mysqli_fetch_assoc($resulcomprobacion);
-          if(password_verify($_REQUEST['clave'], $fila['clave'])) {
-              print "<br/><br/>";
-              print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
-              print '<p>Bienbenido/a '. $_REQUEST['usuario'].'. Ahora puedes navegar por los distintos ejercicios de la sección</p>';
-          } else {
-              print "<br/><br/>";
-              print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
-              print "<p>Contrraseña incorrecta. Vuelve a <a href='ejer12.php'>introducir</a> tus datos</p>";
+          $resulconsulta = mysqli_query($conexion, "select * from clientes") or exit("Fallo en la consulta");
+          $nfilas        = mysqli_num_rows($resulconsulta);
+          print '<table border=1>';
+          print "<tr><th>CÓDIGO</th><th>NOMBRE CLIENTE</th><th>NOMBRE CONTACTO</th></tr>";
+          for($f = 0; $f < $nfilas; $f++) {
+              print '<tr>';
+              $fila = mysqli_fetch_array($resulconsulta);
+              echo '<td>',$fila[0],'</td><td>',$fila[1],'</td><td>',$fila[2],'</td>';
+              print '</tr>';
           }
-
+          print '</table>';
       } else { //Intento de entrada fallido
           print "<br/><br/>";
-          print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
-          print "<p>Contrraseña incorrecta. Vuelve a <a href='ejer12.php'>introducir</a> tus datos</p>";
+          print "<h2>Acceso no autorizado</h2>";
+          print "<p>[ <a href='listaclientesmasseguro.php'>Volver a intentar identificarse</a> ]</p>";
       }
       mysqli_close($conexion);
   }

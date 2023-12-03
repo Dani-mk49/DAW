@@ -1,6 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
+    <style>
+td {
+    width: auto;
+  height: auto;
+}
+        table, th, td {
+  box-sizing: border-box;
+}
+
+    </style>
   <body>
     <?php include '../includes/header2.php'; ?>
     <?php include '../includes/menu2.php'; ?>

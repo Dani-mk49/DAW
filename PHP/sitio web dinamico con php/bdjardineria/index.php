@@ -9,6 +9,7 @@
       <main>
         <h2>Zona de ejercicios con bases de datos</h2>
         <p>Aquí se pueden consultar desde el menú de navegación algunos de los ejercicios realizados en el módulo sobre programación de acceso a datos con PHP y MySQL</p>
+        <p>Esta sección tiene el acceso restringido a usuarios registrados en la base de datos, por favaor <a href="">identifiquese</a> o <a href="">regístrese</a></p>
       </main>
       <?php include '../includes/aside2.php'; ?>
       </div>
