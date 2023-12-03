@@ -7,6 +7,7 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_basicos.php'; ?>
 			<main>
+        <h1>Cambio divisas</h1>
       <a href="index.php">Inicio - Ejercicios Base</a>
 				<form action="ejer3.php" method="GET">
 					<p>Cambio de 1 euro a dólares estadounidenses: <input type="number" name="cambioDolar" step="0.0001" min="0" required></p>

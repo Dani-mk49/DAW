@@ -8,6 +8,7 @@
       <?php include '../includes/nav_basicos.php'; ?>
       <main>
       <a href="index.php">Inicio - Ejercicios Base</a><br><br>
+      <h1>Test PHP</h1>
         <form action="ejer1.php" method="GET">
             <b>Introduce tu nombre:</b> <input type="text" name="nombre"><br><br>
             <b>Introduce tus apellidos:</b> <input type="text" name="apellidos">

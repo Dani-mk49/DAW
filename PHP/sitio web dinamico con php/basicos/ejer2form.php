@@ -8,6 +8,7 @@
       <?php include '../includes/nav_basicos.php'; ?>
       <main>
       <a href="index.php">Inicio - Ejercicios Base</a>
+      <h1>Conversor de €</h1>
         <form action="ejer2.php" method="post">
           <p>
             Introduce cantidad de euros a cambiar:

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
   <body>

@@ -9,10 +9,11 @@
       <main>
       <a href="index.php">Inicio - Ejercicios de funciones</a>
 		<div>
+            <h1>Tablas HTML</h1>
             <?php
                 function tablaNxM($n, $m)
                 {
-                    echo "<h1>TABLA HTML DE $n x $m</h1>";
+                    echo "<h2>TABLA HTML DE $n x $m</h2>";
                     echo "<table border='1'>";
                     $numero=1;
                     for ($i=1;$i<=$n;$i++) {

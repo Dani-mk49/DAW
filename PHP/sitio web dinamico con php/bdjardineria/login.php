@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <?php include '../includes/metadata2.php'; ?>
@@ -27,7 +30,7 @@
   if (!isset($_REQUEST['enviar'])) {?>
       <h2>LOGIN PARA USUARIOS REGISTRADOS</h2>
 
-      <form action='ejer12.php' method='get'><br>
+      <form action='login.php' method='get'><br>
         <table align="center">
           <tr>
             <td>Usuario:</td>
@@ -91,16 +94,17 @@
               print "<br/><br/>";
               print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
               print '<p>Bienbenido/a '. $_REQUEST['usuario'].'. Ahora puedes navegar por los distintos ejercicios de la sección</p>';
+              $_SESSION['usuario'] = $_REQUEST['usuario'];
           } else {
               print "<br/><br/>";
               print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
-              print "<p>Contrraseña incorrecta. Vuelve a <a href='ejer12.php'>introducir</a> tus datos</p>";
+              print "<p>Contrraseña incorrecta. Vuelve a <a href='login.php'>introducir</a> tus datos</p>";
           }
 
       } else { //Intento de entrada fallido
           print "<br/><br/>";
           print '<h2>LOGIN PARA USUARIOS REGISTRADOS</h2>';
-          print "<p>Contrraseña incorrecta. Vuelve a <a href='ejer12.php'>introducir</a> tus datos</p>";
+          print "<p>Contrraseña incorrecta. Vuelve a <a href='login.php'>introducir</a> tus datos</p>";
       }
       mysqli_close($conexion);
   }

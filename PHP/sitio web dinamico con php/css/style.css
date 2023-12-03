@@ -92,14 +92,32 @@
        /* Asegurarse de que el padding se incluya en el tamaño total */
    }
 
+   .contenedorCentral main h1 {
+       display: block;
+       text-align: center;
+   }
+
    .contenedorCentral aside {
        display: flex;
+       flex-direction: column;
+       justify-content: space-around;
+       text-align: center;
        background-color: grey;
        height: 100%;
        width: 100%;
-       justify-content: center;
-       align-items: center;
    }
+
+   .imgDivAside {
+       width: 80%;
+       display: flex;
+       padding-left: 15px;
+   }
+
+   .imgDivAside a img {
+       max-width: 100%;
+       height: auto;
+   }
+
 
    /*footer {
     display: flex;
@@ -112,16 +130,25 @@
 }*/
    footer {
        display: flex;
-       margin: 0;
-       background-color: black;
-       color: white;
-       height: 90px;
+       flex-direction: column;
        justify-content: center;
        align-items: center;
+       background-color: black;
+       color: white;
+       height: 100px;
+       text-align: center;
        position: relative;
-       /* Añadir posición relativa */
    }
-
+   .imgFooter img{
+    padding-top: 1em;
+    width: 50px;
+    height: auto;
+   }
    #inicio {
        font-weight: bold;
+   }
+
+   .btnCerrarSesion {
+       display: flex;
+       justify-content: end;
    }

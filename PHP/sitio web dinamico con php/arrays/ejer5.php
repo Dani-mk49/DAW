@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
     <?php include '../includes/metadata2.php'; ?>
   <body>
@@ -7,28 +7,62 @@
     <div class="contenedorCentral">
       <?php include '../includes/nav_arrays.php'; ?>
       <main>
-        <a href="index.php">Inicio - Ejercicios de Arrays</a>
-        <br>
-      <?php
-  define("PI", 3.141592);
-    //Nueva versión de función circulo
-    //Ahora recibe como parámetro de entrada el valor del radio y devuelve con return un array con los 2 resultados: la longitud y el area.
-    function circulo($r)
-    {
-        $v[0] = 2  * PI * $r;        //Almacena en v[0] la longitud
-        $v[1] = PI * pow($r, 2);   //Almacena en v[1] el area
-        return $v;
+          <a href="index.php">Inicio - Ejercicios de Arrays</a>
+		<div>
+            <h1>Uso de funciones propias de strings</h1>
+<?php
+    $words = ["gato", "perro", "elefante", "jirafa", "tortuga", "leon", "tigre", "loro", "canguro", "pinguino"];
+
+    print "<br><br>Array de strings: " . implode(", ", $words) . "<br><br>";
+
+    // Encuentra la palabra más larga
+    $longestWord = "";
+    foreach ($words as $word) {
+        if (strlen($word) > strlen($longestWord)) {
+            $longestWord = $word;
+        }
     }
 
-    $radio = 2;
-    $res   = circulo($radio);
-    print "El círculo de radio $radio tiene longitd $res[0] y área $res[1]<br/>";
+    // Encuentra la palabra más corta
+    $shortestWord = $words[0];
+    foreach ($words as $word) {
+        if (strlen($word) < strlen($shortestWord)) {
+            $shortestWord = $word;
+        }
+    }
 
-    $res = circulo(4.5);
-    print "El círculo de radio 4.5 tiene longitd $res[0] y área $res[1]<br/>";
+    // Encuentra palabras con más de 5 letras
+    $longWords = [];
+    foreach ($words as $word) {
+        if (strlen($word) > 5) {
+            $longWords[] = $word;
+        }
+    }
 
+    // Ordena el array alfabéticamente
+    sort($words);
+
+    // Función para invertir palabras
+    function inviertePalabras($array)
+    {
+        $invertedWords = [];
+        foreach ($array as $word) {
+            $invertedWords[] = strrev($word);
+        }
+        return $invertedWords;
+    }
+
+    // Invierte las palabras
+    $invertedArray = inviertePalabras($words);
+
+    print "Palabra más larga: $longestWord<br><br>";
+    print "Palabra más corta: $shortestWord<br><br>";
+    print "Palabras con más de 5 letras: " . implode(", ", $longWords) . "<br><br>";
+    print "Array ordenado alfabéticamente: " . implode(", ", $words) . "<br><br>";
+    print "Palabras invertidas: " . implode(", ", $invertedArray) . "<br><br>";
     ?>
-      </main>
+        </div>
+        </main>
       <?php include '../includes/aside2.php'; ?>
       </div>
       <?php include '../includes/footer2.php'; ?>
