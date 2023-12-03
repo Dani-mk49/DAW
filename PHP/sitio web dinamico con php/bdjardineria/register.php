@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php include 'conectabd.php' ?>
 <?php include '../includes/metadata2.php'; ?>
 <style>
   td{
@@ -58,8 +59,8 @@ if (!isset($_REQUEST['registrar'])) {?>
     print '<p>Los campos para la contraseña no coinciden. Vuelva a introducir los datos en el <a href="register.php">formulario</a> de registro.</p>';
 } else {
     // Comprobar que el usuario está autorizado a consultar la base de datos
-    $conexion = mysqli_connect("127.0.0.1", "root", "", "jardineria") or exit("No se puede conectar con el servidor");
-    //mysqli_select_db($conexion, "jardineria")                         or exit("No se puede seleccionar la BD");
+    conectar();
+    //mysqli_select_db($GLOBALS['conexion'], "jardineria")                         or exit("No se puede seleccionar la BD");
     //Versión insegura: permite "inyección SQL"
     //Probar ésta introduciendo en el formulario cualquier cosa en usuario y en password: ' or '1'='1
     //y observar que entonces la condición WHERE del SELECT siempre se cumple ya que se convierte en:
@@ -68,24 +69,24 @@ if (!isset($_REQUEST['registrar'])) {?>
     //$usuario             = $_REQUEST['usuario'];
     //$clave               = $_REQUEST['clave'];
     //$sql = "SELECT nombre, clave FROM usuarios WHERE nombre='$usuario' AND clave='$clave'";
-    //$resulcomprobacion   = mysqli_query($conexion, $sql) or exit("Fallo en acceso a comprobación1");
+    //$resulcomprobacion   = mysqli_query($GLOBALS['conexion'], $sql) or exit("Fallo en acceso a comprobación1");
 
     //Versión más segura: hace uso de función mysqli_real_scape_string que recibe un texto y lo devuelve a su formato seguro:
     //lo que hace es pasar a forma escapada los caracteres peligrosos (como comillas, saltos de línea, punto y coma, etc),
     //así, por ejemplo, la comilla simple (') se convierte en (\'), con lo cual no se pueden delimitar nuevas
     //instrucciones o elementos y estaremos más seguros ante una inyección SQL
-    $usuario = mysqli_real_escape_string($conexion, $_REQUEST['usuario']);
-    //$clave = mysqli_real_escape_string($conexion, $_REQUEST['clave']);
+    $usuario = mysqli_real_escape_string($GLOBALS['conexion'], $_REQUEST['usuario']);
+    //$clave = mysqli_real_escape_string($GLOBALS['conexion'], $_REQUEST['clave']);
     $sql="select nombre from usuarios where nombre='$usuario'";
     //$sql="select nombre, clave from usuarios where nombre='$usuario' and clave='$clave'";
-    $resulcomprobacion = mysqli_query($conexion, $sql) or die("Fallo en acceso a comprobación2");
+    $resulcomprobacion = mysqli_query($GLOBALS['conexion'], $sql) or die("Fallo en acceso a comprobación2");
 
     //Otra forma de implementar versión más segura. Probarlo también  así:
     //$usuario=$_REQUEST['usuario'];
     //$clave=$_REQUEST['clave'];
     //$sql="select nombre, pass from usuarios where nombre='$usuario' and pass='$clave'";
-    //$sqlseguro=mysqli_real_escape_string($conexion,$sql);
-    //$resulcomprobacion = mysqli_query ($conexion,$sql) or die("Fallo en acceso a comprobación2");
+    //$sqlseguro=mysqli_real_escape_string($GLOBALS['conexion'],$sql);
+    //$resulcomprobacion = mysqli_query ($GLOBALS['conexion'],$sql) or die("Fallo en acceso a comprobación2");
 
     /*print mysqli_num_rows($resulcomprobacion).'<br>';
     print $_REQUEST['usuario'].'<br>';
@@ -94,13 +95,13 @@ if (!isset($_REQUEST['registrar'])) {?>
         print '<p>El usuario '.$_REQUEST['usuario'].' ya está registrado en la base de datos. Puede indentificarse <a href="login.php">aquí</a></p>';
 
     } else {
-        $usuario = mysqli_real_escape_string($conexion, $_REQUEST['usuario']);
-        $clave = mysqli_real_escape_string($conexion, password_hash($_REQUEST['clave'], PASSWORD_BCRYPT));
+        $usuario = mysqli_real_escape_string($GLOBALS['conexion'], $_REQUEST['usuario']);
+        $clave = mysqli_real_escape_string($GLOBALS['conexion'], password_hash($_REQUEST['clave'], PASSWORD_BCRYPT));
         $sql="INSERT into usuarios (nombre, clave) values('$usuario', '$clave')";
         print '<p>Usuario '.$_REQUEST['usuario'].' insertado con éxito. Ahora puede <a href="login.php">identificarse</a> para visualizar los ejercicios de esta sección</p>';
-        $consulta    = mysqli_query($conexion, $sql) or exit("Fallo en la inserción");
+        $consulta    = mysqli_query($GLOBALS['conexion'], $sql) or exit("Fallo en la inserción");
     }
-    mysqli_close($conexion);
+    desconectar();
 }
 ?>
     </main>
