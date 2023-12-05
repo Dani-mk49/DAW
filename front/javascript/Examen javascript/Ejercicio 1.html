@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //llama a la funcion para hacer el array
+    var arrayRaro = generarArray();
+    //pita el array con separaciones ~
+    document.write(arrayRaro.join("~"));
+    document.writeln('<br>');
+    //llama a la funcion de sustituir los impares del arra anterior y lo pinta con separaciones ~
+    document.writeln(sustitucionImpar(arrayRaro).join("~"))
+
+    //genera el numero aleatorio wntero
+    function numAleratorio() {
+      var numero = parseInt(Math.random() * 100);
+      return numero;
+    }
+
+    //esta funcion rellena un array siempre y cuando el valor aleatorio sea igual o mayor que 20 y menor que 100, siempre y cuando dicho numero sea par o multiplo de 3, hasta tener 15 valores dentro del array(ejercicio 1)
+    function generarArray() {
+      var miarray = new Array();
+      do {
+        var numer = numAleratorio();
+        if (numer < 100 && numer >= 20) {
+          if ((numer % 2) == 0) {
+            miarray.push(numer);
+          } else if ((numer % 3) == 0) {
+            miarray.push(numer);
+          }
+        }
+      } while (miarray.length < 15);
+      return miarray;
+    }
+
+    //esta funcion lo que hace es recorrer el array que le pasan y lo va copiando a un nuevo array, si detecta que el contenido de el array que se le ha proporcionado es impar lo que hace es sustituir dicho numero en el nuevo array por la palabra impar
+    function sustitucionImpar(arra) {
+      var newArra = new Array();
+      for (var i = 0; i < arra.length; i++) {
+        if ((arra[i] % 2) == 1) {
+          newArra.push('impar');
+        } else {
+          newArra.push(arra[i]);
+        }
+      }
+      return newArra;
+    }
+  </script>
+</body>
+</html>

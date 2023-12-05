@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!--he creado un boton y le he puesto un atributo conclick a una funcion-->
+  <input type="button" value="Crear cuenta bancaria" onclick="btnOnclick()">
+  <script>
+    var almacen= new Array();
+    //creo la clase cuenta bancaria
+    class cuentaBancaria {
+      //contructor con 3 parametros, titular, apellidos y saldo
+      constructor(titular, apellidos, saldo) {
+        this.titular = titular;
+        this.apellidos = apellidos;
+        this.saldo = saldo;
+      }
+      //metodo para imprimir por pantalla el objeto
+      imprimeDatos() {
+        alert('Se ha creado la nueva cuenta bancaria\nNombre: '+this.titular + "\nApellidos: " + this.apellidos + "\nSaldo: " + this.saldo);
+      }
+    }
+
+    //en esta funcion recojo los valores de la cuenta bancaria haciendo las comprobaciones pertientes
+    function btnOnclick() {
+      var nombre;
+      do{
+        nombre = prompt("Nombre del titular");
+      }while(isEmpty(nombre));
+      var apellidos;
+      do{
+        apellidos = prompt("Apellidos del titular");
+      }while(isEmpty(apellidos));
+
+      var saldo;
+      do{
+        saldo = prompt("Introduce el saldo");
+      }while(isNaN(saldo)||isEmpty(saldo));
+
+      almacen.push(new cuentaBancaria(nombre, apellidos, saldo));
+      almacen[0].imprimeDatos();
+    }
+
+    //funcion para comprobar si esta vacio
+    function isEmpty(valor){
+      return (!valor || valor.trim() === "");
+    }
+
+  </script>
+</body>
+</html>
