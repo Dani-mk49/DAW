@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Ejercicio 2</title>
+  <style>
+    div,
+    #cincuenta {
+      /*con esto te centramos todos los div en el medio de la pantalla, tambien centramos el span que contiene 50 de paso*/
+      position: absolute;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #azul {
+      /*damos estilo al contenedor azul*/
+      background-color: blue;
+      border-radius: 10px;
+      border: 1px black solid;
+      width: 300px;
+      height: 300px;
+    }
+
+    #verde {
+      /*damos estilo al contenedor verde*/
+      background-color: green;
+      border-radius: 100%;
+      border: 1px black solid;
+      width: 150px;
+      height: 150px;
+
+    }
+
+    #amarillo {
+      /*damos estilo al contenedor amarillo*/
+      background-color: yellow;
+      border-radius: 100%;
+      border: 1px black solid;
+      width: 100px;
+      height: 100px;
+    }
+
+    #rojo {
+      /*damos estilo al contenedor rojo*/
+      background-color: red;
+      border: 1px black solid;
+      color: white;
+      border-radius: 100%;
+      width: 40px;
+      height: 40px;
+    }
+
+    span {
+      /*con esto hacemos que los numero 30 y 40 esten centrados y algo separados de la parte superior*/
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="azul">
+  </div>
+  <div id="verde">
+    <span>30</span>
+  </div>
+  <div id="amarillo">
+    <span>40</span>
+  </div>
+  <div id="rojo">
+    <span id="cincuenta">50</span>
+  </div>
+</body>
+</html>

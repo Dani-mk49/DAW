@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Ejercicio 1</title>
+    <style>
+      /*no se si funciona, en el caso de que no, si se visualizan las traducciones quitandole el estilo por defecto a la clase .espanol las palabras estan centradas vertical y horizontalmente respecto a las otras*/
+    .palabra:hover .espanol{
+      visibility: visible;
+    }
+    .espanol{
+      visibility: collapse;
+    }
+    #contenedor {
+      /*estilos que se le da al contenedor para que tenga las dimensiones deseadas*/
+      border-radius: 5px;
+      border: 3px black solid;
+      padding: 20px;
+      width: 400px;
+    }
+
+    ul {
+      /*estilos de la lista para que aparezca con forma de cuadrado*/
+      list-style: square;
+      margin: 0;
+      padding-left: 15px;
+    }
+
+    .contenido {
+      /*estilo del contenedor de dentro de la lista para que aparezcan en la misma linea*/
+      display: flex;
+    }
+
+    .contenido .ingles {
+      /*tamaño minimo del contenedor donde están las palabras en inglés para que luego en español estén alineadas*/
+      min-width: 100px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h3>Vocabulario: Inglés - Español</h3>
+  <br>
+  <div id="contenedor">
+
+    <ul>
+      <li>
+        <div class="contenido">
+          <div class="ingles">
+            <span class="palabra">Car</span>
+          </div>
+          <div class="espanol">
+            <span>Coche</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="contenido">
+          <div class="ingles">
+            <span class="palabra">Window</span>
+          </div>
+          <div class="espanol">
+            <span>Ventana</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="contenido">
+          <div class="ingles">
+            <span class="palabra">Door</span>
+          </div>
+          <div class="espanol">
+            <span>Puerta</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
