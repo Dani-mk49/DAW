@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Document</title>
+  <style>
+    label {
+      position: absolute;
+      display: none;
+      text-align: center;
+      font-size: large;
+      background-color: azure;
+      width: fit-content;
+      height: fit-content;
+      top: 0px;
+      left: 0px;
+    }
+
+    .nota1:hover+label {
+      display: inline-block;
+      top: 250px;
+      left: 50px;
+    }
+    .nota2:hover+label {
+      display: inline-block;
+      top: 250px;
+      left: 50px;
+    }
+    .nota3:hover+label {
+      display: inline-block;
+      top: 250px;
+      left: 50px;
+    }
+    /*el puto bastardo de los cojones no nos ha dejado la foto :)*/
+  </style>
+</head>
+
+<body>
+  <img src="imagen.jpg" alt="imagen" usemap="#imagen" />
+  <map name="imagen">
+    <area class="nota1" shape="rect" coords="50, 260, 80, 325" alt="nota1">
+    <label for="nota1">Puerta</label>
+
+    <area class="nota2" shape="rect" coords="140, 110, 190, 150" alt="nota2">
+    <label for="nota2">Ventana</label>
+
+    <area class="nota3" shape="rect" coords="50, 260, 80, 325" alt="nota3">
+    <label for="nota3">Bandera</label>
+  </map>
+</body>
+</html>
