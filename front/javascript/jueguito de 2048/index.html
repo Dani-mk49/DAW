@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>2048</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #contenedor {
+      border-radius: 15px;
+      padding: 5px;
+      display: grid;
+      background-color: grey;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      width: 500px;
+      height: 500px;
+    }
+
+    .casilla {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      background-color: lightblue;
+      border-radius: 15px;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .casilla:nth-child(1) {
+      background-color: #ffcccb;
+    }
+
+    .casilla:nth-child(2) {
+      background-color: #ffebcd;
+    }
+
+    .casilla:nth-child(3) {
+      background-color: #ffe4e1;
+    }
+
+    .casilla:nth-child(4) {
+      background-color: #ffd700;
+    }
+
+    .casilla:nth-child(5) {
+      background-color: #fad02e;
+    }
+
+    .casilla:nth-child(6) {
+      background-color: #98fb98;
+    }
+
+    .casilla:nth-child(7) {
+      background-color: #dda0dd;
+    }
+
+    .casilla:nth-child(8) {
+      background-color: #b0e0e6;
+    }
+
+    .casilla:nth-child(9) {
+      background-color: #dda0dd;
+    }
+
+    .casilla:nth-child(10) {
+      background-color: #98fb98;
+    }
+
+    .casilla:nth-child(11) {
+      background-color: #ffd700;
+    }
+
+    .casilla:nth-child(12) {
+      background-color: #ffe4e1;
+    }
+
+    .casilla:nth-child(13) {
+      background-color: #ffebcd;
+    }
+
+    .casilla:nth-child(14) {
+      background-color: #ffcccb;
+    }
+
+    .casilla:nth-child(15) {
+      background-color: #fad02e;
+    }
+
+    .casilla:nth-child(16) {
+      background-color: #b0e0e6;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="contenedor">
+    <div class="casilla"><span id="1"></span></div>
+    <div class="casilla"><span id="2"></span></div>
+    <div class="casilla"><span id="3"></span></div>
+    <div class="casilla"><span id="4"></span></div>
+    <div class="casilla"><span id="5"></span></div>
+    <div class="casilla"><span id="6"></span></div>
+    <div class="casilla"><span id="7"></span></div>
+    <div class="casilla"><span id="8"></span></div>
+    <div class="casilla"><span id="9"></span></div>
+    <div class="casilla"><span id="10"></span></div>
+    <div class="casilla"><span id="11"></span></div>
+    <div class="casilla"><span id="12"></span></div>
+    <div class="casilla"><span id="13"></span></div>
+    <div class="casilla"><span id="14"></span></div>
+    <div class="casilla"><span id="15"></span></div>
+    <div class="casilla"><span id="16"></span></div>
+  </div>
+</body>
+<script>
+  var numeroAleatorio = Math.floor(Math.random() * 16);
+</script>
+</html>

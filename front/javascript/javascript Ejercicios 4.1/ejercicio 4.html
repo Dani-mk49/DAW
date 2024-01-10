@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>ejercicio 4.1.4</title>
+</head>
+
+<body>
+  <p>Máximo <span id="contador">100</span> caracteres</p>
+  <textarea name="area" id="textAr" cols="30" rows="10" maxlength="100" onkeyup="actualizar(event)"></textarea>
+</body>
+<script>
+  function actualizar(event) {
+    document.getElementById('contador').textContent = 100 - document.getElementById('textAr').value.length;
+  }
+</script>
+</html>

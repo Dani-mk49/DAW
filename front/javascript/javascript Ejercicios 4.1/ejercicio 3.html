@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>ejercicio 4.1.3</title>
+</head>
+
+<body>
+  Sólo números.
+  <input type="text" id="num" onkeypress="return permite(event, 'num')" />
+  Sólo letras.
+  <input type="text" id="car" onkeypress="return permite(event, 'car')" />
+  Sólo letras o números.
+  <input type="text" id="num_car" onkeypress="return permite(event, 'num_car')" />
+</body>
+<script>
+  function permite(elEvento, permitidos) {
+    // Variables que definen los caracteres permitidos.
+    var numeros = "0123456789";
+    var caracteres = " abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+    var numeros_caracteres = numeros + caracteres;
+    var teclas_especiales = [34, 38, 59];
+    // 34 = ", 38 = &, 59 = ;
+
+    // Seleccionar los caracteres a partir del parámetro de la función.
+    var inputElement = document.getElementById(permitidos).value.length;
+    var comprobante = false;
+    if (inputElement < 10) {
+      comprobante = true;
+    }
+
+    switch (permitidos) {
+      case 'num':
+        permitidos = numeros;
+        break;
+      case 'car':
+        permitidos = caracteres;
+        break;
+      case 'num_car':
+        permitidos = numeros_caracteres;
+        break;
+    }
+
+    // Obtener la tecla pulsada.
+    var evento = elEvento || window.event;
+    var codigoCaracter = evento.charCode || evento.keyCode;
+    var caracter = String.fromCharCode(codigoCaracter);
+
+    // Comprobar si la tecla pulsada es alguna de las teclas especiales.
+    var tecla_especial = false;
+    for (var i in teclas_especiales) {
+      if (codigoCaracter == teclas_especiales[i]) {
+        tecla_especial = true;
+        break;
+      }
+    }
+    // Comprobar si la tecla pulsada se encuentra en los caracteres permitidos
+    // o si es una tecla especial.
+    return (permitidos.indexOf(caracter) != -1 || tecla_especial) && comprobante;
+
+  }
+
+</script>
+</html>
