@@ -123,6 +123,36 @@
   </div>
 </body>
 <script>
-  var numeroAleatorio = Math.floor(Math.random() * 16);
+  document.addEventListener('keydown', function (event) {
+    // Capturar la tecla presionada y su código
+    const codigoTecla = event.code;
+generacionDeNumeros();
+    // Mostrar información en la consola
+  });
+
+  var arrayNulos = Array(16).fill(null);
+  function comprobarVacio(casilla) {
+    if (isNaN(arrayNulos[casilla])) {
+      return true;
+    }
+    return false;
+  }
+  function generacionDeNumeros() {
+    var numeroAleatorio = Math.floor(Math.random() * 16);
+
+    if (!comprobarVacio(numeroAleatorio)) {
+      document.getElementById(numeroAleatorio).textContent = dosOCuatro();
+    }
+
+  }
+  function dosOCuatro() {
+    var probabilidad = Math.random();
+
+    if (probabilidad < 0.2) {
+      return 4; // 20% de probabilidad para 4
+    } else {
+      return 2; // 80% de probabilidad para 2
+    }
+  }
 </script>
 </html>
