@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>ejercicio 4.1.1</title>
+</head>
+<body style="height: 200vh; width: 200vh;">
+  <div style="position: fixed;">
+    Coordenada X navegador: <input type="text" id="navX" disabled> Coordenada Y navegador: <input type="text" id="navY" disabled>
+    <br>
+    <br>
+    Coordenada X monitor: <input type="text" id="monX" disabled> Coordenada Y monitor: <input type="text" id="monY" disabled>
+    <br>
+    <br>
+    Coordenada X absoluta: <input type="text" id="absX" disabled> Coordenada Y absoluta: <input type="text" id="absY" disabled>
+  </div>
+
+</body>
+<script>
+document.addEventListener('mousemove', function(event) {
+    // Actualizar los valores de los input con las coordenadas correspondientes
+    document.getElementById('navX').value = event.pageX;
+    document.getElementById('navY').value = event.pageY;
+    document.getElementById('monX').value = event.screenX;
+    document.getElementById('monY').value = event.screenY;
+    document.getElementById('absX').value = event.clientX;
+    document.getElementById('absY').value = event.clientY;
+});
+</script>
+</html>
