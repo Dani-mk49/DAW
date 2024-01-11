@@ -41,6 +41,15 @@ class Empleado extends Persona
             return true;
         }
         return false;
-
+    }
+    public function __toString()
+    {
+        $contenido = $this->getNombreCompleto() .', ' . $this->puesto . ', ';
+        if($this->pagarImpuestos()) {
+            $contenido = $contenido .'si debe pagar impuestos';
+        } else {
+            $contenido = $contenido .'no debe pagar impuestos';
+        }
+        return $contenido;
     }
 }
