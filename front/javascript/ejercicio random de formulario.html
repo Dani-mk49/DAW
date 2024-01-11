@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Document</title>
+  <script>
+    function verificarSeleccion() {
+      // Obtener la referencia a la casilla de verificación
+      var casilla = document.getElementById("casilla");
+
+      // Verificar si la casilla está seleccionada
+      if (casilla.checked) {
+        // Si está seleccionada, redirigir a "alta.html"
+        window.location.href = "alta.html";
+      } else {
+        // Si no está seleccionada, redirigir a "baja.html"
+        window.location.href = "baja.html";
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <form>
+    <label for="casilla">Selecciona:</label>
+    <input type="checkbox" id="casilla">
+
+    <button type="button" onclick="verificarSeleccion()">Enviar</button>
+  </form>
+
+</body>
+</html>

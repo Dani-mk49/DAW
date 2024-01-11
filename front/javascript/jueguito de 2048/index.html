@@ -4,7 +4,7 @@
   <title>2048</title>
   <style>
     body {
-      background-color: #2e2e2e;
+      background-color: #b1b1b1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,80 +24,20 @@
     }
 
     .casilla {
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      background-color: lightblue;
+      color: white;
       border-radius: 15px;
-      border: 1px solid #ccc;
+      min-width: calc(25% - 5px);
+      min-height: calc(25% - 5px);
+      max-width: 121.5px;
+      max-height: 121.5px;
+      text-align: center;
+      background-color: #202020;
+      border: 1px solid #202020;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-sizing: border-box;
-    }
-
-    .casilla:nth-child(1) {
-      background-color: #ffcccb;
-    }
-
-    .casilla:nth-child(2) {
-      background-color: #ffebcd;
-    }
-
-    .casilla:nth-child(3) {
-      background-color: #ffe4e1;
-    }
-
-    .casilla:nth-child(4) {
-      background-color: #ffd700;
-    }
-
-    .casilla:nth-child(5) {
-      background-color: #fad02e;
-    }
-
-    .casilla:nth-child(6) {
-      background-color: #98fb98;
-    }
-
-    .casilla:nth-child(7) {
-      background-color: #dda0dd;
-    }
-
-    .casilla:nth-child(8) {
-      background-color: #b0e0e6;
-    }
-
-    .casilla:nth-child(9) {
-      background-color: #dda0dd;
-    }
-
-    .casilla:nth-child(10) {
-      background-color: #98fb98;
-    }
-
-    .casilla:nth-child(11) {
-      background-color: #ffd700;
-    }
-
-    .casilla:nth-child(12) {
-      background-color: #ffe4e1;
-    }
-
-    .casilla:nth-child(13) {
-      background-color: #ffebcd;
-    }
-
-    .casilla:nth-child(14) {
-      background-color: #ffcccb;
-    }
-
-    .casilla:nth-child(15) {
-      background-color: #fad02e;
-    }
-
-    .casilla:nth-child(16) {
-      background-color: #b0e0e6;
+      overflow: hidden;
     }
 
   </style>
@@ -122,16 +62,33 @@
     <div class="casilla"><span id="15"></span></div>
     <div class="casilla"><span id="16"></span></div>
   </div>
+
 </body>
 <script>
+  var numeros = Array(16).fill(null);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Tu código aquí se ejecutará después de que se cargue el DOM
+    generacionDeNumeros(); generacionDeNumeros();
+  });
   document.addEventListener('keydown', function (event) {
     // Capturar la tecla presionada y su código
-    const codigoTecla = event.code;
-    generacionDeNumeros();
+    const codigoTecla = event.keyCode;
+    //console.log(codigoTecla);
+    if (codigoTecla >= 37 && codigoTecla <= 40) {
+      movimientoDeCasillas(codigoTecla);
+      var alMenosUnoValido = numeros.some(function (valor) {
+        return valor == null;
+      });
+      if (alMenosUnoValido) {
+        generacionDeNumeros();
+      } else {
+        alert('El juego se acabó');
+      }
+    }
     // Mostrar información en la consola
   });
 
-  var numeros = Array(16).fill(null);
   function generacionDeNumeros() {
     do {
       var numeroAleatorio = Math.floor(Math.random() * 16) + 1;
@@ -158,6 +115,97 @@
     } else {
       return 2; // 80% de probabilidad para 2
     }
+  }
+  function movimientoDeCasillas(codigoTecla) {
+    switch (codigoTecla) {
+      case 37:
+        break;
+      case 38:
+        break;
+      case 39:
+        break;
+      case 40:
+        arribaAAbajo();
+        break;
+    }
+    //repintar();
+  }
+
+  function arribaAAbajo() {
+    /*
+    for (var i = 16; i > 4; i--) {
+      //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
+      if (numeros[i - 1] == numeros[i - 5]) {
+        numeros[i - 1] *= numeros[i - 1];
+        numeros[i - 5] = null;
+      }
+    }*/
+    desplazarArribaAAbajo();
+  }
+  function desplazarArribaAAbajo() {
+    /*for (var i = 11; i >=0 ; i--) {
+      if(numeros[i]!=null){
+        if (numeros[i + 4]==null) {
+          numeros[i+4] = numeros[i];
+          document.getElementById(i+1).textContent = "";
+          document.getElementById(i+5).textContent = numeros[i];
+          numeros[i] = null;
+        }
+      }
+    }*/
+    for (var i = 11; i >= 0; i--) {
+      if (numeros[i] != null) {
+        var j;
+        for(j = 4;j <15; j+=4){
+          if(numeros[i+j]!=null || i+j>numeros.length){
+            break;
+          }
+        }
+        //falta comprobar el funcionamiento, se supone que el bucle de antes me calcula cuantas posiciones puede saltar del tirón
+        console.log(j);
+        if (numeros[i + 4] == null && numeros[i + 8] && numeros[i+12]) {
+
+        } else if (numeros[i + 4] && numeros[i + 8]) {
+
+        } else if (numeros[i + 4] == null) {
+          numeros[i + 4] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + 5).textContent = numeros[i];
+          numeros[i] = null;
+        }
+      }
+    }
+  }
+  function abajoAArriba() {
+
+  }
+
+  function izquierdaADerecha() {
+
+  }
+
+  function derechaAIzquierda() {
+
+  }
+  function repintar() {
+    for (var i = 1; i <= 16; i++) {
+      document.getElementById(i).textContent = numeros[i - 1];
+    }
+  }
+  var arrayBidimensional = Array.from({ length: 4 }, () => Array(4).fill(null));
+
+  function conversionABidimensional(arr) {
+    // Recorrer el array bidimensional con forEach
+    var i = 0;
+    arrayBidimensional.forEach((fila, indiceFila) => {
+      fila.forEach((valor, indiceColumna) => {
+        valor = arr[i];
+        i++;
+      });
+    });
+  }
+  function desconversionDeBidimensional(arr) {
+
   }
 </script>
 </html>
