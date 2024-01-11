@@ -4,6 +4,7 @@
   <title>2048</title>
   <style>
     body {
+      background-color: #2e2e2e;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -126,24 +127,28 @@
   document.addEventListener('keydown', function (event) {
     // Capturar la tecla presionada y su código
     const codigoTecla = event.code;
-generacionDeNumeros();
+    generacionDeNumeros();
     // Mostrar información en la consola
   });
 
-  var arrayNulos = Array(16).fill(null);
+  var numeros = Array(16).fill(null);
+  function generacionDeNumeros() {
+    do {
+      var numeroAleatorio = Math.floor(Math.random() * 16) + 1;
+      var comprobante = false;
+      if (!comprobarVacio(numeroAleatorio)) {
+        var numIni = dosOCuatro();
+        document.getElementById(numeroAleatorio).textContent = numIni;
+        numeros[numeroAleatorio - 1] = numIni;
+        comprobante = true;
+      }
+    } while (!comprobante);
+  }
   function comprobarVacio(casilla) {
-    if (isNaN(arrayNulos[casilla])) {
+    if (numeros[casilla - 1] != null) {
       return true;
     }
     return false;
-  }
-  function generacionDeNumeros() {
-    var numeroAleatorio = Math.floor(Math.random() * 16);
-
-    if (!comprobarVacio(numeroAleatorio)) {
-      document.getElementById(numeroAleatorio).textContent = dosOCuatro();
-    }
-
   }
   function dosOCuatro() {
     var probabilidad = Math.random();
