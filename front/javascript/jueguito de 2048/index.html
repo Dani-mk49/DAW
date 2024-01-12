@@ -66,6 +66,7 @@
 </body>
 <script>
   var numeros = Array(16).fill(null);
+  var numerosAnteriores;
 
   document.addEventListener("DOMContentLoaded", function () {
     // Tu código aquí se ejecutará después de que se cargue el DOM
@@ -76,12 +77,15 @@
     const codigoTecla = event.keyCode;
     //console.log(codigoTecla);
     if (codigoTecla >= 37 && codigoTecla <= 40) {
+      numerosAnteriores = numeros.slice();
       movimientoDeCasillas(codigoTecla);
       var alMenosUnoValido = numeros.some(function (valor) {
         return valor == null;
       });
       if (alMenosUnoValido) {
-        generacionDeNumeros();
+        if(!sonIguales(numeros, numerosAnteriores)){
+          generacionDeNumeros();
+        }
       } else {
         alert('El juego se acabó');
       }
@@ -156,17 +160,19 @@
     for (var i = 11; i >= 0; i--) {
       if (numeros[i] != null) {
         var j;
-        for(j = 4;j <15; j+=4){
-          if(numeros[i+j]!=null || i+j>numeros.length){
+        for (j = 4; j <=16; j += 4) {
+          if (numeros[i + j] != null || 1 + i + j > numeros.length) {
+            j -= 4;
             break;
           }
         }
         //falta comprobar el funcionamiento, se supone que el bucle de antes me calcula cuantas posiciones puede saltar del tirón
-        console.log(j);
-        if (numeros[i + 4] == null && numeros[i + 8] && numeros[i+12]) {
-
-        } else if (numeros[i + 4] && numeros[i + 8]) {
-
+        //console.log(j);
+        if (j > 4) {
+          numeros[i + j] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + j + 1).textContent = numeros[i];
+          numeros[i] = null;
         } else if (numeros[i + 4] == null) {
           numeros[i + 4] = numeros[i];
           document.getElementById(i + 1).textContent = "";
@@ -207,5 +213,12 @@
   function desconversionDeBidimensional(arr) {
 
   }
+  function sonIguales(array1, array2) {
+    // Convertir los arrays a cadenas JSON y compararlas
+    const strArray1 = JSON.stringify(array1);
+    const strArray2 = JSON.stringify(array2);
+
+    return strArray1 === strArray2;
+}
 </script>
 </html>
