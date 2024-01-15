@@ -192,8 +192,8 @@
 
   function abajoAArriba() {
     desplazarAbajoAArriba();
-    //sumaDeAbajoAArriba();
-    //desplazarAbajoAArriba();
+    sumaDeAbajoAArriba();
+    desplazarAbajoAArriba();
   }
   function desplazarAbajoAArriba() {
     //esto ya no se necesita
@@ -207,37 +207,36 @@
         }
       }
     }*/
-    for (var i = 11; i >= 0; i--) {
+    for (var i = 4; i < 16; i++) {
       if (numeros[i] != null) {
         var j;
-        for (j = 4; j <= 16; j += 4) {
+        /*for (j = 4; j <= 16; j += 4) {
           if (numeros[i + j] != null || 1 + i + j > numeros.length) {
+            j -= 4;
+            break;
+          }
+        }*/
+        for (j = 4; j >= 1; j += 4) {
+          if (numeros[i - j] != null || 1 + i - j < 1) {
             j -= 4;
             break;
           }
         }
         //console.log(j);
         if (j >= 4) {
-          numeros[i + j] = numeros[i];
+          numeros[i - j] = numeros[i];
           document.getElementById(i + 1).textContent = "";
-          document.getElementById(i + j + 1).textContent = numeros[i];
+          document.getElementById(i - j + 1).textContent = numeros[i];
           numeros[i] = null;
-        } /*else if (numeros[i + 4] == null) {
-          numeros[i + 4] = numeros[i];
-          document.getElementById(i + 1).textContent = "";
-          document.getElementById(i + 5).textContent = numeros[i];
-          numeros[i] = null;
-        }*/
+        }
       }
     }
   }
   function sumaDeAbajoAArriba() {
-    for (var i = 16; i > 4; i--) {
-      //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
-      //hay que cambiar y poner que no puede ser nulo el campo en el siguiente if
-      if ((numeros[i - 1] == numeros[i - 5]) && numeros[i - 1] != null) {
+    for (var i = 1; i < 13; i++) {
+      if ((numeros[i - 1] == numeros[i + 3]) && numeros[i - 1] != null) {
         numeros[i - 1] += numeros[i - 1];
-        numeros[i - 5] = null;
+        numeros[i + 3] = null;
       }
     }
     repintar();
