@@ -121,7 +121,12 @@
       return 2; // 80% de probabilidad para 2
     }
   }
-
+  var arr = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16]
+];
   function movimientoDeCasillas(codigoTecla) {
     switch (codigoTecla) {
       case 37:
@@ -131,12 +136,18 @@
         abajoAArriba();
         break;
       case 39:
-        izquierdaADerecha();
+        //izquierdaADerecha();
+        desconversionDeBidimensional(arr);
+        alert('cambio');
+        rotate90Clockwise(arr);
+        desconversionDeBidimensional(arr);
+
         break;
       case 40:
         //aparentemente acabado el movimiento hacia abajo
         arribaAAbajo();
         break;
+
     }
     //repintar();
   }
@@ -366,8 +377,6 @@
     }
   }
 
-  /*var arrayBidimensional = Array.from({ length: 4 }, () => Array(4).fill(null));
-
   function conversionABidimensional(arr) {
     // Recorrer el array bidimensional con forEach
     var i = 0;
@@ -380,8 +389,14 @@
   }
 
   function desconversionDeBidimensional(arr) {
-
-  }*/
+    var variable=[];
+    for(var i = 0; i < arr.length; i++){
+      for(var j =0; j< arr[i].length;j++){
+        variable.push(arr[i][j]);
+      }
+    }
+    repintar(variable);
+  }
   function sonIguales(array1, array2) {
     // Convertir los arrays a cadenas JSON y compararlas
     const strArray1 = JSON.stringify(array1);
@@ -389,9 +404,9 @@
 
     return strArray1 === strArray2;
   }
-  //imaginate que tienes un array con 16 valores, e imaginate que están pintados de manera visual en una tabla de 4x4, y quieres hacer que los valores de la tabla giren 90º hacia la derecha de tal manera que el que esta en la celda 1,1 este en la celda 4,1 el de la 2,1 en la 4,2 etc
-  function girarEnSentidoHorario() {
-    const n = numeros.length;
+  //
+  function girarEnSentidoHorario(arr) {
+    const n = arr.length;
     const result = new Array(n).fill(0).map(() => new Array(n).fill(0));
 
     for (let i = 0; i < n; i++) {
@@ -401,6 +416,19 @@
     }
 
     return result;
+  }
+
+  function rotate90Clockwise(arr) {
+    var N = arr.length;
+    for (var i = 0; i < N / 2; i++) {
+      for (var j = i; j < N - i - 1; j++) {
+        var temp = arr[i][j];
+        arr[i][j] = arr[N - 1 - j][i];
+        arr[N - 1 - j][i] = arr[N - 1 - i][N - 1 - j];
+        arr[N - 1 - i][N - 1 - j] = arr[j][N - 1 - i];
+        arr[j][N - 1 - i] = temp;
+      }
+    }
   }
 
   function girarEnSentidoAntihorario() {
