@@ -75,7 +75,7 @@
   document.addEventListener('keydown', function (event) {
     // Capturar la tecla presionada y su código
     const codigoTecla = event.keyCode;
-    //console.log(codigoTecla);
+    console.log(codigoTecla);
     if (codigoTecla >= 37 && codigoTecla <= 40) {
       numerosAnteriores = numeros.slice();
       movimientoDeCasillas(codigoTecla);
@@ -125,10 +125,12 @@
       case 37:
         break;
       case 38:
+        abajoAArriba();
         break;
       case 39:
         break;
       case 40:
+        //aparentemente acabado el movimiento hacia abajo
         arribaAAbajo();
         break;
     }
@@ -136,17 +138,12 @@
   }
 
   function arribaAAbajo() {
-    /*
-    for (var i = 16; i > 4; i--) {
-      //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
-      if (numeros[i - 1] == numeros[i - 5]) {
-        numeros[i - 1] *= numeros[i - 1];
-        numeros[i - 5] = null;
-      }
-    }*/
+    desplazarArribaAAbajo();
+    sumaDeArribaAAbajo();
     desplazarArribaAAbajo();
   }
   function desplazarArribaAAbajo() {
+    //esto ya no se necesita
     /*for (var i = 11; i >=0 ; i--) {
       if(numeros[i]!=null){
         if (numeros[i + 4]==null) {
@@ -166,22 +163,33 @@
             break;
           }
         }
-        //falta comprobar el funcionamiento, se supone que el bucle de antes me calcula cuantas posiciones puede saltar del tirón
         //console.log(j);
-        if (j > 4) {
+        if (j >= 4) {
           numeros[i + j] = numeros[i];
           document.getElementById(i + 1).textContent = "";
           document.getElementById(i + j + 1).textContent = numeros[i];
           numeros[i] = null;
-        } else if (numeros[i + 4] == null) {
+        } /*else if (numeros[i + 4] == null) {
           numeros[i + 4] = numeros[i];
           document.getElementById(i + 1).textContent = "";
           document.getElementById(i + 5).textContent = numeros[i];
           numeros[i] = null;
-        }
+        }*/
       }
     }
   }
+  function sumaDeArribaAAbajo(){
+    for (var i = 16; i > 4; i--) {
+      //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
+      //hay que cambiar y poner que no puede ser nulo el campo en el siguiente if
+      if ((numeros[i - 1] == numeros[i - 5])&& numeros[i-1]!= null) {
+        numeros[i - 1] += numeros[i - 1];
+        numeros[i - 5] = null;
+      }
+    }
+    repintar();
+  }
+
   function abajoAArriba() {
 
   }
