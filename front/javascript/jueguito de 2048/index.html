@@ -75,7 +75,7 @@
   document.addEventListener('keydown', function (event) {
     // Capturar la tecla presionada y su código
     const codigoTecla = event.keyCode;
-    console.log(codigoTecla);
+    //console.log(codigoTecla);
     if (codigoTecla >= 37 && codigoTecla <= 40) {
       numerosAnteriores = numeros.slice();
       movimientoDeCasillas(codigoTecla);
@@ -105,6 +105,7 @@
       }
     } while (!comprobante);
   }
+
   function comprobarVacio(casilla) {
     if (numeros[casilla - 1] != null) {
       return true;
@@ -120,14 +121,17 @@
       return 2; // 80% de probabilidad para 2
     }
   }
+
   function movimientoDeCasillas(codigoTecla) {
     switch (codigoTecla) {
       case 37:
+        derechaAIzquierda();
         break;
       case 38:
         abajoAArriba();
         break;
       case 39:
+        izquierdaADerecha();
         break;
       case 40:
         //aparentemente acabado el movimiento hacia abajo
@@ -142,6 +146,7 @@
     sumaDeArribaAAbajo();
     desplazarArribaAAbajo();
   }
+
   function desplazarArribaAAbajo() {
     //esto ya no se necesita
     /*for (var i = 11; i >=0 ; i--) {
@@ -178,6 +183,7 @@
       }
     }
   }
+
   function sumaDeArribaAAbajo() {
     for (var i = 16; i > 4; i--) {
       //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
@@ -187,7 +193,7 @@
         numeros[i - 5] = null;
       }
     }
-    repintar();
+    repintar(numeros);
   }
 
   function abajoAArriba() {
@@ -195,6 +201,7 @@
     sumaDeAbajoAArriba();
     desplazarAbajoAArriba();
   }
+
   function desplazarAbajoAArriba() {
     //esto ya no se necesita
     /*for (var i = 11; i >=0 ; i--) {
@@ -232,6 +239,7 @@
       }
     }
   }
+
   function sumaDeAbajoAArriba() {
     for (var i = 1; i < 13; i++) {
       if ((numeros[i - 1] == numeros[i + 3]) && numeros[i - 1] != null) {
@@ -239,22 +247,126 @@
         numeros[i + 3] = null;
       }
     }
-    repintar();
+    repintar(numeros);
   }
+
   function izquierdaADerecha() {
-
+    desplazarIzquierdaADerecha();
+    //sumaDeIzquierdaADerecha();
+    //desplazarIzquierdaADerecha();
   }
 
-  function derechaAIzquierda() {
-
-  }
-  function repintar() {
-    for (var i = 1; i <= 16; i++) {
-      document.getElementById(i).textContent = numeros[i - 1];
+  function desplazarIzquierdaADerecha() {
+    //esto ya no se necesita
+    /*for (var i = 11; i >=0 ; i--) {
+      if(numeros[i]!=null){
+        if (numeros[i + 4]==null) {
+          numeros[i+4] = numeros[i];
+          document.getElementById(i+1).textContent = "";
+          document.getElementById(i+5).textContent = numeros[i];
+          numeros[i] = null;
+        }
+      }
+    }*/
+    for (var i = 11; i >= 0; i--) {
+      if (numeros[i] != null) {
+        var j;
+        for (j = 4; j <= 16; j += 4) {
+          if (numeros[i + j] != null || 1 + i + j > numeros.length) {
+            j -= 4;
+            break;
+          }
+        }
+        //console.log(j);
+        if (j >= 4) {
+          numeros[i + j] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + j + 1).textContent = numeros[i];
+          numeros[i] = null;
+        } /*else if (numeros[i + 4] == null) {
+          numeros[i + 4] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + 5).textContent = numeros[i];
+          numeros[i] = null;
+        }*/
+      }
     }
   }
 
-  var arrayBidimensional = Array.from({ length: 4 }, () => Array(4).fill(null));
+  function sumaDeIzquierdaADerecha() {
+    for (var i = 16; i > 4; i--) {
+      //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
+      //hay que cambiar y poner que no puede ser nulo el campo en el siguiente if
+      if ((numeros[i - 1] == numeros[i - 5]) && numeros[i - 1] != null) {
+        numeros[i - 1] += numeros[i - 1];
+        numeros[i - 5] = null;
+      }
+    }
+    repintar(numeros);
+  }
+
+  function derechaAIzquierda() {
+    desplazarDerechaAIzquierda();
+    //sumaDeDerechaAIzquierda();
+    //desplazarDerechaAIzquierda();
+  }
+
+  function desplazarDerechaAIzquierda() {
+    //esto ya no se necesita
+    /*for (var i = 11; i >=0 ; i--) {
+      if(numeros[i]!=null){
+        if (numeros[i + 4]==null) {
+          numeros[i+4] = numeros[i];
+          document.getElementById(i+1).textContent = "";
+          document.getElementById(i+5).textContent = numeros[i];
+          numeros[i] = null;
+        }
+      }
+    }*/
+    for (var i = 11; i >= 0; i--) {
+      if (numeros[i] != null) {
+        var j;
+        for (j = 4; j <= 16; j += 4) {
+          if (numeros[i + j] != null || 1 + i + j > numeros.length) {
+            j -= 4;
+            break;
+          }
+        }
+        //console.log(j);
+        if (j >= 4) {
+          numeros[i + j] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + j + 1).textContent = numeros[i];
+          numeros[i] = null;
+        } /*else if (numeros[i + 4] == null) {
+          numeros[i + 4] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + 5).textContent = numeros[i];
+          numeros[i] = null;
+        }*/
+      }
+    }
+  }
+
+  function sumaDeDerechaAIzquierda() {
+    for (var i = 16; i > 4; i--) {
+      //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
+      //hay que cambiar y poner que no puede ser nulo el campo en el siguiente if
+      if ((numeros[i - 1] == numeros[i - 5]) && numeros[i - 1] != null) {
+        numeros[i - 1] += numeros[i - 1];
+        numeros[i - 5] = null;
+      }
+    }
+    repintar(numeros);
+  }
+
+  function repintar(num) {
+    for (var i = 1; i <= 16; i++) {
+      document.getElementById(i).textContent = num[i - 1];
+    }
+  }
+
+  /*var arrayBidimensional = Array.from({ length: 4 }, () => Array(4).fill(null));
 
   function conversionABidimensional(arr) {
     // Recorrer el array bidimensional con forEach
@@ -266,15 +378,33 @@
       });
     });
   }
+
   function desconversionDeBidimensional(arr) {
 
-  }
+  }*/
   function sonIguales(array1, array2) {
     // Convertir los arrays a cadenas JSON y compararlas
     const strArray1 = JSON.stringify(array1);
     const strArray2 = JSON.stringify(array2);
 
     return strArray1 === strArray2;
+  }
+  //imaginate que tienes un array con 16 valores, e imaginate que están pintados de manera visual en una tabla de 4x4, y quieres hacer que los valores de la tabla giren 90º hacia la derecha de tal manera que el que esta en la celda 1,1 este en la celda 4,1 el de la 2,1 en la 4,2 etc
+  function girarEnSentidoHorario() {
+    const n = numeros.length;
+    const result = new Array(n).fill(0).map(() => new Array(n).fill(0));
+
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        result[j][n - 1 - i] = arr[i * n + j];
+      }
+    }
+
+    return result;
+  }
+
+  function girarEnSentidoAntihorario() {
+
   }
 </script>
 </html>
