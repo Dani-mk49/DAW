@@ -75,6 +75,7 @@
   document.addEventListener('keydown', function (event) {
     // Capturar la tecla presionada y su código
     const codigoTecla = event.keyCode;
+    console.log(numerosAnteriores);
     //console.log(codigoTecla);
     if (codigoTecla >= 37 && codigoTecla <= 40) {
       numerosAnteriores = numeros.slice();
@@ -89,6 +90,7 @@
       } else {
         alert('El juego se acabó');
       }
+      console.log(numeros);
     }
     // Mostrar información en la consola
   });
@@ -214,6 +216,7 @@
   }
 
   function desplazarAbajoAArriba() {
+    //algo falla en esta funcion o en la de arriba abajo porque desaparecen numeros
     //esto ya no se necesita
     /*for (var i = 11; i >=0 ; i--) {
       if(numeros[i]!=null){
@@ -252,6 +255,7 @@
   }
 
   function sumaDeAbajoAArriba() {
+    //esto esta mal en alguna posicion no identifica bien la posicion que deberia estar colindante y lo suma igualmente
     for (var i = 1; i < 13; i++) {
       if ((numeros[i - 1] == numeros[i + 3]) && numeros[i - 1] != null) {
         numeros[i - 1] += numeros[i - 1];
@@ -262,6 +266,7 @@
   }
 
   function izquierdaADerecha() {
+    //periodo de pruebas
     desplazarIzquierdaADerecha();
     //sumaDeIzquierdaADerecha();
     //desplazarIzquierdaADerecha();

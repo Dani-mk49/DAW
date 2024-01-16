@@ -10,6 +10,9 @@ session_start();
         padding-left: 15px;
         padding-bottom: 8px;
       }
+      h3{
+        margin-bottom: 1px;
+      }
     </style>
   <body>
     <?php include 'header2.php'; ?>
@@ -17,18 +20,18 @@ session_start();
       <?php include 'nav.php'; ?>
       <main>
         <?php
-        $menu;
-        if (!isset($_SESSION["menu"])) {
-          $menu = unserialize($_SESSION["menu"]);
+
+        if (isset($_SESSION["menu"])) {
+            $menu = unserialize($_SESSION["menu"]);
+            echo $menu;
         }
 ?>
-      <h2 class="ejercicioX">Configuración del menú del día</h2>
-      <br>
-      <h3></h3>
 <?php
 if(!$_REQUEST) {
     ?>
-<form action="ejercicio2.php" method="get">
+  <form action="ejercicio2.php" method="get">
+  <h2 class="ejercicioX">Configuración del menú del día</h2>
+  <br>
 <table>
   <tr>
     <td>
@@ -47,14 +50,41 @@ if(!$_REQUEST) {
     <td><input type="submit" value="Diseñar menú" name="diseMenu"></td>
   </tr>
 </table>
+</form>
 <?php
-}else{
-  $menu = new Menu($_REQUEST["diaSemana"], $_REQUEST["fecha"]);
-  echo $menu->getDia();
-  $_SESSION["menu"] = serialize($menu);
+} else {
+  if(!isset($menu)){
+    $menu             = new Menu($_REQUEST["diaSemana"], $_REQUEST["fecha"]);
+  }
+  if($_REQUEST['primerPlato']){
+    $menu->agregarPrimerPlato($_REQUEST['primerPlato']);
+  }
+    $_SESSION["menu"] = serialize($menu);
+    print '<h2 class="ejercicioX">Menú del ' . $menu->getDia() . ', ' . $menu->getFecha() . '</h2>';
+    ?>
+    <form action="ejercicio2.php" method="get">
+      <h3>Primeros platos:</h3>
+      <?php
+    if($menu->getPrimerosplatos()) {
+        for($i = 0; $i < count($menu->getPrimerosplatos()); $i++) {
+            print $menu->getPrimerosplatos()[$i] . '<br>';
+        }
+    }
+    ?>
+  <input type="text" name="primerPlato" style="width: 400px;" required>
+  <input type="submit" value="Añadir" name="btnPrimerPlato">
+</form>
+  <h3>Segundos platos:</h3>
+  <input type="text" name="segundoPlato" style="width: 400px;">
+  <input type="submit" value="Añadir" name="btnSegundoPlato">
+  <br>
+  <h3>Postres:</h3>
+  <input type="text" name="postre" style="width: 400px;">
+  <input type="submit" value="Añadir" name="btnPrimerPlato">
+  <br>
+  <?php
 }
 ?>
-</form>
 
       </main>
       <?php include 'aside.php'; ?>

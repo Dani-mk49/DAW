@@ -105,4 +105,20 @@ class Menu
             $this->postres[] = $plato;
         }
     }
+    public function arrayTostring($arr):string{
+        $contenido ="(";
+        if(isset($arr)){
+            for($i = 0; $i< count($arr);$i++){
+                $contenido = $contenido . $arr[$i];
+                if($i<count($arr)-1){
+                    $contenido = $contenido . ", ";
+                }
+            }
+        }
+        $contenido = $contenido . ")";
+        return $contenido;
+    }
+    public function __toString():string{
+        return $this->dia .', '. $this->fecha. ', ' . $this->arrayTostring($this->primerosplatos). ', '. $this->arrayTostring($this->segundosplatos).', '. $this->arrayTostring($this->postres);
+    }
 }
