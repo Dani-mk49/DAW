@@ -15,6 +15,7 @@ class Empleado extends Persona
         $this->puesto = $pues;
         $this->sueldo = $suel;
     }
+
     public function getPuesto()
     {
         return $this->puesto;

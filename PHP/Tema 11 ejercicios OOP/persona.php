@@ -10,9 +10,9 @@
         //Para interactuar con una propiedad dentro de la clase usamos dólar, seguido de la palabra “this” y una flecha: $this->
 
         // Propiedades
-        private $nombre;
-        private $apellidos;
-        private $sexo;
+        protected $nombre;
+        protected $apellidos;
+        protected $sexo;
 		protected $fehaNacimiento;  /* Ej: "03-11-2000" */
 
 		//Constructor de un objeto de la clase Persona:Es el método que se ejecutará cuando se cree un objeto de la clase persona.

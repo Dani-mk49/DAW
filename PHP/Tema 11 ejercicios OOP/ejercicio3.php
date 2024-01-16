@@ -22,7 +22,7 @@
 </style>
 
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'header3.php'; ?>
   <div class="contenedorCentral">
     <?php include 'nav.php'; ?>
     <main>
