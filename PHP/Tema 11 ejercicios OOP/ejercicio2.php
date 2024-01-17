@@ -21,13 +21,18 @@ session_start();
       <main>
         <?php
 
-        if (isset($_SESSION["menu"])) {
-            $menu = unserialize($_SESSION["menu"]);
-            echo $menu;
-        }
+if (isset($_REQUEST["borrar"])) {
+    session_destroy();
+}
+if (isset($_SESSION["menu"])) {
+    $menu = unserialize($_SESSION["menu"]);
+    print $menu;
+}else{
+  $menu;
+}
 ?>
 <?php
-if(!$_REQUEST) {
+if(!isset($menu)) {
     ?>
   <form action="ejercicio2.php" method="get">
   <h2 class="ejercicioX">Configuración del menú del día</h2>
@@ -51,17 +56,24 @@ if(!$_REQUEST) {
   </tr>
 </table>
 </form>
-<?php
+  <?php
 } else {
-  if(!isset($menu)){
-    $menu             = new Menu($_REQUEST["diaSemana"], $_REQUEST["fecha"]);
-  }
-  if($_REQUEST['primerPlato']){
-    $menu->agregarPrimerPlato($_REQUEST['primerPlato']);
-  }
+    if(!isset($menu) || isset($_REQUEST['diseMenu'])) {
+        $menu = new Menu($_REQUEST["diaSemana"], $_REQUEST["fecha"]);
+    }
+    if(isset($_REQUEST['primerPlato'])) {
+        $menu->agregarPrimerPlato($_REQUEST['primerPlato']);
+    }
+    if(isset($_REQUEST['segundoPlato'])) {
+        $menu->agregarPrimerPlato($_REQUEST['segundoPlato']);
+    }
+    if(isset($_REQUEST['postre'])) {
+        $menu->agregarPrimerPlato($_REQUEST['primerPlato']);
+    }
     $_SESSION["menu"] = serialize($menu);
     print '<h2 class="ejercicioX">Menú del ' . $menu->getDia() . ', ' . $menu->getFecha() . '</h2>';
     ?>
+
     <form action="ejercicio2.php" method="get">
       <h3>Primeros platos:</h3>
       <?php
@@ -74,14 +86,36 @@ if(!$_REQUEST) {
   <input type="text" name="primerPlato" style="width: 400px;" required>
   <input type="submit" value="Añadir" name="btnPrimerPlato">
 </form>
-  <h3>Segundos platos:</h3>
-  <input type="text" name="segundoPlato" style="width: 400px;">
+
+<form action="ejercicio2.php" method="get">
+      <h3>Segundos platos:</h3>
+      <?php
+    if($menu->getSegundosplatos()) {
+        for($i = 0; $i < count($menu->getSegundosplatos()); $i++) {
+            print $menu->getSegundosplatos()[$i] . '<br>';
+        }
+    }
+    ?>
+  <input type="text" name="segundoPlato" style="width: 400px;" required>
   <input type="submit" value="Añadir" name="btnSegundoPlato">
+</form>
+  <form action="ejercicio2.php" method="get">
+    <h3>Postres:</h3>
+    <?php
+    if($menu->getPostres()) {
+        for($i = 0; $i < count($menu->getPostres()); $i++) {
+            print $menu->getPostres()[$i] . '<br>';
+        }
+    }
+    ?>
+  <input type="text" name="postre" style="width: 400px;" required>
+  <input type="submit" value="Añadir" name="btnPostre">
   <br>
-  <h3>Postres:</h3>
-  <input type="text" name="postre" style="width: 400px;">
-  <input type="submit" value="Añadir" name="btnPrimerPlato">
-  <br>
+</form>
+  <form action="ejercicio2.php" method="get">
+  <input type="submit" value="borrar" name="borrar">
+</form>
+
   <?php
 }
 ?>
