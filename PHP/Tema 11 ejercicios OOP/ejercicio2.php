@@ -20,7 +20,7 @@ session_start();
       <?php include 'nav.php'; ?>
       <main>
         <?php
-
+//el fallo está por aqui
 if (isset($_REQUEST["borrar"])) {
     session_destroy();
 }
