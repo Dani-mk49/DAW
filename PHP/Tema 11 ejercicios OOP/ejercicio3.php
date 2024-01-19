@@ -103,7 +103,6 @@
           </tr>
         </table>
       </fieldset>
-
     </main>
     <?php include 'aside.php'; ?>
   </div>

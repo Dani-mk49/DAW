@@ -20,11 +20,8 @@ session_start();
       <?php include 'nav.php'; ?>
       <main>
         <?php
-/*if (isset($_REQUEST["borrar"])) {
-    session_destroy();
-}else */if (isset($_SESSION["menu"])) {
+if (isset($_SESSION["menu"])) {
     $menu = unserialize($_SESSION["menu"]);
-    //    print $menu;
 }
 if(!isset($menu) && isset($_REQUEST['diseMenu'])) {
     $menu = new Menu($_REQUEST["diaSemana"], $_REQUEST["fecha"]);
@@ -56,7 +53,7 @@ if(!isset($menu)) {
 </table>
 </form>
   <?php
-} elseif(isset($menu)&& !isset($_REQUEST["carta"])) {
+} elseif(isset($menu) && !isset($_REQUEST["carta"])) {
 
     if(isset($_REQUEST['primerPlato'])) {
         $menu->agregarPrimerPlato($_REQUEST['primerPlato']);
@@ -121,7 +118,7 @@ if(!isset($menu)) {
   <img src="parteDeArriba.jpg" width="350px">
   <h2 class="ejercicioX">Menú del día</h2>
   <?php
-    print '<h2 class="ejercicioX">'. $menu->getDia() . ', ' . $menu->getFecha() . '</h2>';
+    print '<h2 class="ejercicioX">' . $menu->getDia() . ', ' . $menu->getFecha() . '</h2>';
     ?>
     <h3>Primeros platos</h3>
     <?php

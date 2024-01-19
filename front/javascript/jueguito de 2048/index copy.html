@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>2048</title>
+  <style>
+    body {
+      background-color: #b1b1b1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #contenedor {
+      border-radius: 15px;
+      padding: 5px;
+      display: grid;
+      background-color: grey;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      width: 500px;
+      height: 500px;
+    }
+
+    .casilla {
+      color: white;
+      border-radius: 15px;
+      min-width: calc(25% - 5px);
+      min-height: calc(25% - 5px);
+      max-width: 121.5px;
+      max-height: 121.5px;
+      text-align: center;
+      background-color: #202020;
+      border: 1px solid #202020;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="contenedor">
+    <div class="casilla"><span id="1"></span></div>
+    <div class="casilla"><span id="2"></span></div>
+    <div class="casilla"><span id="3"></span></div>
+    <div class="casilla"><span id="4"></span></div>
+    <div class="casilla"><span id="5"></span></div>
+    <div class="casilla"><span id="6"></span></div>
+    <div class="casilla"><span id="7"></span></div>
+    <div class="casilla"><span id="8"></span></div>
+    <div class="casilla"><span id="9"></span></div>
+    <div class="casilla"><span id="10"></span></div>
+    <div class="casilla"><span id="11"></span></div>
+    <div class="casilla"><span id="12"></span></div>
+    <div class="casilla"><span id="13"></span></div>
+    <div class="casilla"><span id="14"></span></div>
+    <div class="casilla"><span id="15"></span></div>
+    <div class="casilla"><span id="16"></span></div>
+  </div>
+
+</body>
+<script>
+  var numeros = Array(16).fill(null);
+  var numerosAnteriores;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Tu código aquí se ejecutará después de que se cargue el DOM
+    generacionDeNumeros(); generacionDeNumeros();
+  });
+  document.addEventListener('keydown', function (event) {
+    // Capturar la tecla presionada y su código
+    const codigoTecla = event.keyCode;
+    console.log(numerosAnteriores);
+    //console.log(codigoTecla);
+    if (codigoTecla >= 37 && codigoTecla <= 40) {
+      numerosAnteriores = numeros.slice();
+      movimientoDeCasillas(codigoTecla);
+      var alMenosUnoValido = numeros.some(function (valor) {
+        return valor == null;
+      });
+      if (alMenosUnoValido) {
+        if (!sonIguales(numeros, numerosAnteriores)) {
+          generacionDeNumeros();
+        }
+      } else {
+        alert('El juego se acabó');
+      }
+      console.log(numeros);
+    }
+    // Mostrar información en la consola
+  });
+
+  function generacionDeNumeros() {
+    do {
+      var numeroAleatorio = Math.floor(Math.random() * 16) + 1;
+      var comprobante = false;
+      if (!comprobarVacio(numeroAleatorio)) {
+        var numIni = dosOCuatro();
+        document.getElementById(numeroAleatorio).textContent = numIni;
+        numeros[numeroAleatorio - 1] = numIni;
+        comprobante = true;
+      }
+    } while (!comprobante);
+  }
+
+  function comprobarVacio(casilla) {
+    if (numeros[casilla - 1] != null) {
+      return true;
+    }
+    return false;
+  }
+  function dosOCuatro() {
+    var probabilidad = Math.random();
+
+    if (probabilidad < 0.1) {
+      return 4; // 20% de probabilidad para 4
+    } else {
+      return 2; // 80% de probabilidad para 2
+    }
+  }
+  var arr = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+  ];
+  function movimientoDeCasillas(codigoTecla) {
+    switch (codigoTecla) {
+      case 37:
+        derechaAIzquierda();
+        break;
+      case 38:
+        abajoAArriba();
+        break;
+      case 39:
+        //izquierdaADerecha();
+        desconversionDeBidimensional(arr);
+        alert('cambio');
+        rotate90Clockwise(arr);
+        desconversionDeBidimensional(arr);
+
+        break;
+      case 40:
+        //aparentemente acabado el movimiento hacia abajo
+        arribaAAbajo();
+        break;
+
+    }
+    //repintar();
+  }
+
+  function arribaAAbajo() {
+    desplazarArribaAAbajo();
+    sumaDeArribaAAbajo();
+    desplazarArribaAAbajo();
+  }
+
+  function desplazarArribaAAbajo() {
+    //esto ya no se necesita
+    /*for (var i = 11; i >=0 ; i--) {
+      if(numeros[i]!=null){
+        if (numeros[i + 4]==null) {
+          numeros[i+4] = numeros[i];
+          document.getElementById(i+1).textContent = "";
+          document.getElementById(i+5).textContent = numeros[i];
+          numeros[i] = null;
+        }
+      }
+    }*/
+    for (var i = 11; i >= 0; i--) {
+      if (numeros[i] != null) {
+        var j;
+        for (j = 4; j <= 16; j += 4) {
+          if (numeros[i + j] != null || 1 + i + j > numeros.length) {
+            j -= 4;
+            break;
+          }
+        }
+        //console.log(j);
+        if (j >= 4) {
+          numeros[i + j] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + j + 1).textContent = numeros[i];
+          numeros[i] = null;
+        } /*else if (numeros[i + 4] == null) {
+          numeros[i + 4] = numeros[i];
+          document.getElementById(i + 1).textContent = "";
+          document.getElementById(i + 5).textContent = numeros[i];
+          numeros[i] = null;
+        }*/
+      }
+    }
+  }
+
+  function sumaDeArribaAAbajo() {
+    for (var i = 16; i > 4; i--) {
+      //en realizad es -4, pero como siempre es un numero menos dentro de un array se le resta 5
+      //hay que cambiar y poner que no puede ser nulo el campo en el siguiente if
+      if ((numeros[i - 1] == numeros[i - 5]) && numeros[i - 1] != null) {
+        numeros[i - 1] += numeros[i - 1];
+        numeros[i - 5] = null;
+      }
+    }
+    repintar(numeros);
+  }
+
+  function abajoAArriba() {
+    conversionABidimensional(numeros);
+    rotate90Clockwise(numeros);
+    rotate90Clockwise(numeros);
+    desplazarArribaAAbajo();
+    sumaDeArribaAAbajo();
+    desplazarArribaAAbajo();
+    rotate90Clockwise(numeros);
+    rotate90Clockwise(numeros);
+    desconversionDeBidimensional(numeros);
+  }
+
+  function desplazarAbajoAArriba() {
+  }
+
+  function sumaDeAbajoAArriba() {
+  }
+
+  function izquierdaADerecha() {
+  }
+
+  function desplazarIzquierdaADerecha() {
+  }
+
+  function sumaDeIzquierdaADerecha() {
+  }
+
+  function derechaAIzquierda() {
+  }
+
+  function desplazarDerechaAIzquierda() {
+  }
+
+  function sumaDeDerechaAIzquierda() {
+  }
+
+  function repintar(num) {
+    for (var i = 1; i <= 16; i++) {
+      document.getElementById(i).textContent = num[i - 1];
+    }
+  }
+
+  function conversionABidimensional(arr) {
+    // Recorrer el array bidimensional con forEach
+    var i = 0;
+    arrayBidimensional.forEach((fila, indiceFila) => {
+      fila.forEach((valor, indiceColumna) => {
+        valor = arr[i];
+        i++;
+      });
+    });
+  }
+
+  function desconversionDeBidimensional(arr) {
+    var variable = [];
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 0; j < arr[i].length; j++) {
+        variable.push(arr[i][j]);
+      }
+    }
+    return variable;
+  }
+  function sonIguales(array1, array2) {
+    // Convertir los arrays a cadenas JSON y compararlas
+    const strArray1 = JSON.stringify(array1);
+    const strArray2 = JSON.stringify(array2);
+
+    return strArray1 === strArray2;
+  }
+  //
+  function girarEnSentidoHorario(arr) {
+    const n = arr.length;
+    const result = new Array(n).fill(0).map(() => new Array(n).fill(0));
+
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        result[j][n - 1 - i] = arr[i * n + j];
+      }
+    }
+
+    return result;
+  }
+
+  function rotate90Clockwise(arr) {
+    var N = arr.length;
+    for (var i = 0; i < N / 2; i++) {
+      for (var j = i; j < N - i - 1; j++) {
+        var temp = arr[i][j];
+        arr[i][j] = arr[N - 1 - j][i];
+        arr[N - 1 - j][i] = arr[N - 1 - i][N - 1 - j];
+        arr[N - 1 - i][N - 1 - j] = arr[j][N - 1 - i];
+        arr[j][N - 1 - i] = temp;
+      }
+    }
+  }
+  /*
+  function rotateArray90DegreesRight(array) {
+    let rotatedArray = new Array(16);
+
+    for (let i = 0; i < 16; i++) {
+      // Calcula la nueva posición para cada elemento
+      let row = Math.floor(i / 4);
+      let col = i % 4;
+      let newIndex = 12 + row - (4 * col);
+      rotatedArray[newIndex] = array[i];
+    }
+
+    return rotatedArray;
+  }
+
+  // Ejemplo de uso
+  let originalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  let rotatedArray = rotateArray90DegreesRight(originalArray);
+*/
+  function girarEnSentidoAntihorario() {
+
+  }
+</script>
+</html>
