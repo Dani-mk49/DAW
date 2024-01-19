@@ -20,15 +20,14 @@ session_start();
       <?php include 'nav.php'; ?>
       <main>
         <?php
-//el fallo está por aqui
-if (isset($_REQUEST["borrar"])) {
+/*if (isset($_REQUEST["borrar"])) {
     session_destroy();
-}
-if (isset($_SESSION["menu"])) {
+}else */if (isset($_SESSION["menu"])) {
     $menu = unserialize($_SESSION["menu"]);
-    print $menu;
-}else{
-  $menu;
+    //    print $menu;
+}
+if(!isset($menu) && isset($_REQUEST['diseMenu'])) {
+    $menu = new Menu($_REQUEST["diaSemana"], $_REQUEST["fecha"]);
 }
 ?>
 <?php
@@ -57,18 +56,16 @@ if(!isset($menu)) {
 </table>
 </form>
   <?php
-} else {
-    if(!isset($menu) || isset($_REQUEST['diseMenu'])) {
-        $menu = new Menu($_REQUEST["diaSemana"], $_REQUEST["fecha"]);
-    }
+} elseif(isset($menu)&& !isset($_REQUEST["carta"])) {
+
     if(isset($_REQUEST['primerPlato'])) {
         $menu->agregarPrimerPlato($_REQUEST['primerPlato']);
     }
     if(isset($_REQUEST['segundoPlato'])) {
-        $menu->agregarPrimerPlato($_REQUEST['segundoPlato']);
+        $menu->agregarSegundoPlato($_REQUEST['segundoPlato']);
     }
     if(isset($_REQUEST['postre'])) {
-        $menu->agregarPrimerPlato($_REQUEST['primerPlato']);
+        $menu->agregarPostre($_REQUEST['postre']);
     }
     $_SESSION["menu"] = serialize($menu);
     print '<h2 class="ejercicioX">Menú del ' . $menu->getDia() . ', ' . $menu->getFecha() . '</h2>';
@@ -113,10 +110,46 @@ if(!isset($menu)) {
   <br>
 </form>
   <form action="ejercicio2.php" method="get">
-  <input type="submit" value="borrar" name="borrar">
+    <br>
+  <input type="submit" value="Confeccionar carta" name="carta">
 </form>
 
   <?php
+} else {
+    ?>
+    <center>
+  <img src="parteDeArriba.jpg" width="350px">
+  <h2 class="ejercicioX">Menú del día</h2>
+  <?php
+    print '<h2 class="ejercicioX">'. $menu->getDia() . ', ' . $menu->getFecha() . '</h2>';
+    ?>
+    <h3>Primeros platos</h3>
+    <?php
+    if($menu->getPrimerosplatos()) {
+        for($i = 0; $i < count($menu->getPrimerosplatos()); $i++) {
+            print $menu->getPrimerosplatos()[$i] . '<br>';
+        }
+    }
+    ?>
+    <h3>Segundos platos</h3>
+    <?php
+    if($menu->getSegundosplatos()) {
+        for($i = 0; $i < count($menu->getSegundosplatos()); $i++) {
+            print $menu->getSegundosplatos()[$i] . '<br>';
+        }
+    }
+    ?>
+    <h3>Postres</h3>    <?php
+    if($menu->getPostres()) {
+        for($i = 0; $i < count($menu->getPostres()); $i++) {
+            print $menu->getPostres()[$i] . '<br>';
+        }
+    }
+    ?>
+  <img src="parteDeAbajo.jpg" width="350px">
+    </center>
+  <?php
+  session_destroy();
 }
 ?>
 

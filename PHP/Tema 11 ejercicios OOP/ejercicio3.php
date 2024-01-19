@@ -3,20 +3,38 @@
 <?php include 'consultas.php'; ?>
 <?php include 'metadata.php'; ?>
 <style>
-  table{
-    border: 1px solid black;
+  .especialDiv {
+    display: inline-block;
+    border: 2px groove blue;
+    background-color: rgb(197, 197, 197);
+    color: black;
+    border-radius: 10px;
+  }
+
+  .reglas {
+  }
+
+  .operacion {
+    padding: 30px;
+  }
+
+  .resultado {
+    padding: 30px;
+  }
+
+  .Tresultado {
+    /*display: none;*/
     border-collapse: collapse;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
   }
-  td{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid black;
+
+  .Tresultado td,
+  .Tresultado th {
+    border: 1px black solid;
+    padding: 3px;
   }
-  tr:hover {
-    background-color: aqua;
+  .Tresultado th{
+    color: white;
+    background-color: darkblue;
   }
 
 </style>
@@ -27,63 +45,65 @@
     <?php include 'nav.php'; ?>
     <main>
 
-      <h2 class="ejercicioX">EJERCICIO 3</h2>
-      <br>
-      <h3>Geografía española</h3>
-      <p>Esta aplicación muestra las capitales de las Comunidades Autónomas y el número total de localidades por provincia en España.</p>
-      <form action="ejercicio3.php" meth="get" align="center">
-        <input type="submit" value="Capitales de Autonomías" name="enviar">
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <input type="submit" value="Localidades por Provincia" name="enviar">
-      </form>
-      <?php
-if($_REQUEST) {
-    print '<p>Consulta sobre la base de datos <i>"geografia"</i>:</p>';
-    if($_REQUEST['enviar'] == 'Capitales de Autonomías') {
-        print '<h3 align="center">Capitales por Comunidad Autónoma</h3>';
-        conectar();
-        $sql= 'SELECT comunidades.nombre AS "comunidad", localidades.nombre AS"capital" FROM comunidades INNER JOIN localidades ON comunidades.id_capital = localidades.id_localidad ORDER BY comunidades.nombre ASC';
-        $resultadoConsulta = mysqli_query($GLOBALS['conexion'], $sql) or exit("Error al hacer la consulta");
-        $nfilas    = mysqli_num_rows($resultadoConsulta);
-        print '<table align="center">';
-        print '<tr>';
-        print '<td><b>Comunidad Autónoma</b></td>';
-        print '<td><b>Capital</b></td>';
-        print '</tr>';
-        for($i = 0; $i < $nfilas; $i++) {
-            $resultado = mysqli_fetch_array($resultadoConsulta);
-            print '<tr>';
-            print '<td><b>' . $resultado['comunidad'] . '</b></td>';
-            print '<td>' . $resultado['capital'] . '</td>';
-            print '</tr>';
-        }
-        print '</table>';
-        desconectar();
-    } else {
-        print '<h3 align="center">Número de localidades por Provincia</h3>';
-        conectar();
-        $sql= 'SELECT provincias.nombre, COUNT(*) FROM localidades INNER JOIN provincias ON localidades.n_provincia=provincias.n_provincia GROUP BY localidades.n_provincia';
-        $resultadoConsulta = mysqli_query($GLOBALS['conexion'], $sql) or exit("Error al hacer la consulta");
-        $nfilas    = mysqli_num_rows($resultadoConsulta);
-        print '<table align="center">';
-        print '<tr>';
-        print '<td><b>Provincia</b></td>';
-        print '<td><b>Nº de localidades</b></td>';
-        print '</tr>';
-        for($i = 0; $i < $nfilas; $i++) {
-            $resultado = mysqli_fetch_array($resultadoConsulta);
-            print '<tr>';
-            print '<td><b>' . $resultado['nombre'] . '</b></td>';
-            print '<td>' . $resultado['COUNT(*)'] . '</td>';
-            print '</tr>';
-        }
-        print '</table>';
-        desconectar();
-    }
-}
-?>
+        <fieldset class="especialDiv reglas">
+          <legend><b>Reglas de uso de la calculadora</b></legend>
+
+        <ul>
+          <li>La calculadora se usa escribiendo la operacion completa.</li>
+          <li>La operación será <b>Operando_1 operación Operando_2</b></li>
+          <li>Cada operando puede ser un número positivo <b>entero</b> o <b>racional</b></li>
+          <li>Los operadore racionales permitidos son <span style="color: blue;">+ - * :</span></li>
+          <li>No se deben dejar espacios en blanco entre operandos y operación</li>
+          <li>Ejemplos:
+            <ul>
+              <li>5+4</li>
+              <li>5/2:2</li>
+              <li>1/4*2/3</li>
+              <li>2/7:1/3</li>
+            </ul>
+          </li>
+        </ul>
+        </fieldset>
+        <fieldset class="especialDiv operacion">
+          <legend><b>Establece la operación</b></legend>
+          <form action="ejercicio3.php">
+            Operación:
+            <input type="text" name="operacion">
+            <input type="submit" value="Calcular" name="calcular">
+            <br>
+            <span style="color: blue;"></span>
+          </form>
+        </fieldset>
+      <fieldset class="especialDiv resultado">
+        <legend><b>Resultado</b></legend>
+        <table class="Tresultado">
+          <tr>
+            <th>Concepto</th>
+            <th>Valores</th>
+          </tr>
+          <tr>
+            <td><b>Operando 1</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>Operando 2</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>Operación</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>Resultado</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>Resultado simplificado</b></td>
+            <td></td>
+          </tr>
+        </table>
+      </fieldset>
+
     </main>
     <?php include 'aside.php'; ?>
   </div>
@@ -91,7 +111,4 @@ if($_REQUEST) {
 </body>
 </html>
 <script>
-  function reiniciar() {
-    window.location.href = "ejercicio2.php";
-  }
 </script>
