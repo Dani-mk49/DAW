@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+  <?php include 'racional.php'; ?>
 <?php include 'consultas.php'; ?>
 <?php include 'metadata.php'; ?>
 <style>
@@ -68,14 +69,41 @@
           <legend><b>Establece la operación</b></legend>
           <form action="ejercicio3.php">
             Operación:
-            <input type="text" name="operacion">
+            <input type="text" name="operacion" required>
             <input type="submit" value="Calcular" name="calcular">
             <br>
-            <span style="color: blue;"></span>
+            <span style="color: blue; font-weight: bold;">
+          <?php
+          if (isset($_REQUEST['operacion'])) {
+
+              // Divide la cadena en un array usando múltiples delimitadores
+              $numeros = preg_split('/[+:*-]/', $_REQUEST['operacion']);
+
+              // Filtra elementos vacíos que pueden surgir debido a delimitadores consecutivos
+              $numeros = array_filter($numeros);
+
+              // Utiliza preg_match para encontrar el primer separador en la cadena
+              preg_match('/[+:*-]/', $_REQUEST['operacion'], $matches);
+
+              // Utiliza el primer carácter encontrado como separador
+              $signo = $matches[0];
+              $operando1 = new Racional($numeros[0]);
+              $operando2 = new Racional($numeros[1]);
+
+              // Imprime el resultado directamente
+              echo $operando1->__toString() . $signo . $operando2->__toString();
+
+
+          }
+  ?>
+          </span>
           </form>
         </fieldset>
       <fieldset class="especialDiv resultado">
         <legend><b>Resultado</b></legend>
+        <?php
+if (isset($_REQUEST['operacion'])) {
+    ?>
         <table class="Tresultado">
           <tr>
             <th>Concepto</th>
@@ -102,6 +130,9 @@
             <td></td>
           </tr>
         </table>
+        <?php
+}
+  ?>
       </fieldset>
     </main>
     <?php include 'aside.php'; ?>
