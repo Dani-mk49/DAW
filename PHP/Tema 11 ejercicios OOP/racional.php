@@ -44,16 +44,28 @@ class Racional
     }
 
 
-    public function sumar($valor1, $valor2)
+    public function sumar($valor)
     {
-        $valorExtra = $valor1;
-        $valorExtra2 = $valor2;
-        $valorExtra->setDenominador($valor1->getDenominador() * $valor2->getDenominador());
-        $valorExtra->setNumerador($valor1->getNumerador() * $valor2->getDenominador());
-        $valorExtra2->setDenominador($valor2->getDenominador() * $valor1->getDenominador());
-        $valorExtra2->setNumerador($valor2->getNumerador() * $valor1->getDenominador());
+        $valorExtra = clone $this;
+        $valorExtra2 = clone $valor;
+        $valorExtra->setDenominador($this->getDenominador() * $valor->getDenominador());
+        $valorExtra->setNumerador($this->getNumerador() * $valor->getDenominador());
+        $valorExtra2->setDenominador($valor->getDenominador() * $this->getDenominador());
+        $valorExtra2->setNumerador($valor->getNumerador() * $this->getDenominador());
         $numerador = $valorExtra->getNumerador() + $valorExtra2->getNumerador();
         return new Racional($numerador, $valorExtra2->getDenominador());
+    }
+    public function restar($valor)
+    {
+        return new Racional($valor);
+    }
+    public function multiplicar($valor)
+    {
+        return new Racional($valor);
+    }
+    public function dividir($valor)
+    {
+        return new Racional($valor);
     }
     public function __toString(): string
     {

@@ -71,30 +71,52 @@
             Operación:
             <input type="text" name="operacion" required>
             <input type="submit" value="Calcular" name="calcular">
+          <?php
+          $resultado;
+          $operando1;
+          $operando2;
+          $signo;
+  if (isset($_REQUEST['operacion'])) {?>
+            <br>
             <br>
             <span style="color: blue; font-weight: bold;">
-          <?php
-          if (isset($_REQUEST['operacion'])) {
+<?php
+      // Divide la cadena en un array usando múltiples delimitadores
+      $numeros = preg_split('/[+:*-]/', $_REQUEST['operacion']);
 
-              // Divide la cadena en un array usando múltiples delimitadores
-              $numeros = preg_split('/[+:*-]/', $_REQUEST['operacion']);
+      // Filtra elementos vacíos que pueden surgir debido a delimitadores consecutivos
+      $numeros = array_filter($numeros);
 
-              // Filtra elementos vacíos que pueden surgir debido a delimitadores consecutivos
-              $numeros = array_filter($numeros);
+      // Utiliza preg_match para encontrar el primer separador en la cadena
+      preg_match('/[+:*-]/', $_REQUEST['operacion'], $matches);
 
-              // Utiliza preg_match para encontrar el primer separador en la cadena
-              preg_match('/[+:*-]/', $_REQUEST['operacion'], $matches);
+      // Utiliza el primer carácter encontrado como separador
+      $signo = $matches[0];
+      $operando1 = new Racional($numeros[0]);
+      $operando2 = new Racional($numeros[1]);
+      echo $operando1->__toString();
+      echo $operando2->__toString();
+      echo '<br>';
+      switch ($signo) {
+          case '+':
+              $resultado = $operando1->sumar($operando2);
+              break;
+          case '-':
+              $resultado = $operando1->restar($operando2);
+              break;
+          case '*':
+              $resultado = $operando1->multiplicar($operando2);
+              break;
+          case ':':
+              $resultado = $operando1->dividir($operando2);
+              break;
+      }
 
-              // Utiliza el primer carácter encontrado como separador
-              $signo = $matches[0];
-              $operando1 = new Racional($numeros[0]);
-              $operando2 = new Racional($numeros[1]);
-
-              // Imprime el resultado directamente
-              echo $operando1->__toString() . $signo . $operando2->__toString();
+      // Imprime el resultado directamente
+      echo $operando1->__toString() . $signo . $operando2->__toString(). '=' . $resultado->__toString();
 
 
-          }
+  }
   ?>
           </span>
           </form>
@@ -111,23 +133,40 @@ if (isset($_REQUEST['operacion'])) {
           </tr>
           <tr>
             <td><b>Operando 1</b></td>
-            <td></td>
+            <td align="center">
+              <?php
+              echo $operando1->__toString();
+    ?>
+            </td>
           </tr>
           <tr>
             <td><b>Operando 2</b></td>
-            <td></td>
+            <td align="center">
+              <?php
+    echo $operando2->__toString();
+    ?>
+              </td>
           </tr>
           <tr>
             <td><b>Operación</b></td>
-            <td></td>
+            <td align="center">
+              <?php
+    echo $signo;
+    ?>
+    </td>
           </tr>
           <tr>
             <td><b>Resultado</b></td>
-            <td></td>
+            <td align="center">
+              <?php
+    echo $resultado->__toString();
+    ?>
+
+            </td>
           </tr>
           <tr>
             <td><b>Resultado simplificado</b></td>
-            <td></td>
+            <td align="center"></td>
           </tr>
         </table>
         <?php
