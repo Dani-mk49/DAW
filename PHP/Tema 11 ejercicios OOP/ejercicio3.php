@@ -78,7 +78,6 @@
           $signo;
   if (isset($_REQUEST['operacion'])) {?>
             <br>
-            <br>
             <span style="color: blue; font-weight: bold;">
 <?php
       // Divide la cadena en un array usando múltiples delimitadores
@@ -94,8 +93,6 @@
       $signo = $matches[0];
       $operando1 = new Racional($numeros[0]);
       $operando2 = new Racional($numeros[1]);
-      echo $operando1->__toString();
-      echo $operando2->__toString();
       echo '<br>';
       switch ($signo) {
           case '+':
@@ -166,7 +163,12 @@ if (isset($_REQUEST['operacion'])) {
           </tr>
           <tr>
             <td><b>Resultado simplificado</b></td>
-            <td align="center"></td>
+            <td align="center">
+              <?php
+              $resultado->simplificar();
+              echo $resultado->__toString();
+              ?>
+            </td>
           </tr>
         </table>
         <?php
