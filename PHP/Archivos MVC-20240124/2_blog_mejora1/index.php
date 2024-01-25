@@ -1,4 +1,4 @@
-<?
+<?php
   // Este es el controlador.
 
   // Conectamos a la BD y sacamos la lista de artículos
