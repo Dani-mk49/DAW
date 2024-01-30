@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.2</title>
+		<script>
+			window.onload function () {
+			
+				alert("Se va a eliminar el texto de la página");
+				
+				document.getElementById("textoweb").innerHTML = "Nuevo texto";
+				
+				alert("Texto sobreescrito");
+			}
+		</script>
+	</head>
+	<body onload>
+		<p id="textoweb">
+			Este texto quedará anulado al cargar el script.
+		</p>
+	</body>
+</html>
+
+<!--
+    El ejercicio no muestra el "alert" al cargarse completamente la página,
+	evento "window.onload". ¿Sabes dónde están los errores?
+-->
