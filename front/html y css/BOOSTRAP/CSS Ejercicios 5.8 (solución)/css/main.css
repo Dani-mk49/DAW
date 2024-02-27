@@ -1,0 +1,16 @@
+body {
+	background-color: #EEE;
+}
+
+.red {
+	border: 1px solid red;
+}
+
+.blue {
+	border: 1px solid blue;
+}
+
+.active {
+	background-color: #9FD7DA;
+	border-radius: 4px;
+}

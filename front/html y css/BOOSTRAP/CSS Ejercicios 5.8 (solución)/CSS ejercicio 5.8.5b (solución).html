@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, charset=utf-8" />
+		<title>Ejercicio 5.8.5b con JS nativo</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<header>
+					<div class="row red">
+						<div class="col-sm-12 text-center my-5">
+							<h1 class="display-1">CIERRE DE ALERTAS</h1>
+						</div>
+					</div>
+				</header>
+				<main>
+					<div class="row">
+						<div class="col-sm-6 red">
+							Texto
+						</div>
+						<div class="col-sm-6 blue">
+							<h1>Cierre de alerta "Click"</h1>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="alert alert-primary">
+										Hola, buenos días.
+									</div>
+									<button type="button" id="btn" role="button">Click</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+				<footer>
+				</footer>
+			</div>
+		</div>
+		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function () { // Se ejecuta la función cuando la página se carga.
+
+				document.getElementById("btn").onclick = ocultar; // Manejador de evento semántico.
+
+				function ocultar() {
+					document.getElementsByClassName("alert alert-primary")[0].style.display = "none"; // Modificación de CSS desde JS.
+				}
+			}
+		</script>
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+:root {
+  --verde: #5cbc90;
+  --azul: #0da2eb;
+}
+
+#logo {
+  width: 85px;
+  height: auto;
+}
+
+.titulo {
+    background-color: var(--verde);
+    background-image: linear-gradient(var(--verde), var(--azul));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+nav {
+  background-color: var(--verde);
+}

@@ -1,0 +1,8 @@
+
+.container, .container-fluid {
+	border: 5px solid red;
+}
+
+.celda {
+	border: 5px solid blue;
+}
