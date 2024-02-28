@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.2.2</title>
+	</head>
+	<body>
+		<script>
+			function add_input() {
+			
+				var new_input = document.createElement("input");
+				
+				// Propiedades CSS.
+				new_input.setAttribute("type", "text");
+				new_input.style.display = 'block'; 
+				
+				// Referencias para colocar la nueva caja de texto.
+				var referencia = document.getElementById('submit');
+				var formulario = referencia.parentNode;
+				
+				// Se inserta el elemento "input".
+				formulario.insertBefore(new_input, referencia);
+			}
+		</script>
+		<form action="">
+			<input type="text" style="display:block;" />
+			<input type="submit" id="submit" value="Reiniciar" /><br /><br />
+			<input type="button" value="Añadir más cajas" onclick="add_input();" />
+		</form>
+	</body>
+</html>
+
+<!--
+    Se tiene que poner el "display" de tipo "block" ya que por defecto es "inline" y no colocaría
+	una caja encima de la otra, tal y como está la primera respecto al botón.
+-->

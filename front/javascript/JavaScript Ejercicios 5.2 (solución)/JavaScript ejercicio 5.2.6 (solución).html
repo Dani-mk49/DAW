@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.2.6</title>
+		<script>
+			function muestraOculta(enlace) {
+				
+				var elemento = get_previoussibling(enlace);
+				
+				if (elemento.style.display == "" || elemento.style.display == "block") {
+					elemento.style.display = "none";
+					enlace.innerHTML = 'Mostrar contenidos';
+				} else {
+					elemento.style.display = "block";
+					enlace.innerHTML = 'Ocultar contenidos';
+				}
+			}
+			
+			// No es necesaria esta parte del ejercicio de cara a preparar el examen.
+			// "previousSibling" cogería el texto del párrafo. O se ejecuta dos veces
+			// para referirse al elemento o se utiliza la siguiente función:
+			function get_previoussibling(n) {
+				x = n.previousSibling; // Propiedad del objeto "Node".
+				while (x.nodeType != 1) {
+					x = x.previousSibling;
+				}
+				return x;
+			}
+		</script>
+	</head>
+	<body>
+		<p id="contenidos_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+		<a id="enlace_1" href="#" onclick="muestraOculta(this);return false;">Ocultar contenidos</a>
+		<br />
+		<p id="contenidos_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+		<a id="enlace_2" href="#" onclick="muestraOculta(this);return false;">Ocultar contenidos</a>
+		<br />
+		<p id="contenidos_3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+		<a id="enlace_3" href="#" onclick="muestraOculta(this);return false;">Ocultar contenidos</a>
+	</body>
+</html>
+
+<!--
+	- Variante del ejercicio anterior utilizando una propiedad propia del DOM.
+	- El crear la función "get_previousSibling", en vez de utilizar directamente la
+	propiedad "previousSibling", se debe al comportamiento de ciertos navegadores.
+	- Ahora sí se pasa el enlace mediante "this" (en el ejercicio anterior no se hacía).
+	- El objetivo de este ejercicio es simplemente seguir explorando algo más el DOM.
+-->

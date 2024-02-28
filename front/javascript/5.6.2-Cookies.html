@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Cookies</title>
+		<script>
+			
+			function checkCookie() {
+				var username = getCookie("username");
+				
+				if (username != null && username != "") {
+					alert("Bienvenido " + username); // Si existe la cookie.
+				} else {
+					username = prompt("Por favor, Introduzca su usuario:",""); // Si no existe la cookie, se crea con el nombre "username" y se le asigna el valor introducido.
+					if (username != null && username != "") {
+						setCookie("username", username, 365); // La cookie tiene una validez de un año (365 días).
+					}
+				}
+			}
+			
+			function getCookie(c_name) {
+				var i, x, y, ARRcookies = document.cookie.split(";"); // Para encontrar una cookie concreta, podemos separar (split) "document.cookie" por ";".
+																	  // El valor de "document.cookie" consiste en pares name=value delimitados por ";". Cada uno es una cookie separada.
+				for (i=0; i<ARRcookies.length; i++) {
+					
+					x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+					y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+					
+					x = x.replace(/^\s+|\s+$/g,"");
+					
+					if (x == c_name) {
+						return unescape(y); // La función devuelve el valor de la cookie.
+					}
+				}
+			}
+			
+			function setCookie(c_name, value, exdays) {
+				var exdate = new Date();
+				exdate.setDate(exdate.getDate() + exdays); // Se suman los días de caducidad establecidos (365) a la fecha actual.
+				
+				var c_value = escape(value) + ((exdays == null) ? "" : ";expires=" + exdate.toUTCString()); // Función obsoleta "escape()" crea una nueva cadena de caracteres en los que ciertos caracteres han sido sustituidos por una secuencia hexadecimal de escape.
+																											// Método "toUTCString()" convierte una fecha a un "string".
+				document.cookie = c_name + "=" + c_value; // "nombreCookie = valorCookie ; expiración"
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" name="chequeaCookie" value="Chequear las cookies" onclick="checkCookie();">
+	</body>
+</html>
+
+<!--
+	Como las cookies son emitidas por un servidor Web, para que la cookie no sea borrada del archivo local al cerrar el navegador,
+	se debería ejecutar este código en una página cargada desde un dominio, esto es, estar alojada en un servidor Web.
+-->

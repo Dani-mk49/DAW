@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 4.1.4</title>
+		<script>
+			function limita(elEvento, maximoCaracteres) {
+				
+				var elemento = document.getElementById("texto"); // Se obtiene el nodo "texto".
+				
+				// Obtención de la tecla pulsada.
+				var evento = elEvento || window.event; // OR.
+				var codigoCaracter = evento.which || evento.keyCode; // "which" para obtener información adicional sobre el evento "keypress". En este caso, retorna el código numérico del valor presionado.
+																	 // "keyCode" para las teclas normales, no definido. Para las teclas especiales, el código interno de la tecla.
+				if (elemento.value.length >= maximoCaracteres) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+			
+			function actualizaInfo(maximoCaracteres) {
+				
+				var elemento = document.getElementById("texto"); // Se obtiene el nodo "texto".
+				var info = document.getElementById("info"); // Se obtiene el nodo "info".
+				
+				info.value = maximoCaracteres - elemento.value.length;
+				
+			}
+			
+			/* Otra opción.
+			function actualizaInfo(maximoCaracteres) {
+				
+				var elemento = document.getElementById("texto"); // Se obtiene el nodo "texto".
+				var info = document.getElementById("info"); // Se obtiene el nodo "info".
+				
+				if (elemento.value.length >= maximoCaracteres) {
+					info.innerHTML = "Máximo " + maximoCaracteres + " caracteres"; // Se reemplaza la sintaxis HTML del elemento por la nueva.
+				} else {
+					info.innerHTML = "Puedes escribir hasta " + (maximoCaracteres - elemento.value.length) + " caracteres adicionales";
+				}
+			}
+			*/
+			
+		</script>
+	</head>
+	<body>
+		<div>Máximo 100 caracteres</div>
+		<!--<div id="info">Máximo 100 caracteres</div>-->
+		
+		<textarea id="texto" rows="6" cols="30" onkeypress="return limita(event, 100)" onkeyup="actualizaInfo(100)"></textarea><br>
+		
+		Puedes escribir hasta <input type="text" id="info"/> caracteres adicionales
+	</body>
+</html>
+
+<!--
+    Al pulsar una tecla se producen sucesivamente los eventos "keydown", "keypress" y "keyup".
+	Si se hace un "return false" en el "onkeypress", el caracter no se mostrará. 
+    El evento más adecuado para contabilizar los caracteres que quedan es "keyup", ya que ahí
+	ya está mostrado si procede el último carácter.
+	
+	Las propiedades "charCode", "keyCode" y "which" han quedado obsoletas y ya se debería usar
+	la propiedad "key" en su lugar, es la que tiene mayor soporte de navegadores:
+	https://www.freecodecamp.org/espanol/news/lista-de-codigos-de-teclas-en-javascript/
+-->

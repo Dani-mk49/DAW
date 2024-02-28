@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.4</title>
+		<script>
+			window.onload = function () {
+				document.getElementById("id_link").onclick = test; // Manejador de evento semántico.
+			}
+			
+			function test() {
+				
+				var attr = this.attributes[1].nodeName;
+				var valor = this.attributes[1].nodeValue;
+				
+				alert(attr);
+				alert(valor);
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba">Pulsa aquí</a>
+	</body>
+</html>
+
+<!--
+	Con manejadores de eventos semánticos:
+    http://iescamtecnologia.blogspot.com/2016/09/manejadores-de-eventos-semanticos.html
+	
+	También se podría utilizar la variable especial "this" pasándola como parámetro,
+	aunque no es necesario.
+	
+    Es necesario el manejador "window.onload", si no, al ejecutar "document.getElementById"
+	daría error (undefined) ya que el elemento "id_link" todavía no existe. Se retrasa la
+	lectura de este código hasta que la página está completamente cargada.
+    
+	Ojo, no se pone paréntesis: document.getElementById("id_link").onclick = test(); <- MAL!!
+-->

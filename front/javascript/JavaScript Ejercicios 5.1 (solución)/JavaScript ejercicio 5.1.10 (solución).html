@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.10</title>
+		<style>
+			body { margin: 0px }
+			.capa {	float: left; width: 50% }
+			#rojo { background-color: red }
+			#verde { background-color: green }
+			#amarillo { background-color: yellow }
+			#azul { background-color: blue }
+		</style>
+		<script>
+			function mostrarInformacion() {
+				
+				// Así no funciona!! porque no lo coge del CSS: ojo, si el CSS estuviera
+				// definido en modo inline sí.
+				alert ("Has pulsado en " + this.getAttribute("id"));
+				//alert ("Has pulsado en " + this.style.backgroundColor);
+			}
+			
+			function tamanoVentanaNavegador() { // Finding the size of the browser window.
+			// Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+				var dimensiones = [];
+				
+				if (typeof (window.innerWidth) == 'number') {
+					// No es IE.
+					dimensiones = [ window.innerWidth, window.innerHeight ];
+				} else if ( document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight) ) {
+					// IE 6 en modo estandar (no quirks).
+					dimensiones = [ document.documentElement.clientWidth, document.documentElement.clientHeight ];
+				} else if (document.body && ( document.body.clientWidth || document.body.clientHeight) ) {
+					// IE en modo quirks.
+					dimensiones = [ document.body.clientWidth, document.body.clientHeight ];
+				}
+				return dimensiones;
+			}
+			
+			var dimensiones = tamanoVentanaNavegador();
+			
+			var altura = dimensiones[1];
+			//var anchura = dimensiones[0];
+			
+			window.onload = function () {
+				
+				capas = document.getElementsByTagName("div");
+				
+				for (i=0; i<capas.length; i++) {
+				
+					var alturapx = altura/2 + "px";
+					//var anchurapx = anchura/2 + "px";
+					
+					//capas[i].style.width = anchurapx;
+					capas[i].style.height = alturapx;
+					
+					capas[i].onclick = mostrarInformacion; // Al pusar sobre la "capa" del documento Web, se ejecuta la función "mostrarInformacion" (manejador de evento semántico).
+				 }
+			 }
+		</script>
+	</head>
+	<body>
+		<div id="rojo" class="capa"></div>
+		<div id="verde" class="capa"></div>
+		<div id="amarillo" class="capa"></div>
+		<div id="azul" class="capa" ></div>
+	</body>
+</html>
+
+<!--
+	Ver también Ejercicio 4.1.2.
+	
+    Cada una de las capas debe tener una anchura de la mitad de pantalla. Como un "div" es un
+	elemento de tipo bloque (ocupa por defecto el 100% del ancho), al poner el 50%, queda
+	perfectamente definido.
+    Para que haya dos "div" al mismo nivel, se deben poner mediante "float".
+    
+    En cambio, la altura se puede hacer con 50% ya que por defecto su altura es la de los
+	objetos que contiene. Se puede aprovechar la función JavaScript dada, para darle una
+	altura a los "div".
+    Otra posibilidad para dar la altura, sería aprovecharse de los conocimientos CSS y
+	dejar de lado JavaScript.
+    
+	Se ha tenido que definir el "margin" del "body" a 0px, para que quedase toda la pantalla pintada.
+	
+    Observa que, aprovechando las capas, no hace falta obtener la zona que se ha pinchado de
+	otra forma más que conociendo quién dispara el evento (no hace falta hacer cálculos de la
+	zona de la pantalla).
+-->

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 4.1.1</title>
+		<style>
+			#contenedor { height: 1200px }
+			form { position: fixed;	top: 100px;	left: 100px	}
+		</style>
+		<script>
+			
+			function muestraInformacion(elEvento) { // Manejador de evento.
+			//function muestraInformacion() {
+				
+				// Para que el manejador "onmousemove" pueda obtener información adicional sobre el evento "mousemove":
+				// Dependiento del navegador, es necesario pasar el parámetro "elEvento" para luego recogerlo.
+				// Se genera un parámetro, que recoge el evento en cuestión y sus propiedades, también mediante "window.event".
+				var evento = elEvento || window.event; // OR.
+				
+				var clientx = evento.clientX;
+				document.f1.clientX.value = clientx; // Se escribe el valor en el campo de texto "clientX" (mismo nombre que el evento) del formulario "f1".
+				//document.f1.clientX.value = window.event.clientX; // También funciona así.
+				
+				//document.f1.clientX.value = window.event.type; // Información sobre el tipo de evento capturado.
+				
+				var clienty = evento.clientY;
+				document.f1.clientY.value = clienty;
+				
+				var screenx = evento.screenX;
+				document.f1.screenX.value = screenx;
+				
+				var screeny = evento.screenY;
+				document.f1.screenY.value = screeny;
+				
+				var pagex = evento.pageX;
+				document.f1.pageX.value = pagex;
+				
+				var pagey = evento.pageY;
+				document.f1.pageY.value = pagey;
+			}
+			
+			// También funciona con:
+			// window.onload = function() { // El evento "load" se dispara al final del proceso de carga del documento Web.
+			// 		document.body.onmousemove = muestraInformacion; // Al mover sobre el "body" del documento, se ejecuta la
+			// }													// función "muestraInformacion" (manejador de evento semántico).
+			
+		</script>
+	</head>
+
+<!--
+	También funciona con:
+	<body onmousemove="muestraInformacion()">
+-->
+	
+	<body onmousemove="muestraInformacion(event)">
+		<div id="contenedor">
+			<form name="f1">
+				Coordenada X navegador: <input type="text" name="clientX"/>
+				Coordenada Y navegador: <input type="text" name="clientY"/>
+				<br></br>
+				Coordenada X monitor: <input type="text" name="screenX"/>
+				Coordenada Y monitor: <input type="text" name="screenY"/>
+				<br></br>
+				Coordenada X absoluta: <input type="text" name="pageX"/>
+				Coordenada Y absoluta: <input type="text" name="pageY"/>
+			</form>
+		</div>
+	</body>
+
+</html>
+
+<!--
+	Para resolver este ejercicio, el manejador requiere obtener información adicional sobre su evento:
+	http://dis.um.es/~lopezquesada/documentos/IES_1314/IAW/curso/UT7/libroswebjavascript/www.librosweb.es/javascript/capitulo6/obteniendo_informacion_del_evento_objeto_event.html
+	
+	Si la asociación evento-manejador no se realiza mediante manejadores de eventos semánticos, se debe
+	pasar el parámetro, si no, dependiendo del navegador, es posible que no funcione.
+	
+    Al ejecutar el ejercicio se debe apreciar que:
+		clientX -> Coordenadas respecto a la ventana actual del navegador.
+		screenX -> Coordenadas respecto a la pantalla física.
+		pageX -> Coordenadas respecto a la hoja del navegador, puede haber scroll.
+	
+	Se añade el "div" con esa altura para tener scroll en la página actual. Si se baja en el scroll
+	se deben ver los datos que se generan en el formulario, por eso lleva un "position: fixed".
+	
+	Si el ratón se mueve fuera del "body-contenedor-formulario", el manejador no "registra" el evento de
+	movimiento del ratón.
+-->

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 4.3.2 Web Storage (con DOM)</title>
+	</head>
+	<body>
+		<p>Session storage: <span id="session"></span></p>
+		<p>Local storage: <span id="local"></span></p>
+		
+		<button onclick="sumar()">+1</button>
+
+		<script>
+			
+			var valorSession = sessionStorage.valorSession; // Sesión del navegador (una ventana).
+			var valorLocal = localStorage.valorLocal; // Desde siempre (múltiples ventanas).
+			
+			function mostrar() {
+				document.getElementById('session').innerHTML = sessionStorage.valorSession;
+				document.getElementById('local').innerHTML = localStorage.valorLocal;
+			}
+			
+			function sumar() {
+				if (isNaN(valorLocal)) {
+					valorLocal = 0;
+				}
+				else {
+					valorLocal = localStorage.valorLocal;
+				}
+				
+				if (valorSession != undefined) {
+					valorSession = sessionStorage.valorSession;
+				} else {
+					valorSession = 0;
+				}
+				
+				sessionStorage.setItem('valorSession', ++valorSession);
+				localStorage.setItem('valorLocal', ++valorLocal);
+				
+				mostrar();
+			}
+			
+			document.onload(mostrar());
+			
+			/*
+			function mostrar() {
+				document.getElementById('session').innerHTML = sessionStorage.valorSession;
+				document.getElementById('local').innerHTML = localStorage.valorLocal;
+			}
+			
+			function sumar() {
+				var valorSession = sessionStorage.valorSession ? sessionStorage.valorSession : 0;
+				var valorLocal = localStorage.valorLocal ? localStorage.valorLocal : 0;
+				
+				sessionStorage.setItem('valorSession', ++valorSession);
+				localStorage.setItem('valorLocal', ++valorLocal);
+				
+				mostrar();
+			}
+			
+			document.onload(mostrar());
+			*/
+		</script>
+	</body>
+</html>

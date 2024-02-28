@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.7</title>
+		<script>
+			function test(enlace) {
+			
+				enlace.title = "Enlace de prueba cambiado";
+				
+				alert(enlace.title);
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba" onmouseover="test(this);">Pulsa aquí</a>
+	</body>
+</html>
+
+<!--
+    Se puede observar con Firefox Firebug o Chrome Developer Tools como el código que muestra no
+	es el código inicial de la página, el elemento <a> lo muestra con el nuevo "title" también
+	desde el código, una vez se haya producido el evento "mouseover".
+-->

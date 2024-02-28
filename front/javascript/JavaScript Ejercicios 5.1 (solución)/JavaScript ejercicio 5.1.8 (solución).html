@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.8</title>
+		<script>
+			function mostrar(num) {
+				
+				var mensaje = document.getElementById("mensaje");
+				
+				if (num == 1) {
+					mensaje.innerHTML = " Has pasado el ratón por el enlace"; // Se modifica el contenido del elemento "span",
+					mensaje.style.display = "inline";						  // se escribe un texto en él.
+					
+				} else if (num == 2) {
+					mensaje.innerHTML = " Has pulsado el enlace";
+					mensaje.style.color = "#0101ff";
+					mensaje.style.fontWeight = "bold";
+					
+					//return false;
+					
+				} else {
+					mensaje.innerHTML = "";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba" onmouseover="mostrar(1);" onclick="mostrar(2);return false;" onmouseout="mostrar(3);">Pulsa aquí</a>
+		<span id="mensaje" style="display:none;"></span>
+	</body>
+</html>
+
+<!--
+    En el "onclick" se tiene que evitar que el enlace se ejecute y lleve a otra página (#).	Esto es hace
+	con un "return false", es decir:
+		onclick="funcion();return false;"
+    
+	En el código anterior, la propia función tiene el "return false" (aunque no es necesario) y para
+	recogerlo, se pone también el "return" en el "onclick".
+    Se podría poner el "return false" en la propia función (está comentado, línea 20) y entonces
+	los atributos de eventos serían de la forma:
+		onclick="return mostrar(2);" en vez de onclick="mostrar(2); return false;"
+    
+    Se añade el último "else" para que el manejador de evento "onmouseover" tenga su
+	correspondiente	"onmouseout", sería lo suyo :-)
+    
+    Se podría haber creado el elemento nuevo, en vez de haber añadido un "span" con el "display"
+	a "none". Se ha hecho así porque es más rápido :-)
+    El "span" no haría falta ponerlo con el "display" a "none", ya que al no tener texto, no
+	muestra nada. Por eso, en el "onmouseout" simplemente se quita el texto mediante el "innerHTML",
+	no se vuelve a poner con "display:none".
+	
+	Se podría comentar la línea "//var mensaje...", y aún así referirnos al elemento mensaje debido a
+	que el "id" lo toma como variable global, pero no siempre es así:
+    http://stackoverflow.com/questions/6381425/should-the-id-of-elements-be-made-global-variables-and
+-->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.6</title>
+		<script>
+			function test() {
+			
+				alert(id_link.title);
+				
+				document.getElementById("id_link").title = "Enlace de prueba cambiado";
+				
+				//document.getElementById("id_link").setAttribute('title', 'Enlace de prueba cambiado'); // Otra opción.
+				
+				//id_link.title = "Enlace de prueba cambiado"; // Otra opción.
+				
+				alert(id_link.title);
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba" onclick="test();">Pulsa aquí</a>
+	</body>
+</html>
+
+<!--
+	Con manejador de evento semántico.
+	
+	Se podría realizar el ejercicio pasando la variable "this" como en el ejercicio anterior,
+	pero también se puede obtener el elemento en cuestión con las funciones:
+		getElementsByTagName()
+		getElementsByName()
+		getElmementById()
+		getElementsByClassName()
+	
+	También se puede utilizar el método "setAttribute()" o el atributo ".title" directamente.
+-->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.2.7</title>
+		<script>
+			// Se usan manejadores de eventos semánticos.
+			window.onload = function() {
+				document.getElementById("enlace_1").onclick = muestraOculta;
+				document.getElementById("enlace_2").onclick = muestraOculta;
+				document.getElementById("enlace_3").onclick = muestraOculta;
+			}
+			
+			function muestraOculta() {
+				var elemento = get_previoussibling(this);
+				if (elemento.style.display == "" || elemento.style.display == "block") {
+					elemento.style.display = "none";
+					this.innerHTML = 'Mostrar contenidos';
+				} else {
+					elemento.style.display = "block";
+					this.innerHTML = 'Ocultar contenidos';
+				}
+			}
+			
+			// No es necesaria esta parte del ejercicio de cara a preparar el examen.
+			// "previousSibling" cogería el texto del párrafo. O se ejecuta dos veces
+			// para referirse al elemento o se utiliza la siguiente función:
+			function get_previoussibling(n) {
+				x = n.previousSibling; // Propiedad del objeto "Node".
+				while (x.nodeType != 1) {
+					x = x.previousSibling;
+				}
+				return x;
+			}
+		</script>
+	</head>
+	<body>
+		<p id="contenidos_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+		<a id="enlace_1" href="#">Ocultar contenidos </a>
+		<br />
+		<p id="contenidos_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+		<a id="enlace_2" href="#">Ocultar contenidos </a>
+		<br />
+		<p id="contenidos_3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+		<a id="enlace_3" href="#">Ocultar contenidos </a>
+	</body>
+</html>
+
+<!--
+	Variante mediante manejadores de eventos semánticos del ejercicio anterior. Debe quedar claro:
+    - Se elimina los atributos de eventos de los enlaces, los "onclick" del código HTML.
+    - Se hace la asociación de eventos con manejadores desde la función anónima del
+	"window.onload".
+    - Se utiliza perfectamente el "this" dentro de la función manejadora del evento,
+	sin más (no se define como parámetro de la función).
+-->

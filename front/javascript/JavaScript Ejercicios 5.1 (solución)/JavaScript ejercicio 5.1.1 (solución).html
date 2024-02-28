@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.1</title>
+	</head>
+	<body>
+		<button id="pinchable">Pulsa el botón</button>
+		<script>
+			document.getElementById("pinchable").onclick = muestraMensaje; // Manejador de evento semántico.
+			
+			var elemento = 0;
+			
+			function muestraMensaje() {
+				
+				elemento = elemento + 1;
+				
+				if (elemento == 6) { console.log("Se ha pulsado al botón más de 5 veces") };
+			}
+		</script>
+	</body>
+</html>
+
+<!--
+	2 opciones: o se define una variable global para que cuando se escriba en consola no se haga
+	más, ej. "var consola = true", y el "if" evaluando "elemento > 5" o simplemente se muestra
+	cuando elemento	sea 6.
+-->

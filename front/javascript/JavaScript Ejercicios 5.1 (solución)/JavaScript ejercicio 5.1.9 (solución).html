@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.9</title>
+		<script>
+			var creadoH3 = false; // Inicializacion de una variable "memoria o estado anterior".
+			
+			function mostrar(num) {
+				
+				var mensaje = document.getElementById("mensaje");
+				
+				if (num == 1) {
+					mensaje.innerHTML = " Has pasado el ratón por el enlace"; // Se modifica el contenido del elemento "span",
+					mensaje.style.display = "inline";						  // se escribe un texto en él.
+					
+				} else if (num == 2) {
+					mensaje.innerHTML = " Has pulsado el enlace";
+					mensaje.style.color = "#0101ff";
+					mensaje.style.fontWeight = "bold";
+					
+					if (!creadoH3) { // Solo se ejecuta la 1ª vez que se pulsa.
+						// Se crea nuevo elemento "h3" y se escribe un texto en él.
+						var newH3 = document.createElement("h3");
+						newH3.innerHTML = "Enlace pulsado";
+						// Se inicializa el nodo ya existente a una variable y se utiliza el método "insertar".
+						referencia = document.getElementById("id_link");
+						document.body.insertBefore(newH3, referencia);
+						// Se guarda o memoriza el estado "enlace pulsado".
+						creadoH3 = true;
+						//alert("Enlace pulsado");
+					}
+					
+					return false;
+					
+				} else {
+					mensaje.innerHTML = "";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba" onmouseover="mostrar(1);" onclick="return mostrar(2);" onmouseout="mostrar(3);">Pulsa el enlace</a>
+		<span id="mensaje" style="display:none;"></span>
+	</body>
+</html>
+
+<!--
+	La variable "creadoH3" sirve para que solo se cree el elemento "h3" una vez, en el
+	primer "onclick" que se haga, es una variable "memoria" (memoriza el estado anterior).
+	Se puede comprobar "debugueando" con Firefox Firebug o Chrome Developer Tools que
+	es así.
+-->

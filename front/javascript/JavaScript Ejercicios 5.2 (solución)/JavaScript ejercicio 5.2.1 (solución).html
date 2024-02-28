@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.2.1</title>
+		<script>
+			function anade() {
+				
+				var elemento = document.createElement('li'); // Crea el nodo de tipo "elemento" "li".
+				var texto = document.createTextNode('Elemento de prueba'); // Crea el nodo de tipo "texto".
+				elemento.appendChild(texto); // Se asocia al nodo "elemento" el nodo "texto" para que éste último sea su hijo.
+				
+				var lista = document.getElementById('lista'); // Recupera el nodo de tipo "elemento" "ul".
+				lista.appendChild(elemento); // Añade el 1er elemento a la lista.
+				
+				var nuevoElemento = '<li>Texto de prueba</li>';
+				lista.innerHTML = lista.innerHTML + nuevoElemento; // Añade el 2º elemento a la lista.
+			}
+			
+			function anade2() { // Con el gestor de eventos. Solo se ejecuta la 1ª vez que se pulsa.
+				
+				var elemento2 = document.createElement('li'); // Crea el nodo de tipo "elemento" "li".
+				var texto2 = document.createTextNode('Elemento de prueba'); // Crea el nodo de tipo "texto".
+				elemento2.appendChild(texto2); // Se asocia al nodo "elemento" el nodo "texto" para que éste último sea su hijo.
+				
+				var lista2 = document.getElementById('lista'); // Recupera el nodo de tipo "elemento" "ul".
+				lista2.appendChild(elemento2); // Añade el 1er elemento a la lista.
+				
+				var nuevoElemento2 = '<li>Texto de prueba</li>';
+				lista2.innerHTML = lista2.innerHTML + nuevoElemento2; // Añade el 2º elemento a la lista.
+				
+				document.getElementById("boton2").removeEventListener("click", anade2);
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="lista">
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Consectetuer adipiscing elit</li>
+			<li>Sed mattis enim vitae orci</li>
+			<li>Phasellus libero</li>
+			<li>Maecenas nisl arcu</li>
+		</ul>
+		
+		<input type="button" value="Añadir elementos" onclick="anade();" /><br /><br />
+		
+		<input type="button" id="boton2" value="Añadir elementos una sola vez" />
+		
+		<script>
+			// Con el gestor de eventos.
+			document.getElementById("boton2").addEventListener("click", anade2);
+		</script>
+	</body>
+</html>
+
+<!--
+	Para añadir los elementos existen dos posibilidades:
+	1. Se crea el nuevo elemento "li", su nodo texto correspondiente y luego se asocia con
+		el elemento padre que ya existe en el DOM.
+	2. Se selecciona el elemento padre y se añade el elemento mediante el método "innerHTML".
+	
+	Ojo, el elemento "button" no estaba cerrado.
+	
+	Al usar un gestor de eventos, no es necesario memorizar con una variable el estado
+	anterior "botón pulsado".
+ -->

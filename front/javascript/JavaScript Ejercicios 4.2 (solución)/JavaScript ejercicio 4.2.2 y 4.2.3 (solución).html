@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 4.2.2 y 4.2.3 - Formularios y Expresiones regulares con JavaScript</title>
+		<style>
+			form {
+				margin: 30px;
+				border-color: light-grey;
+				border-width: 1px;
+				width: 500px;
+			}
+			
+			label {
+				display: block;
+				width: 150px;
+				text-align: right;
+				float: left;
+				clear: left;
+				margin-right: 10px;
+			}
+			
+			input {
+				display: block;
+				width: 250px;
+				text-align: left;
+				clear: right;
+			}
+		</style>
+		<script>
+			function validacion() {
+				
+				// Definimos las expresiones regulares.
+				//var val_noVacio = /\S+/; // Sería otra opción.
+				var val_texto = /^\D+$/; // Cualquier carácter siempre que no sea numérico.
+				var val_telefono = /^\d{9}$/; // 9 cifras numéricas.
+				var val_email = /^(.+\@.+\..+)$/;
+				var val_dni = /^\d{8}[a-zA-Z]$/; // 8 cifras numéricas + 1 carácter alfabético.
+				
+				// Recorremos todos los campos (elementos) del formulario.
+				for (i=0; i<formulario.elements.length-1; i++) {
+					
+					elemento = formulario.elements[i];
+					
+					if (elemento.type != "text") // Si el elemento HTML no es de tipo "text",
+						continue;				 // termina la ejecución del bucle "for".
+					
+					var palabras = elemento.className.split(" "); // Se separa cada elemento del array "lista
+																  // de clases" con un espacio.
+					for (j=0; j<palabras.length; j++) {
+						
+						switch (palabras[j]) {
+							case "noVacioYnoNumeros":
+								if (elemento.value.length < 1) { // Si el elemento está vacío.
+									alert("El campo no debe estar vacío.");
+									elemento.style.backgroundColor = '#ccc';
+									elemento.value = "";
+									return false;
+								}
+								if (!val_texto.test(elemento.value)) { // Si el elemento no contiene ningún número.
+									alert("El campo no debe contener ningún número.");
+									elemento.style.backgroundColor = '#ccc';
+									elemento.value = "";
+									return false;
+								}
+								break;
+							case "telefono":
+								if (!val_telefono.test(elemento.value)) {
+									alert("Teléfono no válido.");
+									elemento.style.backgroundColor = '#ccc';
+									elemento.value = "";
+									return false;
+								}
+								break;
+							case "email":
+								if (!val_email.test(elemento.value)) {
+									alert("Correo electrónico no válido.");
+									elemento.style.backgroundColor = '#ccc';
+									elemento.value = "";
+									return false;
+								}
+								break;
+							case "dni": // Falta añadir el cálculo de la letra.
+								if (!val_dni.test(elemento.value)) {
+									alert("DNI no válido.");
+									elemento.style.backgroundColor = '#ccc';
+									elemento.value = "";
+									return false;
+								}
+								break;
+							default:
+								break;
+						}
+					}
+				}
+			}
+			
+			window.onload = function() { // El evento "load" hace referencia a la carga de distintas partes de la página. Este se produce en el objeto "Window" cuando la página se ha cargado por completo.
+				formulario.apellido.focus(); // Se coloca el foco en el campo "apellido" por defecto.
+			}
+		</script>
+	</head>
+	<body>
+		<form name="formulario" action="OK.html" onsubmit="return validacion()">
+			<fieldset>
+				<legend>Formulario</legend>
+				<label>Nombre:</label>
+				<input type="text" name="nombre" class="noVacioYnoNumeros" /><br />
+				<label>Apellido:</label>
+				<input type="text" name="apellido" class="noVacioYnoNumeros" /><br />
+				<label>Teléfono:</label>
+				<input type="text" name="telefono" class="telefono" /><br />
+				<label>Correo electrónico:</label>
+				<input type="text" name="correo" class="email" /><br />
+				<label>DNI:</label>
+				<input type="text" name="dni" class="dni" /><br />
+				<input type="submit" value="Enviar" />
+			</fieldset>
+		</form>
+		
+		<script>
+			//formulario.apellido.focus(); // Otra opción, una vez cargado el formulario. Se coloca el foco en el campo "apellido" por defecto.
+		</script>
+	</body>
+</html>
+
+<!--
+    Esta es una forma habitual de trabajar actualmente en HTML. Se añaden clases que tienen su tratamiento
+	en el framework de CSS o en el plugin de JavaScript correspondiente. Así, el desarrollador Web puede
+	implementar rápidamente y de forma intuitiva soluciones de terceros.
+    
+    La forma más rápida de validar, como en ejercicios hechos anteriormente, es mediante expresiones
+	regulares.
+    
+    Además de los "alert", la función debería tener un "return false" para que el formulario no se
+	envíe y tenga sentido el código:
+		onsubmit="return validacion()".
+	
+    En el futuro, se realizarán validaciones de formularios utilizando plugins de jQuery.
+    La esencia será la misma que en este ejercicio:
+    - Se crea una función de validación, a la que se le pasará el campo a validar (variable cadena) y
+	el tipo de validación que se quiere (tipo_campo).
+    - En función de "tipo_campo" se le asignará el patrón de validación que corresponda.
+	
+    Para hacer el ejercicio 4.2.3, bastaría con cambiar el "alert" de los elementos por sentencias del tipo:
+		elemento.style.backgroundColor = '#ccc';
+		elemento.value = "";
+-->

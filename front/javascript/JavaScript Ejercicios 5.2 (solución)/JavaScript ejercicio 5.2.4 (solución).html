@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.2.4</title>
+		<style>
+			.oculto { display: none; }
+			.visible { display: inline;	}
+			.importante { color: red; }
+		</style>
+		<script>
+			function muestra(mienlace) {
+				
+				var elemento = document.getElementById("adicional");
+				elemento.className = "visible";
+				elemento.className += " importante";
+				
+				//var enlace = document.getElementById("enlace");
+				//enlace.className = "oculto";
+				//mienlace.className = "oculto";
+				mienlace.className = "oculto";
+				
+				return false;
+			}
+		</script>
+	</head>
+	<body>
+		<p id="texto">
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante,
+			ornare id, aliquam vitae, ultrices porttitor, pede. 
+			<span id="adicional" class="oculto">
+				Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus
+				ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non
+				dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque. Donec lacus neque, vehicula in, eleifend vitae,
+				venenatis ac, felis. Donec arcu. Nam sed tortor nec ipsum aliquam ullamcorper. Duis accumsan metus eu urna. Aenean vitae enim. Integer
+				lacus. Vestibulum venenatis erat eu odio. Praesent id metus.
+			</span>
+		</p>
+		<a id="enlace" href="#" onclick="return muestra(this);">Seguir leyendo</a>
+	</body>
+</html>
+
+<!--
+    Observa cómo se llama a la función "muestra" enviándole el "this" como parámetro. Así se evita el
+	"document.getElementbyId" que está comentado. Incluso en muchos navegadores, sin el "this", también
+	funcionaría (escribiendo "enlace.className" en vez de "mienlace.className"). Esto es así porque hay
+	cierta tendencia en los navegadores en guardar los "id" como variables globales, pero no es una buena
+	práctica en el desarrollo.
+    
+    El nuevo texto que se añade podría tener también la letra de color rojo. Lo lógico sería hacerlo
+	implementando una nueva clase, que se ha llamado "importante".
+    Observa cómo se añade sin eliminar las clases que ya tuviera: elemento.className += " importante";
+-->

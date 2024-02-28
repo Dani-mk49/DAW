@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 4.2.1 - Expresiones regulares con JavaScript</title>
+		<script>
+			do {
+				var nombre = prompt("Escribe tu nombre");
+			} while (!comprobar_campos(nombre, "texto"));
+			
+			do {
+				var apellido = prompt("Escribe tu apellido");
+			} while (!comprobar_campos(apellido, "texto"));
+			
+			do {
+				var dni = prompt("Escribe tu DNI");
+			} while (!comprobar_campos(dni, "dni"));
+			
+			do {
+				var tel = prompt("Escribe tu teléfono");
+			} while (!comprobar_campos(tel, "telefono"));
+			
+			do {
+				var email = prompt("Escribe tu correo electrónico");
+			} while (!comprobar_campos(email, "correo"));
+			
+			 // Mostramos los datos:
+			document.write("Nombre:" + nombre + "<br/>");
+			document.write("Apellido:" + apellido + "<br/>");
+			document.write("DNI:" + dni + "<br/>");
+			document.write("Teléfono:" + tel + "<br/>");
+			document.write("e-mail:" + email);
+			
+			function comprobar_campos(cadena, tipo_campo) {
+				switch (tipo_campo) {
+					case "texto":
+						var patron = /^\D+$/; // Cualquier carácter siempre que no sea numérico.
+						break;
+					case "dni": // Falta añadir el cálculo de la letra.
+						var patron = /^\d{8}[a-zA-Z]$/; // 8 cifras numéricas + 1 carácter alfabético.
+						break;
+					case "telefono":
+						var patron = /^\d{9}$/; // 9 cifras numéricas.
+						break;
+					case "correo":
+						var patron = /^(.+\@.+\..+)$/;
+						break;
+				}
+				return patron.test(cadena);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

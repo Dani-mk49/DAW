@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.2b</title>
+		<script>
+			function eliminaTexto() {
+			
+				alert("Se va a eliminar el texto de la página");
+				
+				document.getElementById("textoweb").innerHTML = "Nuevo texto";
+				
+				alert("Texto sobreescrito");
+			}
+		</script>
+	</head>
+	<body onload="eliminaTexto();">
+		<p id="textoweb">
+			Este texto quedará anulado al cargar el script
+		</p>
+	</body>
+</html>
+
+<!--
+	Hace falta una función para evitar que se ejecute el código con el "getElementById",
+    que daría error al no estar renderizado todavía el elemento con id="textoweb".
+    
+	El evento "onload" se dispara una vez que toda la página está cargada.
+    
+	Se podría haber creado las sentencias de la función al final del "body", en cuyo caso
+    no se necesitaría el evento "load" ni su manejador de evento "eliminaTexto".
+    
+	Se podría haberlo hecho también sin concatenar los métodos, mediante:
+		var parrafo = document.getElementById("textoweb");
+		parrafo.innerHTML = "Nuevo texto";
+-->

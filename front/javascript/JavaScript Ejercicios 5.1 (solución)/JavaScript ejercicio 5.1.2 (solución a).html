@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.2a</title>
+		<script>
+			window.onload = function () {
+				
+				alert("Se va a eliminar el texto de la página");
+				
+				document.getElementById("textoweb").innerHTML = "Nuevo texto";
+				
+				alert("Texto sobreescrito");
+			}
+		</script>
+	</head>
+	<body>
+		<p id="textoweb">
+			Este texto quedará anulado al cargar el script.
+		</p>
+	</body>
+</html>
+
+<!--
+    ERROR 1: El "window.onload" debe llevar después un "=". El error no es muy descriptivo
+	desde la consola... es lo que tiene a veces :-(
+	
+    ERROR 2: Sigue sin disparar las alertas de la función. ¿Entra en la función? Se pone
+	un punto de interrupción y no entra. La consola tampoco da errores.
+	Para volverse locos... sobra "onload" en el "body".
+-->

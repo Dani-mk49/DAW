@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 5.1.5</title>
+		<script>
+			function test(elemento) {
+				
+				elemento.setAttribute("href", "https://www.google.es");
+				
+				//elemento.href = "https://www.google.es"; // Otra opción.
+				
+				//elemento.attributes[0].nodeValue = "https://www.google.es"; // Otra opción.
+				
+				var attr = elemento.attributes[0].nodeName;
+				var valor = elemento.attributes[0].nodeValue;
+				
+				alert(attr);
+				alert(valor);
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba" onclick="test(this);">Pulsa aquí</a>
+	</body>
+</html>
+
+<!--
+	Sin manejador semántico de evento.
+	
+    Se puede utilizar tanto el método "setAttribute()" como el atributo ".href" directamente:
+		elemento.href = "https://www.google.es";
+    
+	Otra opción sería cambiar el valor del nodo.
+-->

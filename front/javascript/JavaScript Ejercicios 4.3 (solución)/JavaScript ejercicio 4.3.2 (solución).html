@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio 4.3.2 Web Storage</title>
+	</head>
+		<script>
+			
+			var valorSession = sessionStorage.valorSession; // Sesión del navegador (una ventana).
+			var valorLocal = localStorage.valorLocal; // Desde siempre (múltiples ventanas).
+			
+			function sumar() {
+				
+				// SessionStorage
+				if (valorSession != undefined) {
+					valorSession = sessionStorage.valorSession;
+				} else {
+					valorSession = 0;
+				}
+				
+				sessionStorage.setItem("valorSession", ++valorSession); // Se escribe en el par clave-valor (sumando 1).
+				
+				// LocalStorage
+				if (isNaN(valorLocal)) {
+					valorLocal = 0;
+				} else {
+					valorLocal = localStorage.valorLocal;
+				}
+				
+				localStorage.setItem("valorLocal", ++valorLocal); // Se escribe en el par clave-valor (sumando 1).
+				
+				mostrar();
+			}
+			
+			function mostrar() {
+				alert("Session storage: " + sessionStorage.valorSession + "\nLocal storage: " + localStorage.valorLocal);
+			}
+			
+		</script>
+	<body>
+		<h1>Número de accesos</h1>
+		<button onclick="sumar()">+1</button>
+		<script>
+			document.onload(mostrar()); // Cuando se carga la página Web.
+		</script>
+	</body>
+</html>
