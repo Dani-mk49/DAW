@@ -7,13 +7,16 @@ var pantalla = document.getElementById('pantalla');
 // var teclaAlmazenada;
 async function pulsar(tecla) {
     // teclaAlmazenada = tecla;
-    // var elementoTecla = document.getElementById(String(tecla));
-    // elementoTecla.style.background = "#0101ff";
+    var elementoTecla = document.getElementById(String(tecla));
+    elementoTecla.style.background = "#0101ff";
     if (isNaN(tecla)) {
         accionCaracter(tecla);
     } else {
         accionNumero(tecla);
     }
+    setTimeout(() => {
+        elementoTecla.style.background = "#fff";
+    }, 100);
 }
 
 function accionNumero(tecla) {
