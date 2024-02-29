@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <style>
+    fieldset{
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <fieldset>
+    <legend>Formulario</legend>
+    <form action="" method="get">
+      <p>Numero de cuenta:<input type="text" maxlength="20" id="numCuenta" onkeypress="return permite(event, 'numCuenta')">Tiene que tener 20 digitos</p>
+      <p>Seis caracteres:<input type="text" id="seisCaracteres" maxlength="6" onkeypress="return permite(event, 'seisCaracteres')">Tienen que ser 6 exactamente</p>
+      <p>Antes relleno:<input type="text" id="relleno" disabled>si el de antes !=6 desactivalo</p>
+      <input type="submit" value="Validar" id="validar" onclick="return enviar()">
+    </form>
+  </fieldset>
+  <script src="ejercicio2.js"></script>
+</body>
+</html>

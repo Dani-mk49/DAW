@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen 2ª Evaluación Ejercicio Calculadora</title>
+  <style>
+    .p{
+      text-align: right;
+      font-family: "Arial";
+      font-size: 40px;
+      margin: 0.25cm 0.25cm 0.25cm 0.25cm;
+    }
+    .c{
+      text-align: center;
+      font-family: "Arial";
+      font-size: 40px;
+      margin: 0.25cm 0.75cm 0.25cm 0.75cm;
+    }
+  </style>
+</head>
+
+<body>
+  <table border="2">
+    <tr>
+      <td colspan="5"><div class="p" id="pantalla">0</div></td>
+    </tr>
+    <tr>
+      <td onclick="pulsar(7)" id="7"><div class="c">7</div></td>
+      <td onclick="pulsar(8)" id="8"><div class="c">8</div></td>
+      <td onclick="pulsar(9)" id="9"><div class="c">9</div></td>
+      <td onclick="pulsar('/')" id="/"><div class="c">/</div></td>
+      <td onclick="pulsar('C')" id="C"><div class="c">C</div></td>
+    </tr>
+    <tr>
+      <td onclick="pulsar(4)" id="4"><div class="c">4</div></td>
+      <td onclick="pulsar(5)" id="5"><div class="c">5</div></td>
+      <td onclick="pulsar(6)" id="6"><div class="c">6</div></td>
+      <td onclick="pulsar('X')" id="X"><div class="c">X</div></td>
+      <td onclick="pulsar('=')" id="=" rowspan="3"><div class="c">=</div></td>
+    </tr>
+    <tr>
+      <td onclick="pulsar(1)" id="1"><div class="c">1</div></td>
+      <td onclick="pulsar(2)" id="2"><div class="c">2</div></td>
+      <td onclick="pulsar(3)" id="3"><div class="c">3</div></td>
+      <td onclick="pulsar('-')" id="-"><div class="c">-</div></td>
+    </tr>
+    <tr>
+      <td onclick="pulsar(0)" id="0" colspan="3"><div class="c">0</div></td>
+      <td onclick="pulsar('+')" id="+"><div class="c">+</div></td>
+    </tr>
+  </table>
+  <script src="ejercicio1.js"></script>
+</body>
+</html>
