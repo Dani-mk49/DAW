@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ejercicio 4.4.1</title>
+		<style>
+			/* Define un identificador "body" asociado a un elemento <div>. Es la posición del cuerpo de la página (barra lateral más contenido) */
+			div#body  {
+				margin: auto auto auto auto;  /* top right bottom left, equivale a poner un solo auto */
+				width: 710px; /* El ancho del estilo lo coloca en 710px */
+				clear: left; /* En el body se elimina el flotante para que la siguiente caja quede debajo */
+			}
+			/* Define un identificador "header" asociado a un elemento <div>. Es la posición de la cabecera */
+			div#header {
+				margin: auto auto auto auto;
+				width: 710px;
+				border: solid 3px #815608;
+				border-radius: 15px; /* Borde redondeado de radio 15px */
+			}
+			div#sidebar {
+				display: none; /* Este div no lo hace visible */
+				border: solid 1px #CFC;
+				padding-left: 15px; / * Se modifica el ancho */
+			}
+			/* Define un identificador "footer" asociado a un elemento <div>. Es la posición del pie de página */
+			body.sidebar-main div#footer {
+				margin: 25px auto 25px auto;
+				width: 710px;
+				border: solid 3px #815608;
+				border-radius: 15px; /* Borde redondeado de radio 15px */
+				clear: right; /* Ya que el div encima es tipo float:right, es necesario decirle ahora que coloque este div cuando no hay ningún div que esté flotando a la derecha */
+			}
+			/* Define un identificador "footer" asociado a un elemento <div>. Es la posición del pie de página */
+			body.main-sidebar div#footer {
+				margin: 15px auto 15px auto;
+				width: 710px;
+				border: solid 3px #815608;
+				border-radius: 15px; /* Borde redondeado de radio 15px */
+				clear: left; /* Ya que el div encima es tipo float:left, es necesario decirle ahora que coloque este div cuando no hay ningún div que este flotando a la izquierda */
+			}
+			body.main-sidebar div#main, body.sidebar-main div#main {
+				width: 490px;
+				border: solid 4px green;
+			}
+			body.main-sidebar div#body, body.sidebar-main div#body {
+				margin: auto auto auto auto;
+				width: 710px;
+				border: solid 4px #FFF;
+			}
+			body.main-sidebar div#sidebar, body.sidebar-main div#sidebar {
+				padding-top: 10px;
+				display: block;
+				width: 200px;
+				border: solid 1px #CCC;
+			}
+			/* Main-sidebar. Este estilo coloca el sidebar a la derecha y el main a la izquierda */
+			body.main-sidebar div#main, body.main-sidebar div#sidebar {
+				float: left;
+				border: dotted 1px green;
+			}
+			/* Sidebar-main. Este estilo coloca el sidebar a la izquierda y el main a la derecha */
+			body.sidebar-main div#main, body.sidebar-main div#sidebar {
+				float: right;
+				border: dotted 1px green;
+			}
+			/* Se define el logo flotante a la izquierda */
+			div#header div#logo {
+				margin-bottom: inherit;
+				border: dotted 1px green;
+				float: left; /* Se hacen estas caja flotante y las siguientes cajas que están en la misma posición también serán flotantes a la izquierda. No hace falta ponerle a div#header div#main-title también esta propiedad */
+			}
+			/* Es el título del encabezado. Al ser el logo flotante éste también lo será */
+			div#header div#main-title {
+				width: 600px;
+				margin-bottom: inherit;
+				border: dotted 1px blue;
+				padding-bottom: 10px;
+			}
+			/* Se define el reproductor a la derecha */
+			div.reproductor-audio {
+				margin-left: 500px;
+				margin-bottom: inherit;
+				clear: left; 
+				position: relative;
+			}
+			/* Se define el reproductor centrado */
+			div.reproductor-video {
+				margin: 0 auto 0 auto;
+				width: 390px;
+			}
+			
+			/* Define los enlaces de Menú */
+			/* Link no visitado */
+			a.menus:link {
+				text-decoration: none;
+				color: #000000;
+				background-color: #815608;
+				border: #FFFFFF 1px solid;
+			}
+			/* Link visitado */
+			a.menus:visited {
+				text-decoration: none;
+				color: #cccccc;
+			}
+			/* Link activo */
+			a.menus:active {
+				text-decoration: none;
+				color: #003399;
+				background: green;
+				border: #FFFFFF 1px solid;
+			}
+			/* Ratón sobre el link */
+			a.menus:hover {
+				text-decoration: underline;
+				color: #003399;
+				background: red;
+				border: #FFFFFF 1px solid;
+			}
+			
+			/* Estilo del reproductor de audio */
+			.reproductor-audio {
+				background: yellow;
+			}
+			/* Estilo del reproductor de vídeo */
+			.reproductor-video {
+				background: blue;
+			}
+	</style>
+	</head>
+	<body class="sidebar-main">
+		<div id="header">
+			<div id="logo"><img src="images/logo.jpg" width="100px" height="90px"></img></div>
+			<div id="main-title"><h1> El muslito </h1></div>
+			<!-- Reproductor de audio. -->
+			<div class="reproductor-audio">
+				<!-- Audio reproducido en local. -->
+				<img src="images/PlayNormal.png" onClick="document.getElementById('player').play()" />
+				<img src="images/StopNormal.png" onClick="document.getElementById('player').pause()" />
+				<img src="images/VolumeNormal.png" onClick="document.getElementById('player').volume+=0.1" />
+				<img src="images/VolumeNormalRed.png" onClick="document.getElementById('player').volume-=0.1" />
+				<audio id="player">
+					<source src="Audios/Aretha.mp3">
+					El audio no puede ser reproducido
+				</audio>
+			</div>
+			<p>&nbsp;</p><!-- Espacio en blanco. -->
+		</div>
+		<div id="body">
+			<div id="main">
+				<!-- Reproductor de vídeo. -->
+				<div class="reproductor-video">
+					<!-- Vídeo reproducido en local. -->
+					<video width="360" height="240" controls autoplay preload="none" muted loop poster="images/pollo.jpg">
+						<source src="videos/RecetaPollo.mp4#t=5" type="video/mp4;codecs='h.264,aac'"><!-- No funciona, pero al indicar códecs se reproduce el vídeo que está a continuación. -->
+						<source src="videos/RecetaPollo.ogv#t=5" type="video/ogg"><!-- ogg vídeo en línea. -->
+						<source src="videos/RecetaPollo.webm#t=5" type="video/webm">
+						Tu navegador no es compatible con el vídeo HTML5
+					</video>
+					<!-- Vídeo embebido con marco reproducido online. -->
+					<iframe src="http://player.vimeo.com/video/868018?title=0&amp;byline=0&amp;portrait=0" 
+						width="360" height="240" frameborder="0" allowFullScreen>
+					</iframe>
+				</div>
+			</div>
+			<div id="sidebar">
+				<div><a href="#" class="menus">Inicio</a></div>
+				<div><a href="#" class="menus">¿Dónde estamos?</a></div>
+				<div><a href="#" class="menus">Nuestra Carta</a></div>
+				<div><a href="#" class="menus">Horarios</a></div>
+			</div>
+		</div>
+		<div id="footer"><a href="#">Contacto</a></div>
+	</body>
+</html>

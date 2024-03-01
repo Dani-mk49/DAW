@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ejercicio 4.1.1</title>
+		<style>
+			div.imagen {
+				position: relative;
+				width: 450px;
+			}
+			div.imagen:hover ul.cuadro li {
+				display: block;
+			}
+			ul.cuadro li {
+				list-style: none;
+				display: none;
+				position: absolute;
+				border: medium solid white;
+				background: url("esta_imagen_no_existe");
+			}
+			ul.cuadro li p {
+				margin: 10px 0 0 0;
+				padding: 0.3em;
+				display: none;
+				background: white;
+				opacity: 0.65;
+				position: absolute;
+				top: 100%;
+			}
+			ul.cuadro li:hover p {
+				display: block;
+			}
+			ul.cuadro li.nota1 {
+				width: 170px;
+				height: 160px;
+				top: 250px;
+				left: 480px;
+			}
+			ul.cuadro li.nota2 {
+				width: 120px;
+				height: 85px;
+				top: 250px;
+				left: 60px;
+			}
+			ul.cuadro li.nota3 {
+				width: 260px;
+				height: 200px;
+				top: 20px;
+				left: 130px;
+			}
+			.nota1:hover p {
+				display: block;
+				height: 180px;
+				width: 40px;
+				top: -10px;
+				left: -60px;
+			}
+			.nota3:hover p {
+				display: block;
+				height: 80px;
+				width: 50px;
+				top: -10px;
+				left: 270px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="imagen">
+			<img src="Fondo marino.jpg" />
+			<ul class="cuadro">
+				<li class="nota1"><p>Todo el mar es suyo :)</p></li>
+				<li class="nota2"><p>¡Me encanta este color azul!</p></li>
+				<li class="nota3"><p>Dan ganas de tirarse...</p></li>
+			</ul>
+		</div>
+	</body>
+</html>

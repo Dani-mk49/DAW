@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ejercicio 4.3.2</title>
+		<style>
+			div {
+				width: 167px;
+				height: 142px;
+				background: url('boy_sprite.png') left center;
+				margin: 0 auto;
+			}
+			div:hover { animation: play .750s steps(8, end) infinite }
+			
+			@keyframes play {
+				from { background-position: 0px }
+				to   { background-position: -1336px }
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
