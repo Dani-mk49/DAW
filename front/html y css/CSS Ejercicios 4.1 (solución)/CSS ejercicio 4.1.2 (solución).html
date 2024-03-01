@@ -1,40 +1,99 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Ejercicio 4.1.2</title>
-		<style>
-			#contenedor { width: 500px; height: 500px; border: 1px solid black; border-radius: 10px; margin: 10px auto;
-						  background-image: url(animales-marinos.png); position: relative }
-			
-			#contenedor div { position: absolute }
-			
-			#caballito { width: 140px; height: 225px; top: 30px; left: 0px }
-			#caballito:hover { background: url(animales-marinos.png) 0px -530px }
-			
-			#tortuga { width: 230px; height: 162px; top: 5px; left: 180px }
-			#tortuga:hover { background: url(animales-marinos.png) -180px -505px }
-			
-			#cangrejo { width: 165px; height: 145px; top: 110px; left: 100px }
-			#cangrejo:hover { background: url(animales-marinos.png) -100px -1110px }
-			
-			#medusa { width: 140px; height: 175px; top: 150px; left: 265px }
-			#medusa:hover { background: url(animales-marinos.png) -265px -1150px }
-			
-			#pez { width: 115px; height: 110px; top: 295px; left: 10px }
-			#pez:hover { background: url(animales-marinos.png) -10px -795px }
-			
-			#ballena { width: 350px; height: 210px; top: 267px; left: 130px }
-			#ballena:hover { background: url(animales-marinos.png) -130px -767px }
-		</style>
-	<body>
-		<div id="contenedor">
-			<div id="caballito"></div>
-			<div id="tortuga"></div>
-			<div id="cangrejo"></div>
-			<div id="medusa"></div>
-			<div id="pez"></div>
-			<div id="ballena"></div>
-		</div>
-	</body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Ejercicio 4.1.2</title>
+	<style>
+		#contenedor {
+			width: 500px;
+			height: 500px;
+			border: 1px solid black;
+			border-radius: 10px;
+			margin: 10px auto;
+			background-image: url(animales-marinos.png);
+			position: relative
+		}
+
+		#contenedor div {
+			position: absolute
+		}
+
+		#caballito {
+			width: 140px;
+			height: 225px;
+			top: 30px;
+			left: 0px
+		}
+
+		#caballito:hover {
+			background: url(animales-marinos.png) 0px -530px
+		}
+
+		#tortuga {
+			width: 230px;
+			height: 162px;
+			top: 5px;
+			left: 180px
+		}
+		/* son valores negativos porque la imagen tiene que meterse por dentro del div contenedor, coger de referencia siempre la esquina de arriba a la derecha y hacer que el contenedor tenga unos tamaños acordes con el animal, para que así solo cambien de color dicho animal */
+		#tortuga:hover {
+			background: url(animales-marinos.png) -180px -505px
+		}
+
+		#cangrejo {
+			width: 165px;
+			height: 145px;
+			top: 110px;
+			left: 100px
+		}
+
+		#cangrejo:hover {
+			background: url(animales-marinos.png) -100px -1110px
+		}
+
+		#medusa {
+			width: 140px;
+			height: 175px;
+			top: 150px;
+			left: 265px
+		}
+
+		#medusa:hover {
+			background: url(animales-marinos.png) -265px -1150px
+		}
+
+		#pez {
+			width: 115px;
+			height: 110px;
+			top: 295px;
+			left: 10px
+		}
+
+		#pez:hover {
+			background: url(animales-marinos.png) -10px -795px
+		}
+
+		#ballena {
+			width: 350px;
+			height: 210px;
+			top: 267px;
+			left: 130px
+		}
+
+		#ballena:hover {
+			background: url(animales-marinos.png) -130px -767px
+		}
+
+	</style>
+
+<body>
+	<div id="contenedor">
+		<div id="caballito"></div>
+		<div id="tortuga"></div>
+		<div id="cangrejo"></div>
+		<div id="medusa"></div>
+		<div id="pez"></div>
+		<div id="ballena"></div>
+	</div>
+</body>
 </html>
