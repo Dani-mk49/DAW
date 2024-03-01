@@ -171,7 +171,7 @@
 		<div class="reproductor-audio">
 			<!-- Audio reproducido en local. -->
 			<img src="images/PlayNormal.png" onClick="document.getElementById('player').play()" />
-			<img src="images/StopNormal.png" onClick="document.getElementById('player').pause()" />
+			<img src="images/StopNormal.png" onClick="document.getElementById('player').pause(); document.getElementById('player').load()" />
 			<img src="images/VolumeNormal.png" onClick="document.getElementById('player').volume+=0.1" />
 			<img src="images/VolumeNormalRed.png" onClick="document.getElementById('player').volume-=0.1" />
 			<audio id="player">
