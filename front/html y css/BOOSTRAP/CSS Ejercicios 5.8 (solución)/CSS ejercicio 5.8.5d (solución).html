@@ -23,12 +23,16 @@
 						</div>
 						<div class="col-sm-6 blue">
 							<h1>Cierre de alerta &times</h1>
+
+							<button type="button" class="btn btn-primary" id="abrirAlerta"> abrir</button><br>
+
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="alert alert-primary">
 										Hola, buenos días.
-										<button type="button" class="close" data-dismiss="alert">
-											<span>&times;</span>
+										<!-- es necesario que en el boton de cerrar tenga la calse close para que se cierre, el btn-close es solo estilos, y luego el data-dismiss es para lanzar una alerta -->
+										<button type="button" class="close btn-close" data-dismiss="alert">
+											<!-- <span>&times;</span> -->
 										</button>
 									</div>
 								</div>
@@ -49,6 +53,16 @@
 				function ocultar() {
 					document.getElementsByClassName("alert alert-primary")[0].style.display = "none"; // Modificación de CSS desde JS.
 					alert('Me ejecuto después de cerrar el mensaje de alerta');
+				}
+
+				//con este codigo lo que hacemos es abrir la alerta
+				const activarAlerta = document.getElementById("abrirAlerta");
+console.log('');
+				if(activarAlerta){
+					activarAlerta.addEventListener('click', () =>{
+						var alerta1 = document.getElementsByClassName("alert alert-primary")[0];
+						alerta1.style.display = "block";
+					});
 				}
 			}
 		</script>
