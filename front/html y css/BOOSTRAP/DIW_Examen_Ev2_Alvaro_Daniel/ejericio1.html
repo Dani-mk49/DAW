@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, charset=utf-8" />
+  <title>Ejercicio 1</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <style>
+    /* genero estilos basicos */
+    .container {
+      border: 5px solid red;
+    }
+
+    .celda {
+      border: 5px solid blue;
+    }
+
+    .no-gutters {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .fila {
+      border: 1px solid red;
+      height: 100px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- hago que las filas se ajusten entre ellas con justify-contet-around -->
+  <div class="container">
+    <div class="fila row justify-content-around">
+      <div class="celda col-3">COLUMNA 1</div>
+      <div class="celda col-3">COLUMNA 2</div>
+      <div class="celda col-3">COLUMNA 3</div>
+    </div>
+  </div>
+  <script src="bootstrap.bundle.min.js"></script>
+</body>
+</html>
