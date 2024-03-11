@@ -1,0 +1,121 @@
+ESPECIFIDAD
+	!important
+	Estilos en linea (dentro del codigo html)
+	Identificadores (id)
+	clases y seudoclases
+	elementos y seudoelementos
+
+TEXTOS
+	font-size		:Tamaño de letra
+	font-family		:Tipografia
+	line-height		:Es el tamaño a lo alto que ocupa una linea de texto (se ve bien al seleccionar el texto)
+	font-weight		:Es el grosor de la letr propiamente dicho
+	text-decoration	:Diferentes estilos de texto
+	text-transform	:Prodras poner el texto en mayusculas minusculas, y mayusculas solo la primera de cada palabra
+
+	estas no se utilizan mucho por no decir nada
+	word-wrap		:wrap dentro del texto
+	word-break		:Es como el word-wrap, pero este en cambio corta la palabra por donde pille
+	word-spacing	:Espacio entre las palabras
+
+PROPIEDADES DE CAJA
+	weight			:
+	width			:
+	color			:
+	border			: tamaño tipo color
+	border-radius	: cuanto de redondeo
+	padding y margin:
+		valor: arribaAbajo izquierdaDerecha;
+		valor: top right bottom left;
+	box-shadow		: movimientoEjex movimientoEjey tamañoDeSombra borde colorDeShadow
+					para hacer mas intenso copiar y pegar todo
+	text-shadow		:Exaceamente igual que box shadow pero quitando el borde de la linea
+	text-align		:centrar verticalmente
+	outline			:Es como un borde sin ocupar espacio real
+
+POSITION
+	static			:Opcion por defecto, no hace nada
+
+	relative		:Conserva el espacio de su posición real y adquiere la posibilidad de poner los atributos top y left para desplazar el elemento de su posición original, pero manteniendo el espacio inicial. Tambien adquiere la propiedad z-index que es para que cosa que tiene position relative se ve por encima de otra
+			z-index: para hacer que un hijo quede por debajo de un padre, hay que darle al hijo un z-index -1, y al padre no ponerle z-index
+
+	absolute		:Hace exactamente lo mismo que relative, adquiriendo así tambien los mismos tipos de propiedades, pero esta no conserva su espacio en el dom por lo que lo coge otro elemento. Se posiciona dentro del padre solo si tiene posicion relative.
+					Para centrar tienes que dar todos los valores 0 y luego margin auto, es decir top 0 bottom 0 etc
+
+	fixed			:Es como hacer un absolute, pero queda fijo en laposicion que se le indique
+
+	sticky			:Es como fixed pero pero mantiene el espacio en pantalla como relative
+
+DISPLAY
+	block			:Se pueden cambiar las resoluciones
+
+	inline			:No se pueden cambiar las resoluciones
+
+	inline-block	:Se comporta como un elemento en linea, pero a la vez solo ocupa el espacio suyo y se le puede cambiar las resoluciones (mezcla de ambos)
+
+	flex			:
+		contenedor
+			flex-direction	: row, colum, row-reverse, colum-reverse (poco que explicar)
+			flex-wrap:
+				wrap	:para hacer que se vayan para abajo
+				nowrap	:simplemente desaparecen
+			flex-flow =  flex-flow: colum wrap; primero direción, luego el valor de wrap
+			justify-content:
+				center			:se centra
+				space-arroud	:es como hacer en los items margin: auto;
+				space-between	:da espacio solo entre los elementos
+				space-evenly	:para que tenga exactamente la misma separación en todos los lados
+				aling-items		:es para alinear los elementos de manera verticalmente
+				aling-content	:es lo mismo que align-items, pero para cuando prevees tener mas de una linea de elementos
+		item
+			con margin auto se centra en el medio de todo
+			align-self	:El centrado de toda la vida
+			flex-gow	:Reparte el espacio sobrante de la linea, si solo lo tiene un elemento, cogerá todo el espacio posible, si lo tienen varios lo repartiran
+			flex-basis	:Es muy parecido al width
+			flex-shirnk	:Es la cantidad de espacio que ceden, si le doy 0, ese contenedor no cede espacio.
+			flex  = flex-grow, flex-shrink, flex-basis     basicamente agrupa todo en una como flex-flow
+			order		:para definir en que posicion de todos los elementos se va a poner
+
+	grid			:
+		container
+		item
+		cell
+		tracks
+		area
+		line
+
+	inline-flex		:
+
+	inline-block	:
+
+overflow			:Es par si un elemento hijo sale del padre, que se vea o no
+float				: solo se utiliza pra dejar cosas flotando dentro de cards u otras cosas
+
+PSEUDO-ELEMENTOS
+	::firsline
+	::first-letter
+	::placeholder	:para formulaios, ver el placeholder con otro formato
+	::after			:pone cosas antes, y la siguiente pone cosas despues
+	::before
+	::selection		:Para cuando seleccionas un texto el como se ve
+
+PSEUDO-clases
+	:hover			:Cuando pasas el ratón por encima
+
+	:link			:link no visitado
+
+	:visited		:Cuando ya has visitado un link
+
+	:active			:solo cuando está activado dicho elemento
+
+	:focus			:cuando tiene el foco (principalmente en los inputs)
+
+	:lang			:se puede utilizar para que todos los elementos que tengan dicho atributo según el contenido pues se les aplique el estilo deseado
+
+object-fit:
+	contain			:se ajusta a la resolución pero viendose siempre toda la imagen
+	cover			:se ajusta al contenedor, pero recortando la imagen
+	scale-down		:se queda con el tamaño mas bajo
+object-position		:Para la posicion de la imagen en caso de que se tenga que automodificar
+
+cursor				:es para modificar como se ve el cursor
