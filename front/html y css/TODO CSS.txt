@@ -84,10 +84,6 @@ DISPLAY
 		area
 		line
 
-	inline-flex		:
-
-	inline-block	:
-
 overflow			:Es par si un elemento hijo sale del padre, que se vea o no
 float				: solo se utiliza pra dejar cosas flotando dentro de cards u otras cosas
 
