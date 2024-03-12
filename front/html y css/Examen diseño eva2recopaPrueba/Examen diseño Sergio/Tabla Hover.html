@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ff</title>
+    <style>
+      th,
+      td {
+        padding: 5px;
+        text-align: left;
+      }
+
+      tr:hover {
+        background-color: aquamarine;
+      }
+
+      tr td:last-child {
+        display: none;
+      }
+
+      tr td:first-child:hover ~ td:last-child {
+        display: block;
+      }
+      tr td:nth-child(2):hover ~ td:last-child {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Tabla de personajes animados</h2>
+
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td>Griffin</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <td>Homer</td>
+        <td>Simpson</td>
+        <td>44</td>
+      </tr>
+      <tr>
+        <td>Sant</td>
+        <td>Smith</td>
+        <td>43</td>
+      </tr>
+      <tr>
+        <td>Cleveland</td>
+        <td>Brown</td>
+        <td>42</td>
+      </tr>
+    </table>
+  </body>
+</html>
