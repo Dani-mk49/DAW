@@ -1,0 +1,55 @@
+/* Establezco margin y padding 0 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* hago que el body tenga de tamaño de alto toda la pantalla y le doy disposicion flexible alineando los elementos en el medio de la pantalla */
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* le doy el estilo de los bordes a la tabla */
+table,
+td,
+th {
+    border: 1px solid red;
+    border-collapse: collapse;
+}
+
+/* defino la anchura de la tabla */
+table {
+    width: 600px;
+}
+
+/* defino el padding de los tr y td cunto con la alineación de los mismos y el tamaño de la celda */
+th,
+td {
+    padding:0 .3em;
+    text-align: center;
+    height: 3em;
+}
+
+/* hago que cuando pases el cursor por encima de una fila toda la fila cambie el tamaño del texto a 15px */
+tr:hover {
+    font-size: 15px;
+}
+
+/* hago que el color de fondo de th sea diferente y tambien le cambio el tipo de texto */
+th {
+    background-color: #CECEF6;
+    font-family: "Lucida Console";
+}
+
+/* hago que el color de fondo de td sea diferente */
+td {
+    background-color: #F5F6CE;
+}
+
+/* hago que cuando pases el cursor por encima de cualquier fila excepto las que contienen th cambie el color de fondo */
+table .cambioColor:hover td {
+    background-color: #F5A9F2 !important;
+}

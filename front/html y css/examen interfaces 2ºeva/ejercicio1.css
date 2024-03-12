@@ -1,0 +1,72 @@
+/* establezco margen y padding 0 para resetear el documento, asi como los bordes redondeados 10px y que el el tamaño sea siempre el especificado con box-sizing */
+* {
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* hago que el body tenga disposición flexible y que se ajusten los elementos de la manera que he visto adecuada */
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* hago que el header tenga una altura, anchura, margenes y color de fondo en concreto */
+header {
+    height: 100px;
+    width: 100%;
+    background-color: grey;
+    margin: 10px 20px;
+    margin-top: 0;
+}
+
+/* hago que el nav tenga una altura, anchura, margenes y color de fondo en concreto */
+nav {
+    width: 100%;
+    height: 50px;
+    background-color: aqua;
+    margin: 10px 20px;
+}
+
+/* hago que el section tenga una altura, anchura, margenes y color de fondo en concreto, asi como que tambien sea un contenedor flexible que contiene columnas y que alinea las columnas al final*/
+section {
+    background-color: rgb(127, 127, 212);
+    margin: 10px 20px;
+    margin-right: 5px;
+    height: 400px;
+    width: 57%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+/* hago que los articulos tengan una altura, margenes y color de fondo en concreto */
+section>article {
+    background-color: rgb(175, 64, 64);
+    margin-bottom: 30px;
+    height: 50px;
+}
+
+/* hago que el ultimo articulo tenga un margen inferior en especifico */
+section>article:last-child {
+    margin-bottom: 10px;
+}
+
+/* hago que le aside tenga una altura, margenes y color de fondo en concreto */
+aside {
+    background-color: blueviolet;
+    width: 37%;
+    margin: 10px 20px;
+    margin-left: 5px;
+    height: 400px;
+}
+
+/* hago que le footer tenga una altura, margenes y color de fondo en concreto */
+footer {
+    background-color: black;
+    width: 100%;
+    margin: 10px 20px;
+    height: 80px;
+}
