@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+}
+
+div {
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: bold;
+}
+
+.n30 {
+    background-color: green;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.n40 {
+    background-color: orange;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+
+.n50 {
+    background-color: red;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}

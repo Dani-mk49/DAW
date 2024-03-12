@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+}
+
+body {
+    height: 100vh;
+}
+
+div {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    margin: 20px;
+    border: 2px solid black;
+}
+
+@media(max-width: 1800px) {
+    div {
+        background-color: green;
+    }
+
+    div::after {
+        content: "Ancho > 700";
+    }
+}
+
+@media(max-width: 700px) {
+    div {
+        background-color: pink;
+    }
+
+    div::after {
+        content: "700 > Ancho >= 500";
+    }
+}
+
+@media(max-width: 500px) {
+    div {
+        background-color: red;
+    }
+
+    div::after {
+        content: "Ancho < 500";
+    }
+}
